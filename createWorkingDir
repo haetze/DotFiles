@@ -1,0 +1,66 @@
+cd ~/Documents/
+
+mkdir Test
+cd Test
+
+mkdir Code
+cd Code
+
+mkdir go
+mkdir c
+mkdir erlang
+mkdir dart
+mkdir ruby
+mkdir JS
+mkdir java
+mkdir haskell
+mkdir python
+
+cd go
+mkdir src 
+mkdir pkg
+mkdir bin
+git clone http://github.com/haetze/DemoGO
+cd src
+git clone http://github.com/haetze/XMLParse
+git clone http://github.com/haetze/XMLParseCon
+
+cd ..
+cd ..
+
+cd c
+git clone http://github.com/haetze/Demo
+cd ..
+
+cd erlang
+git clone http://github.com/haetze/DemoErlang
+cd ..
+
+cd dart 
+git clone http://github.com/haetze/DemoDart
+cd ..
+
+cd ruby
+git clone http://github.com/haetze/DemoRuby
+cd ..
+
+cd JS
+git clone http://github.com/haetze/ExampleCode
+cd ..
+
+cd java
+git clone http://github.com/haetze/DemoJava
+cd ..
+
+cd haskell
+git clone http://github.com/haetze/DemoHaskell
+cd ..
+
+cd python
+git clone http://github.com/haetze/pythonDemo
+cd ..
+
+
+
+
+
