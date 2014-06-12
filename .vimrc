@@ -197,6 +197,7 @@ Bundle 'file:///Users/haetze/.vim/acp'
 filetype plugin indent on     " required!
 
 set number
+au BufNewFile,BufRead *.json set ft=javascript
 
 
 
