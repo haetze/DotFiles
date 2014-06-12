@@ -1,8 +1,5 @@
 cd ~/Documents/
 
-mkdir Test
-cd Test
-
 mkdir Code
 cd Code
 
@@ -60,6 +57,9 @@ cd python
 git clone http://github.com/haetze/pythonDemo
 cd ..
 
+cd ~/Documents/usefulCommand
+cp .vimrc ~/.vimrc 
+cd ..
 
 
 
