@@ -1,7 +1,7 @@
 
 export PATH=/usr/local/bin:$PATH
 
-export GOPATH=~/usefulCommands/Code/go/
+export GOPATH=~/Documents/Code/go/
 
 alias appleScript=osascript
 

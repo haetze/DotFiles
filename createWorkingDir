@@ -1,4 +1,6 @@
-cd ~/Documents/
+cd ~/
+mkdir Documents
+cd Documents
 
 mkdir Code
 cd Code
