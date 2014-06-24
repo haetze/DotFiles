@@ -11,8 +11,8 @@ sudo apt-get update
 sudo apt-get -y install darteditor dartsdk dartium
 
 cd /usr/share/vim/vim73/syntax/ 
-wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
-wget http://golang.org/misc/vim/syntax/go.vim?m=text
-cp go.vim?m=text go.vim
-rm go.vim?m=text 
+sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
+sudo wget http://golang.org/misc/vim/syntax/go.vim?m=text
+sudo cp go.vim?m=text go.vim
+sudo rm go.vim?m=text 
 
