@@ -9,6 +9,7 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+so .exrc
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -198,6 +199,6 @@ filetype plugin indent on     " required!
 
 set number
 au BufNewFile,BufRead *.json set ft=javascript
-
+set background=light
 
 
