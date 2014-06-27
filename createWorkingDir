@@ -45,6 +45,7 @@ cd ..
 
 cd JS
 git clone http://github.com/haetze/ExampleCode
+git clone http://github.com/haetze/StringSplittingNODEJS
 cd ..
 
 cd java
