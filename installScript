@@ -10,12 +10,21 @@ sudo apt-get -y install erlang
 sudo add-apt-repository ppa:hachre/dart
 sudo apt-get update
 sudo apt-get -y install darteditor dartsdk dartium
+sudo apt-get -y install curl
 
 cd /usr/share/vim/vim73/syntax/ 
 sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
 sudo wget http://golang.org/misc/vim/syntax/go.vim?m=text
 sudo cp go.vim?m=text go.vim
 sudo rm go.vim?m=text 
+
+
+cd ~ 
+mkdir -p ~/.vim/autoload ~/.vim/bundle 
+curl https://tpo.pe/pathogen.vim > ~/.vim/autoload/pathogen.vim
+cd ~/.vim/bundle/ 
+git clone git clone https://github.com/scrooloose/nerdtree.git
+
 
 
 
