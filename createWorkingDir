@@ -1,6 +1,8 @@
+cp .vimrc ~/
 cd ~/
 mkdir Documents
 cd Documents
+
 
 mkdir Code
 cd Code
