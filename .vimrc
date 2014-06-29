@@ -31,7 +31,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
-set runtimepath+=$HOME/.vim/dart-vim-plugin
+set runtimepath+=$HOME/.vim
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -193,4 +193,6 @@ au BufNewFile,BufRead *.go set ft=go
 au BufNewFile,BufRead *.dart set ft=dart
 au BufNewFile,BufRead *.json set ft=javascript
 
-
+set loadplugins
+set runtimepath^=$HOME/.vim/
+call pathogen#infect() 
