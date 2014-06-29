@@ -17,3 +17,6 @@ sudo wget http://golang.org/misc/vim/syntax/go.vim?m=text
 sudo cp go.vim?m=text go.vim
 sudo rm go.vim?m=text 
 
+
+
+
