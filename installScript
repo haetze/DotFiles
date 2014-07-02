@@ -13,7 +13,7 @@ sudo apt-get -y install darteditor dartsdk dartium
 sudo apt-get -y install curl
 
 cd /usr/share/vim/vim73/syntax/ 
-sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
+#sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
 sudo wget http://golang.org/misc/vim/syntax/go.vim?m=text
 sudo cp go.vim?m=text go.vim
 sudo rm go.vim?m=text 
@@ -28,6 +28,7 @@ git clone git://github.com/tpope/vim-fugitive.git
 git clone git://github.com/aperezdc/vim-template.git
 git clone https://github.com/vim-scripts/AutoComplPop.git
 git clone https://github.com/vim-scripts/L9.git
+git clone https://github.com/dart-lang/dart-vim-plugin.git
 git clone https://github.com/vim-scripts/Tagbar.git
 sudo apt-get -y install ctags
 
