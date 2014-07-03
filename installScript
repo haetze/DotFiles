@@ -31,7 +31,7 @@ git clone https://github.com/vim-scripts/AutoComplPop.git
 git clone https://github.com/vim-scripts/L9.git
 git clone https://github.com/dart-lang/dart-vim-plugin.git
 git clone https://github.com/fatih/vim-go.git
-sudo apt-get install -y sudo apt-get install mercurial
+sudo apt-get install mercurial
 git clone https://github.com/vim-scripts/Tagbar.git
 sudo apt-get -y install ctags
 
