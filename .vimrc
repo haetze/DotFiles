@@ -9,7 +9,7 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
-so .exrc
+"so .exrc
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -195,4 +195,8 @@ au BufNewFile,BufRead *.json set ft=javascript
 
 set loadplugins
 set runtimepath^=$HOME/.vim/
-call pathogen#infect() 
+call pathogen#infect()
+
+map  <C-l> :tabn<CR>
+map  <C-h> :tabp<CR>
+map  <C-n> :tabnew<CR>
