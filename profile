@@ -143,6 +143,3 @@ function cd {
 }
 
 
-echo dorstenindeutschland | sudo -S apt-get update
-echo dorstenindeutschland | sudo -S apt-get -y upgrade
-
