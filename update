@@ -1,0 +1,2 @@
+echo "dorstenindeutschland" | sudo apt-get update
+echo "dorstenindeutschland" | sudo apt-get -y upgrade
