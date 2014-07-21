@@ -19,3 +19,11 @@ curl -u 'USER' https://api.github.com/user/repos -d '{"name":"REPO"}'
 alias bat='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\full|percentage"'
 
 chmod u+x file
+
+sudo ifconfig wlan0 up
+
+sudo wpa_supplicant -Dwext -iwlan0 -cwpa.conf -B
+
+sudo dhclient -r
+
+sudo dhclient wlan0

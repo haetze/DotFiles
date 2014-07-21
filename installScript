@@ -13,7 +13,8 @@ sudo apt-get update
 sudo apt-get -y install darteditor dartsdk dartium
 sudo apt-get -y install curl
 sudo apt-get -y install couchdb-bin
-
+sudo apt-get -y install lynx
+sudo apt-get -y install acpi
 
 cd /usr/share/vim/vim73/syntax/ 
 #sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
