@@ -201,8 +201,8 @@ map  <C-l> :tabn<CR>
 map  <C-h> :tabp<CR>
 map  <C-n> :tabnew<CR>
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+map <C-u> <C-W><C-J>
+map <C-i> <C-W><C-K>
+map <C-o> <C-W><C-L>
+map <C-y> <C-W><C-H>
 
