@@ -26,6 +26,9 @@ git clone http://github.com/haetze/DemoGO
 cd src
 git clone http://github.com/haetze/XMLParse
 git clone http://github.com/haetze/XMLParseCon
+git clone http://github.com/haetze/DownloadGolang
+mkdir Download
+cp -r DownloadGolang Download
 
 cd ..
 cd ..
