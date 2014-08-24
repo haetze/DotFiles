@@ -27,3 +27,8 @@ sudo wpa_supplicant -Dwext -iwlan0 -cwpa.conf -B
 sudo dhclient -r
 
 sudo dhclient wlan0
+
+
+sudo fdisk /dev/sdb 
+
+sudo mount -t /dev/sdb1 /media/Volumes/ 
