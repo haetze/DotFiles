@@ -15,9 +15,11 @@ sudo apt-get -y install curl
 sudo apt-get -y install couchdb-bin
 sudo apt-get -y install lynx
 sudo apt-get -y install acpi
+sudo apt-get -y install elinks
+sudo apt-get -y install irssi 
 
 cd /usr/share/vim/vim73/syntax/ 
-#sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
+sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
 sudo wget http://golang.org/misc/vim/syntax/go.vim?m=text
 sudo cp go.vim?m=text go.vim
 sudo rm go.vim?m=text 
