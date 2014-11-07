@@ -31,4 +31,7 @@ sudo dhclient wlan0
 
 sudo fdisk /dev/sdb 
 
-sudo mount -t /dev/sdb1 /media/Volumes/ 
+sudo mount -t /dev/sdb1 /media/Volumes/
+
+/etc/init.d/cups start
+#port 631 http://127.0.0.1:631
