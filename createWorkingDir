@@ -29,6 +29,9 @@ git clone http://github.com/haetze/XMLParseCon
 git clone http://github.com/haetze/TCPpkg
 git clone http://github.com/haetze/GolangList
 
+cp -r GolangList List
+rm -rf GolangList 
+
 cd ..
 cd ..
 
