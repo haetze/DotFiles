@@ -125,6 +125,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
 
 export PATH=/usr/local/bin:$PATH
+export PATH=~/Documents/Code/go/bin:$PATH
 
 export GOPATH=~/Documents/Code/go
 
