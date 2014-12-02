@@ -29,9 +29,11 @@ sudo dhclient -r
 sudo dhclient wlan0
 
 
-sudo fdisk /dev/sdb 
+sudo fdisk -l
+
 
 sudo mount -t /dev/sdb1 /media/Volumes/
+#fat is vfat!!!
 
 /etc/init.d/cups start
 #port 631 http://127.0.0.1:631
