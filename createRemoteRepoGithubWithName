@@ -1,0 +1,3 @@
+curl -u 'haetze' https://api.github.com/user/repos -d {"name":${1}}
+git clone http://github.com/haetze/$1
+cd $1
