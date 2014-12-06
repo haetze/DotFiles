@@ -28,6 +28,7 @@ git clone http://github.com/haetze/XMLParse
 git clone http://github.com/haetze/XMLParseCon
 git clone http://github.com/haetze/TCPpkg
 git clone http://github.com/haetze/GolangList
+git clone http://github.com/haetze/Matrix
 
 cp -r GolangList List
 rm -rf GolangList 
