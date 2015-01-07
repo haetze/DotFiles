@@ -133,14 +133,14 @@ alias appleScript=osascript
 
 alias ttytter="ttytter -ssl -dostream"
 
-function cd {
+#function cd {
     # actually change the directory with all args passed to the function
-        builtin cd "$@"
+##        builtin cd "$@"
         # if there's a regular file named "todo.txt"...
-        if [ -e ".git" ] ; then
+        #if [ -e ".git" ] ; then
                 # display its contents
-                git pull
-        fi
-}
+                #git pull
+        #fi
+#}
 
 
