@@ -1,5 +1,5 @@
 cp .vimrc ~/
-cp profile ~/.bashrc
+cp profile ~/.zshrc
 cd ~/
 mkdir Documents
 cd Documents
