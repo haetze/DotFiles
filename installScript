@@ -18,6 +18,9 @@ sudo apt-get -y install lynx
 sudo apt-get -y install acpi
 sudo apt-get -y install elinks
 sudo apt-get -y install irssi 
+sudo apt-get -y install cabal
+cabal install repa
+cabal install parallel
 
 cd /usr/share/vim/vim73/syntax/ 
 sudo wget https://raw.githubusercontent.com/dart-lang/dart-vim-plugin/master/syntax/dart.vim
