@@ -206,3 +206,7 @@ map <C-o> <C-W><C-K>
 map <C-p> <C-W><C-L>
 map <C-u> <C-W><C-H>
 
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
