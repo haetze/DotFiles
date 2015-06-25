@@ -37,3 +37,11 @@ sudo mount -t /dev/sdb1 /media/Volumes/
 
 /etc/init.d/cups start
 #port 631 http://127.0.0.1:631
+
+
+sudo mount -t msdosfs -o large,m=644,-M=755 /dev/da0s1 /mnt/haetze/
+
+sudo umount /mnt/haetze/
+
+sudo camcontrol devlist 
+sudo usbconfig
