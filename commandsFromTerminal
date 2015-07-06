@@ -51,3 +51,4 @@ sudo sysctl hw.snd.default_unit=0
 
 mpg123 file.mp3
 
+wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf
