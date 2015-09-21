@@ -9,12 +9,6 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
-"so .exrc
-" When started as "evim", evim.vim will already have done these settings.
-if v:progname =~? "evim"
-  finish
-endif
-
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -188,6 +182,8 @@ filetype off                  " required!
 filetype plugin indent on     " required!
 
 set number
+set expandtab
+set tabstop=2
 set background=light
 au BufNewFile,BufRead *.go set ft=go
 au BufNewFile,BufRead *.dart set ft=dart
@@ -206,7 +202,3 @@ map <C-o> <C-W><C-K>
 map <C-p> <C-W><C-L>
 map <C-u> <C-W><C-H>
 
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
