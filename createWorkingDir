@@ -17,6 +17,7 @@ mkdir JS
 mkdir java
 mkdir haskell
 mkdir python
+mkdir rust
 
 cd go
 mkdir src 
@@ -67,6 +68,10 @@ cd ..
 
 cd python
 git clone http://github.com/haetze/pythonDemo
+cd ..
+
+cd rust 
+git clone http://github.com/haetze/rustDemo
 cd ..
 
 cd ~/Documents/usefulCommand
