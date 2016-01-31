@@ -1,7 +1,8 @@
-cp .vimrc ~/
+cp .emacs ~/
 cp profile ~/.zshrc
 cd ~/
 mkdir Documents
+mkdir Downloads
 cd Documents
 
 
@@ -74,8 +75,7 @@ cd rust
 git clone http://github.com/haetze/rustDemo
 cd ..
 
-cd ~/Documents/usefulCommand
-cp .vimrc ~/.vimrc 
+cd ~/Documents/usefulCommand 
 cd ..
 
 
