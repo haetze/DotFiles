@@ -52,5 +52,6 @@ sudo sysctl hw.snd.default_unit=0
 mpg123 file.mp3
 #plays 1 live online stream
 mpg123 http://1live.akacast.akamaistream.net/7/706/119434/v1/gnl.akacast.akamaistream.net/1live
-
+#creates a file and writes the data it gets from the stream to it.
+mpg123 -C --wav $(date "+%Y-%m-%d-%H:%M:%S").wav http://1live.akacast.akamaistream.net/7/706/119434/v1/gnl.akacast.akamaistream.net/1live 
 wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf
