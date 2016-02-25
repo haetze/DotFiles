@@ -23,5 +23,26 @@
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+(add-hook 'erlang-mode-hook
+	  (lambda () (local-set-key (kbd "C-c C-c") #'erlang-compile)))
+
+(global-auto-complete-mode)
+
+
+;;;Eshell Aliases*************************
+
+;;(defalias 'xbat 'acpiconf -i 0 | grep "Remaining capacity"' 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
