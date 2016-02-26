@@ -28,6 +28,7 @@
 
 (global-auto-complete-mode)
 
+(global-set-key (kbd "C-x C-g") #'git-command)
 
 ;;;Eshell Aliases*************************
 
