@@ -24,26 +24,33 @@
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 (add-hook 'erlang-mode-hook
-	  (lambda () (local-set-key (kbd "C-c C-c") #'erlang-compile)))
+	  (lambda ()
+	    (local-set-key (kbd "C-c C-c") #'erlang-compile)
+	    (global-auto-complete-mode)))
 
 (global-auto-complete-mode)
 
 (global-set-key (kbd "C-x C-g") #'git-command)
 
-;;;Eshell Aliases*************************
+(add-hook 'tuareg-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-c C-c") #'utop-eval-phrase)
+	    (global-auto-complete-mode)))
 
-;;(defalias 'xbat 'acpiconf -i 0 | grep "Remaining capacity"' 
+(add-hook 'slime-connected-hook
+	  (lambda ()
+	    (slime-load-file "/home/haetze/.packages/package.lisp")))
 
+;;LFE mode.
+;;(defvar lfe-dir (concat (getenv "HOME") "/git/lfe/emacs"))
+;;(setq load-path (cons lfe-dir load-path))
+;;(require 'lfe-start)
 
-
-
-
-
-
-
-
-
-
+;;(global-set-key (kbd "<f12>") 'my-save-and-compile)
+;;(defun my-save-and-compile ()
+;;  (interactive "")
+;;  (save-buffer 0)
+;;  (compile "./run"))
 
 
 
