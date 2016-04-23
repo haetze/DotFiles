@@ -1,20 +1,19 @@
 (require 'nnir)
+(require 'epg)
 
-;; @see http://www.emacswiki.org/emacs/GnusGmail#toc1
+
 (setq gnus-select-method '(nntp "news.gmane.org")) ;; if you read news groups
 
-;; ask encyption password once
+
 (setq epa-file-cache-passphrase-for-symmetric-encryption t)
 
-;; @see http://gnus.org/manual/gnus_397.html
+
 (add-to-list 'gnus-secondary-select-methods
 	     '(nnimap "gmail"
 		      (nnimap-address "imap.gmail.com")
 		      (nnimap-server-port 993)
 		      (nnimap-stream ssl)
 		      (nnir-search-engine imap)
-					; @see http://www.gnu.org/software/emacs/manual/html_node/gnus/Expiring-Mail.html
-		      ;; press 'E' to expire email
 		      (nnmail-expiry-target "nnimap+gmail:[Gmail]/Trash")
 		      (nnmail-expiry-wait 90)))
 
@@ -32,3 +31,25 @@
       smtpmail-smtp-service 587
       smtpmail-local-domain "homepc")
 
+
+(setenv "GPG_AGENT_INFO" nil)
+(add-hook 'message-setup-hook 'nml-secure-message-sign-pgpmime)
+
+(setq epg-debug t)
+
+
+(add-to-list 'gnus-secondary-select-methods
+	     '(nnimap "tu-dortmund"
+		      (nnimap-address "unimail.tu-dortmund.de")
+		      (nnimap-server-port 993)
+		      (nnimap-stream ssl)
+		      (nnir-search-engine imap)
+		      (nnmail-expiry-target "nnimap+tu-dortmund:[Gmail]/Trash")
+		      (nnmail-expiry-wait 90)))
+
+
+;; Setup to send email through SMTP
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-default-smtp-server "postserver.tu-dortmund.de"
+      smtpmail-smtp-service 587
+      smtpmail-local-domain "homepc")
