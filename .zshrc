@@ -22,3 +22,7 @@ alias appleScript=osascript
 alias ttytter="ttytter -ssl -dostream"
 
 
+fpath=(/home/haetze/.zsh-compl $fpath)
+
+autoload -U compinit
+compinit
