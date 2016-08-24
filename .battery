@@ -1,0 +1,1 @@
+acpiconf -i 0 | grep "Remaining capacity" | cut -c 21-
