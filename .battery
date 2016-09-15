@@ -3,7 +3,7 @@ bat=$(acpiconf -i 0 | grep "Remaining capacity" | cut -c 21- | sed 's/.$//' )
 RED='<fc=#ff0000>'
 GREEN='<fc=#00ff00>'
 NC='</fc>' # No Color
-COLOR='<fc=#000000>'
+COLOR='<fc=#FFFFFF>'
 
 
 if [ 10 -gt $bat ]
