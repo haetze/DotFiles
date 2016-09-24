@@ -55,3 +55,9 @@ mpg123 http://1live.akacast.akamaistream.net/7/706/119434/v1/gnl.akacast.akamais
 #creates a file and writes the data it gets from the stream to it.
 mpg123 -C --wav $(date "+%Y-%m-%d-%H:%M:%S").wav http://1live.akacast.akamaistream.net/7/706/119434/v1/gnl.akacast.akamaistream.net/1live 
 wpa_supplicant -i wlan0 -c /etc/wpa_supplicant.conf
+
+//transform video to mp3
+ffmpeg -i Glasperlenspiel\ -\ Geiles\ Leben\ \(Lyric\ Video\)-C03n4AAiL9w.mkv Glasperlenspiel\ -\ Geiles\ Leben\ \(Lyric\ Video\)-C03n4AAiL9w.mp3
+
+//download video youtube
+youtube-dl https://www.youtube.com/watch?v=C03n4AAiL9w
