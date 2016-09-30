@@ -14,15 +14,28 @@ compinit
 
 export PATH=/usr/local/bin:$PATH
 export PATH=~/Documents/Code/go/bin:$PATH
+export PATH=~/Documents/Code/lfe/bin:$PATH
+#export PATH=~/Documents/Code/haskell/MyCalendar/bin:$PATH
 
 export GOPATH=~/Documents/Code/go
 
 alias appleScript=osascript
+alias xbat="acpiconf -i 0"
+alias xmobarbat="xbat | grep \"Remaining capacity\" "
 
 alias ttytter="ttytter -ssl -dostream"
 
+export TZ=America/Los_Angeles
 
-fpath=(/home/haetze/.zsh-compl $fpath)
 
+autoload -Uz vcs_info
+precmd () { vcs_info }
+setopt prompt_subst
+PS1="%~\$vcs_info_msg_0_>"
+
+# OPAM configuration
+. /home/haetze/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+fpath=(~/.zsh/ $fpath)
 autoload -U compinit
 compinit
