@@ -53,3 +53,9 @@
       smtpmail-default-smtp-server "postserver.tu-dortmund.de"
       smtpmail-smtp-service 587
       smtpmail-local-domain "homepc")
+
+(require 'nnreddit "~/.emacs.d/nnreddit/nnreddit.el")
+(add-to-list 'gnus-secondary-select-methods
+             '(nnreddit ""))
+
+
