@@ -12,7 +12,7 @@ main = do
         { manageHook = manageDocks <+> manageHook defaultConfig
         , layoutHook = avoidStruts  $  layoutHook defaultConfig
         , logHook = dynamicLogWithPP xmobarPP
-                        { ppOutput = hPutStrLn xmproc
+                        { ppOutput = \s-> return ()
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         } `additionalKeys`
