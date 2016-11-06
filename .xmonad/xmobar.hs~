@@ -18,7 +18,7 @@ Config { borderColor = "black"
        
        , commands = [
            Run Com "/home/haetze/.battery" [] "battery" 600,
-           Run Com "/home/haetze/.battery2" [] "battery2" 600
+           Run Com "/home/haetze/.battery2" [] "state" 600
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %battery2% |"
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% |"
        }

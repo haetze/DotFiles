@@ -1,0 +1,1 @@
+ifconfig | grep ssid | cut -c 7- | rev | cut -c 26- | rev
