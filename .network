@@ -1,1 +1,9 @@
-ifconfig | grep ssid | cut -c 7- | rev | cut -c 26- | rev
+network=$(ifconfig | grep ssid | cut -c 7- | rev | cut -c 56- | rev)
+RESULT=$network
+if  [ "$network" == "" ]
+   then
+	RESULT="Ethernet"
+fi
+
+echo "${RESULT}"
+	
