@@ -19,7 +19,8 @@ Config { borderColor = "black"
        , commands = [
            Run Com "/home/haetze/.battery" [] "battery" 60,
            Run Com "/home/haetze/.battery2" [] "state" 60,
-           Run Com "/home/haetze/.network" [] "network" 60
+           Run Com "/home/haetze/.network" [] "network" 60,
+           Run Com "/home/haetze/.mem.sh" [] "mem" 60
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% | %network% |"
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% | %network% | %mem% | "
        }

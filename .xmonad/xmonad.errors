@@ -1,16 +1,15 @@
 
-xmonad.hs:2:8:
-    Could not find module `XMonad.Hooks.DynamicLog'
-    Use -v to see a list of the files searched for.
+xmonad.hs:11:14: Warning:
+    In the use of `defaultConfig'
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
 
-xmonad.hs:3:8:
-    Could not find module `XMonad.Hooks.ManageDocks'
-    Use -v to see a list of the files searched for.
+xmonad.hs:12:51: Warning:
+    In the use of `defaultConfig'
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
 
-xmonad.hs:4:8:
-    Could not find module `XMonad.Util.Run'
-    Use -v to see a list of the files searched for.
-
-xmonad.hs:5:8:
-    Could not find module `XMonad.Util.EZConfig'
-    Use -v to see a list of the files searched for.
+xmonad.hs:13:51: Warning:
+    In the use of `defaultConfig'
+    (imported from XMonad, but defined in XMonad.Config):
+    Deprecated: "Use def (from Data.Default, and re-exported by XMonad and XMonad.Config) instead."
