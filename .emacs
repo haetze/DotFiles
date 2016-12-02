@@ -1,9 +1,17 @@
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+
 
 (setq org-log-done 'time)
+
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+;(add-to-list  'package-archives
+;		'("melpa" . "http://melpa.org/packages/") t)
+
 (package-initialize)
+
+(require 'org)
+(require 'ox-reveal)
 
 
 
@@ -19,6 +27,8 @@
 (global-auto-complete-mode)
 
 (global-set-key (kbd "C-x C-g") #'git-command)
+(global-set-key (kbd "C-x C-a") #'auto-complete-mode)
+(global-set-key (kbd "C-x C-l") #'inferior-lfe)
 
 (add-hook 'tuareg-mode-hook
 	  (lambda ()
@@ -35,6 +45,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
 			     (ruby . t)
+			     (java . t)
 			     (haskell . t)))
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -52,3 +63,7 @@
 
 (setenv "PATH" (concat (getenv "PATH") ":/home/haetze/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("/home/haetze/Documents/Code/lfe/bin")))
+
+(global-set-key [(control ?h)] 'delete-backward-char)
+(gnus)
+(calendar)
