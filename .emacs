@@ -19,6 +19,7 @@
 (require 'haskell-mode)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
+
 (add-hook 'erlang-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-c C-c") #'erlang-compile)
@@ -67,3 +68,7 @@
 (global-set-key [(control ?h)] 'delete-backward-char)
 (gnus)
 (calendar)
+;;(view-diary-entries)
+
+(setq inhibit-startup-screen t)
+(setq european-calendar-style 't)
