@@ -1,7 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
-import XMonad.Util.Run(spawnPipe)
+import XMonad.Util.Run(spawnPipe, runInTerm)
 import XMonad.Util.EZConfig(additionalKeys)
 import System.IO
 
@@ -16,9 +16,8 @@ main = do
                         , ppTitle = xmobarColor "green" "" . shorten 50
                         }
         } `additionalKeys`
-        [ --((controlMask, xK_Print), spawn "sleep 0.2; scrot -s")
-          --, ((0, xK_Print), spawn "scrot")
-          ((mod1Mask, xK_o), spawn "xtrlock")
+        [ ((mod1Mask, xK_o), spawn "xtrlock")
         , ((mod1Mask, xK_s), spawn "scrot '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/shots/'" )
-        , ((mod1Mask, xK_a), spawn "scrot -s '%Y-%m-%d_%H:%M:%S.png' -e 'mv $f ~/shots/'" )
+        , ((mod1Mask, xK_F1), spawn "/home/haetze/usefulCommands/1live.sh")
+        , ((mod1Mask, xK_F2), spawn "pkill mpg123")
         ]
