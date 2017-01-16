@@ -20,8 +20,8 @@ Config { borderColor = "black"
            Run Com "/home/haetze/.battery" [] "battery" 60,
            Run Com "/home/haetze/.battery2" [] "state" 60,
            Run Com "/home/haetze/.network" [] "network" 60,
-           Run Com "/home/haetze/.mem.sh" [] "mem" 60
-           --Run Com "/home/haetze/.windows" [] "window" 60
+           Run Com "/home/haetze/.mem.sh" [] "mem" 60,
+           Run Com "/home/haetze/.audio" [] "audio" 60
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% | %network% | %mem% | "
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% | %network% | %audio% | %mem% |"
        }
