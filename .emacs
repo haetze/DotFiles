@@ -30,6 +30,7 @@
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-x C-l") #'inferior-lfe)
+(global-set-key (kbd "C-c a") #'org-agenda)
 
 (add-hook 'tuareg-mode-hook
 	  (lambda ()
@@ -53,7 +54,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files nil))
+ '(browse-url-browser-function (quote browse-url-chromium))
+ '(browse-url-chromium-program "chrome")
+ '(org-agenda-files
+   (quote
+    ("~/Documents/UniDortmund/Side-Porjects/Type-Theory-And-Formal-Proof.org" "~/Documents/UniDortmund/FS20162017/org-mode-Example/Example.org" "~/.emacs.d/org/agenda.org"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,9 +71,29 @@
 (setq exec-path (append exec-path '("/home/haetze/Documents/Code/lfe/bin")))
 
 (global-set-key [(control ?h)] 'delete-backward-char)
-(gnus)
+;(gnus)
 (calendar)
 ;;(view-diary-entries)
 
 (setq inhibit-startup-screen t)
 (setq european-calendar-style 't)
+
+
+;;For Spell Checking
+;;Toogle Languages English-German, German-English
+(let ((langs '("deutsch" "english")))
+  (setq lang-ring (make-ring (length langs)))
+  (dolist (elem langs) (ring-insert lang-ring elem)))
+
+(defun cycle-languages ()
+  (interactive)
+  (let ((lang (ring-ref lang-ring -1)))
+    (ring-insert lang-ring lang)
+    (ispell-change-dictionary lang)))
+(global-set-key (kbd "M-s C-l") #'cycle-languages)
+
+
+(defun compile-lfe-module ()
+  (interactive) 
+  (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
+(global-set-key (kbd "C-c C-c c") #'compile-lfe-module)
