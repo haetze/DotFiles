@@ -1,1 +1,1 @@
-mpg123 http://1live.akacast.akamaistream.net/7/706/119434/v1/gnl.akacast.akamaistream.net/1live
+mpg123 http://wdr-1live-live.icecast.wdr.de/wdr/1live/live/mp3/128/stream.mp3
