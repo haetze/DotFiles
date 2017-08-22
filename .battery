@@ -1,27 +1,11 @@
-bat=$(acpiconf -i 0 | grep "Remaining capacity" | cut -c 21- | sed 's/.$//' )
-state=$(acpiconf -i 0 | grep "State" | cut -c 10-)
-time=$(acpiconf -i 0 | grep "time" | cut -c 18-)
+bat=$(acpi | cut -c 25- -2 | cut -c -2 )
+state=$(acpi | cut -c 12- | cut -c -11)
 
-RED='<fc=#ff0000>'
-GREEN='<fc=#00ff00>'
-NC='</fc>' # No Color
-COLOR='<fc=#FFFFFF>'
-
-
-if [ 10 -gt $bat ] && [ $state == "discharging" ]
+if [ 10 -gt $bat ] && [ $state == "Discharging" ]
    then
-		spd-say "beep"
+		mpg123 Downloads/beep-01a.mp3
 fi
 
-if [ $bat -gt 50 ]
-   then
-	COLOR=$GREEN
-	
-fi
 
-if [ 10 -gt $bat ] && [ $state == "discharging" ]
-   then
-	COLOR=$RED
-fi
+printf " "
 
-printf "${COLOR}${bat}%%~${time}${NC}"
