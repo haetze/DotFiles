@@ -8,9 +8,9 @@ import System.IO
 
 main = do
     xmproc <- spawnPipe "/home/haetze/.cabal/bin/xmobar /home/haetze/.xmonad/xmobar.hs"
-    xmonad $ defaultConfig
-        { manageHook = manageDocks <+> manageHook defaultConfig
-        , layoutHook = avoidStruts  $  layoutHook defaultConfig
+    xmonad $ docks $ def
+        { manageHook = manageDocks <+> manageHook def
+        , layoutHook = avoidStruts  $  layoutHook def
         , logHook = dynamicLogWithPP xmobarPP
                         { ppOutput = \s-> return ()
                         , ppTitle = xmobarColor "green" "" . shorten 50
