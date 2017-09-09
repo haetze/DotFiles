@@ -1,0 +1,70 @@
+;;Weekly Schedule
+Mon
+    13.00-14.00 IS "Ubung
+    17.00-18.00 Tutorentreffe; B"uro von Padawitz
+Tue
+    8.00-10.00 DAP2 Praktikum
+    10.00-12.00 GTI VL
+    12.00-14.00 DAP2 VL
+    14.00-16.00 Logik "Ubung
+Wed 
+    8.00-10.00 IS VL 
+    10.00-12.00 DAP2 "Ubung
+    12.00-14.00 GTI "Ubung
+    14.00-16.00 Logik "Ubung
+Thu
+    8.00-10.00 Pr"atech	
+    10.00-12.00 GTI	VL
+    12.00-14.00 DAP2 VL
+Fri 
+    Frei
+
+;; Birthdays
+Feb 06 Daniel Wahlers' Geburtstag
+Feb 18 Tim's Bolles Geburtstag
+Feb 27 Frederica Hegemann's Geburtstag
+Aug 04 Marco's Bellmann Geburtstag
+Aug 08 Rebecca Stewing's Geburtstag
+Oct 17 Tim Goos' Geburtstag
+Oct 15 Hiroki's Geburtstag
+Oct 06 Tarke's Geburtstag
+Mar 25 Tim's Falkenhahn Geburtstag
+Mar 12 Melinas Geburtstag
+Jul 06 Oma Trude's Geburtstag 
+
+%%(diary-block 1 6 2017 1 8 2016) Zeitfreihalten, Exit-Game mit Frederica, Romy, Daniel
+%%(diary-block 12 17 2016 12 18 2016) Volksbank-Cup Gladbeck
+%%(diary-block 12 26 2016 1 5 2017) Urlaub in der Schweiz mit der Familie
+
+Dec 22, 2016 Mit Fredde Backen/ Raclette mit den Anderen
+Dec 25, 2016 Weihnachtsessen/ Bescherung bei Oma
+Jan 9, 2017 Wiederbeginn der Vorlesungszeit
+
+
+Mar 4, 2017 Freddes und Luisas Geburtstagsfeier
+Mar 11, 2017 Melinas Geburtstagsfeier
+
+Feb 20, 2017 FuPro Klausur
+Feb 23, 2017 Makro Klausur
+Feb 28, 2017 RS Klausur
+Feb 15, 2017 RvS Klausur
+Feb 17, 2017 Mathe Klausur
+Apr 22, 2017 Mein Geburtstag => Grillen mit Freunden
+Apr 17, 2017 Erster Vorlesungstag SS2017
+
+Mar 27, 2017 13.00 Vertragsunterschrift Wilhelm-Dilthey-Str. 1, Pavillon 8, Raum 0.32
+May 30, 2017 Season 5 'House of Cards' 
+Mar 31, 2017 Grillen bei Tim
+Apr 12, 2017 Tutorenschulung 9.00-17.00
+Apr 13, 2017 Spiele-Abend; Vereinsheim
+
+Apr 25, 2017 Erster Tag "Ubung
+
+Jul 7, 2017 SWT Klausur
+Jul 25, 2017 Nina Turn"ubung 
+Aug 2, 2017 Pr"atech Klausur
+Aug 7, 2017 DAP2 Klausur
+Aug 9, 2017 GTI Klausur
+Aug 16, 2017 IS Klausur
+
+%%(diary-block 08 25 2017 08 29 2017) Deisfeld-Wochenende mit Leuten aus der Uni
