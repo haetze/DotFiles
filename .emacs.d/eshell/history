@@ -1,0 +1,128 @@
+javac Muenzwechsel.java
+java Muenzwechsel Euro 455
+javac Muenzwechsel.java
+java Muenzwechsel Euro 455
+java Muenzwechsel Euro 400
+java Muenzwechsel Alternative 455
+java Muenzwechsel Alternative 459
+javac Muenzwechsel.java
+java Muenzwechsel Alternative 459
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+javac Felder.java 
+javac Feld.java 
+java LCS
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+java LCS
+javac LCS.java 
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+javac LCS.java 
+java LCS
+java LCS B B
+java LCS BA BA
+java LCS BAD BAC
+java LCS BDCABA ABCBDAB
+javac LCS.java 
+java LCS BDCABA ABCBDAB
+javac LCS.java 
+java LCS BDCABA ABCBDAB
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+java LCS 2
+java LCS 2
+java LCS 2
+java LCS 5
+java LCS 5
+java LCS 5
+java LCS 26
+cd ..
+zip Blatt7/*
+zip -r Blatt7.zip Blatt7/*
+ls
+javac LCS.java 
+javac LCS.java 
+javac LCS.java 
+java LCS 5
+javac LCS.java 
+java LCS 5
+cd .. && zip -r Blatt7.zip Blatt7/*
+ls
+zip -r Blatt7.zip Blatt7/*
+javac Test.java
+javac Test.java
+javac Test.java
+javac Test.java
+javac Test.java
+javac Test.java
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+java Test
+javac Test.java
+javac Test.java
+java Test
+javac Test.java
+java Test
+typer example.erl
+typer example.erl
+typer example.erl
+typer example.erl
+typer example.erl
+typer example.erl
+typer example.erl
+typer example.erl
+typer --help
+typer --annotate example.erl
+cd typer_ann/
+cat example.ann.erl 

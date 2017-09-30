@@ -1,0 +1,2 @@
+acpiconf -i 0 | grep "State" | cut -c 10-
+
