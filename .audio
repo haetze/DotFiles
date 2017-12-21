@@ -1,14 +1,14 @@
 state=$(sysctl hw.snd.default_unit | cut -c 22-)
 output="Built-In"
 
-if [ $state -eq 1 ]
+if [ $state -eq 4 ]
    then
-   output="Aux"
+   output="BUILD-IN"
 fi
 
-if [ $state -eq 2 ]
+if [ $state -eq 6 ]
    then
-   output="HDMI"
+   output="AUX"
 fi
 
 printf "${output}"

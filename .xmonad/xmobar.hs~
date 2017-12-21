@@ -14,14 +14,15 @@ Config { borderColor = "black"
        , allDesktops = True
        , overrideRedirect = True
        , sepChar = "%"
+       , additionalFonts = []
+       , font = "xft:Bitstream Vera Sans Mono:size=9:bold:anitalias=true"
        , alignSep = "}{"
        
        , commands = [
-           Run Com "/home/haetze/.battery" [] "battery" 60,
-           Run Com "/home/haetze/.battery2" [] "state" 60,
-           Run Com "/home/haetze/.network" [] "network" 60,
-           Run Com "/home/haetze/.mem.sh" [] "mem" 60,
-           Run Com "/home/haetze/.windows" [] "window" 60
+           Run Com "/home/haetze/usefulCommands/.battery" [] "battery" 10
+           ,Run Com "/home/haetze/usefulCommands/.audio" [] "audio" 10
+           ,Run Weather "EDLW" [ "--template" , "<skyCondition> | <fc=#4682B4><tempC></fc>C"
+                               ] 360
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %state% | %network% | %mem% | %window% |"
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %audio% |%EDLW% "
        }
