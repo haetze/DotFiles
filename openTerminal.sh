@@ -9,7 +9,7 @@ else
 	xterm -fa 'Monospace' -fn 12x24 -e "cd ${pathname} && zsh" ;
 	
     else
-	xterm -fa 'Monospace' -fn 12x24 -hold -e "echo Not Found" ;
+	chrome "www.google.com/search?q=${pathname}"
 	
     fi
 fi
