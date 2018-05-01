@@ -23,7 +23,7 @@ main = do
         , ((mod1Mask, xK_f)
           , spawn "find ~/ | sed 's/ /\\ /g' | sort -f | dmenu -i -l 20 -nb '#2e3436' -nf '#9999CC' | /home/haetze/usefulCommands/openTerminal.sh" )
         , ((mod1Mask, xK_F1), spawn "/home/haetze/usefulCommands/1live.sh")
-        , ((mod1Mask, xK_F2), spawn "pkill mpg123")
+        , ((mod1Mask, xK_F2), spawn "/home/haetze/usefulCommands/pkill.sh mpg123 /home/haetze/usefulCommands/.radio")
         , ((mod1Mask, xK_F12), spawn "sysctl hw.snd.default_unit=6")
         , ((mod1Mask, xK_F11), spawn "sysctl hw.snd.default_unit=4")
         , ((mod1Mask, xK_F9), spawn "amixer set Master 1%-")

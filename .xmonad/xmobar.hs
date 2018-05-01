@@ -18,9 +18,10 @@ Config { borderColor = "black"
        , font = "xft:Bitstream Vera Sans Mono:size=18:bold:anitalias=true"
        , alignSep = "}{"
        
-       , commands = [
-           Run Com "/home/haetze/usefulCommands/.battery" [] "battery" 10
-           ,Run Com "/home/haetze/usefulCommands/.audio" [] "audio" 10
+       , commands = [Run Com "/home/haetze/usefulCommands/.battery" [] "battery" 10
+                    ,Run Com "/home/haetze/usefulCommands/.audio" [] "audio" 10
+                    ,Run Com "/home/haetze/usefulCommands/.snd" [] "sound" 10
+                    ,Run Com "cat" ["/home/haetze/usefulCommands/.radio"] "radio" 10
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %audio%"
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %sound% on %audio% | %radio%"
        }

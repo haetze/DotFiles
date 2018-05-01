@@ -15,14 +15,12 @@ Config { borderColor = "black"
        , overrideRedirect = True
        , sepChar = "%"
        , additionalFonts = []
-       , font = "xft:Bitstream Vera Sans Mono:size=9:bold:anitalias=true"
+       , font = "xft:Bitstream Vera Sans Mono:size=18:bold:anitalias=true"
        , alignSep = "}{"
        
-       , commands = [
-           Run Com "/home/haetze/usefulCommands/.battery" [] "battery" 10
-           ,Run Com "/home/haetze/usefulCommands/.audio" [] "audio" 10
-           ,Run Weather "EDLW" [ "--template" , "<skyCondition> | <fc=#4682B4><tempC></fc>C"
-                               ] 360
+       , commands = [Run Com "/home/haetze/usefulCommands/.battery" [] "battery" 10
+                    ,Run Com "/home/haetze/usefulCommands/.audio" [] "audio" 10
+                    ,Run Com "/home/haetze/usefulCommands/cat.sh /home/haetze/usefulCommands/.radio" [] "radio" 10
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %audio% |%EDLW% "
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %audio% | %radio%"
        }
