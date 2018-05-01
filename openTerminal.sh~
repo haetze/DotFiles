@@ -1,4 +1,0 @@
-read pathname
-DIRNAME=$(dirname $pathname)
-
-xterm -e "cd ${DIRNAME} && zsh"
