@@ -23,5 +23,5 @@ Config { borderColor = "black"
                     ,Run Com "/home/haetze/usefulCommands/.snd" [] "sound" 10
                     ,Run Com "cat" ["/home/haetze/usefulCommands/.radio"] "radio" 10
            ]
-       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | %sound% on %audio% | %radio%"
+       , template = "<fc=#ee9a00>%date%</fc>| %uname% | %battery% | <action=`amixer set Master 0` button=1> %sound% on %audio% </action> | %radio% |" 
        }
