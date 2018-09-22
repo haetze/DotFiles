@@ -20,14 +20,6 @@
 (setq org-log-done 'time)
 
 
-
-
-
-
-
-
-
-
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 
 (add-hook 'lfe-mode-hook 'highlight-parentheses-mode)
@@ -41,16 +33,6 @@
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-x C-l") #'inferior-lfe)
 (global-set-key (kbd "C-c a") #'org-agenda)
-
-(add-hook 'tuareg-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "C-c C-c") #'utop-eval-phrase)
-	    (global-auto-complete-mode)))
-
-(add-hook 'slime-connected-hook
-	  (lambda ()
-	    (slime-load-file "/home/haetze/.packages/package.lisp")))
-
 
 
 
