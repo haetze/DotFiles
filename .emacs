@@ -1,5 +1,10 @@
+;;setting package repos
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+(package-initialize)
 ;;requires
+(require 'org)
 (require 'org-ref)
+
 
 ;; variable setting
 (setenv "PATH" (concat (getenv "PATH") ":/home/haetze/Documents/Code/lfe/bin"))
@@ -15,9 +20,8 @@
 (setq org-log-done 'time)
 
 
-;;setting package repos
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
-(package-initialize)
+
+
 
 
 
