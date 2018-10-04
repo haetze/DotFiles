@@ -25,8 +25,7 @@
 
 (add-hook 'erlang-mode-hook
 	  (lambda ()
-	    (local-set-key (kbd "C-c C-c") #'erlang-compile)
-	    (global-auto-complete-mode)))
+	    (local-set-key (kbd "C-c C-c") #'erlang-compile)))
 
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
