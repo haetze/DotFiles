@@ -79,15 +79,6 @@
   (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
 
 
-
-(setq org-gcal-client-id "779002665538-m4d3kfd93gbj89l3sssve3nl8lre9ono.apps.googleusercontent.com"
-      org-gcal-client-secret "NM6LoNDudZmeu4Cd8fhS5gtd"
-      org-gcal-file-alist '(("richy.sting@gmail.com" .  "~/Calendar/schedule.org")
-                            ("ubl4uig3djl1a2lo06ku0uroro@group.calendar.google.com" . "~/Calendar/freakshow.org")))
-
-
-
-
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'erlang-mode-hook
 	  (lambda ()
@@ -110,7 +101,7 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(org-agenda-files
    (quote
-    ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/Documents/Uni/FS2018/ba/Presentation/Abschluss.org")))
+    ("~/Contacts/Uni.org" "~/Contacts/Private.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
