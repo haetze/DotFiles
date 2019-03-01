@@ -1,9 +1,11 @@
-;;setting package repos
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")))
 (package-initialize)
 ;;requires
 (require 'org)
 (require 'org-ref)
+(require 'url-util)
+
+
 
 
 (setq package-enable-at-startup nil)
@@ -32,12 +34,16 @@
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 (setq org-log-done 'time)
 
+(setq show-paren-style 'expression)
+
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-o") #'open-in-firefox)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "M-s C-l") #'cycle-languages)
 (global-set-key [(control ?h)] 'delete-backward-char)
+(global-set-key (kbd "C-x c f") #'column-enforce-mode)
+
 
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
@@ -47,11 +53,12 @@
 
 (setq inhibit-startup-screen t)
 (setq european-calendar-style 't)
+(setq org-src-preserve-indentation nil 
+      org-edit-src-content-indentation 0)
 
 (defun open-in-firefox (url)
   (interactive "sURL: ")
-  (delete-window (shell-command (concat "firefox " url " &"))))
-
+  (delete-window (shell-command (concat "firefox \"" url "\" &"))))
 
 ;;For Spell Checking
 ;;Toogle Languages English-German, German-English
@@ -70,6 +77,8 @@
 (defun compile-lfe-module ()
   (interactive)
   (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
+
+
 
 (setq org-gcal-client-id "779002665538-m4d3kfd93gbj89l3sssve3nl8lre9ono.apps.googleusercontent.com"
       org-gcal-client-secret "NM6LoNDudZmeu4Cd8fhS5gtd"
@@ -98,7 +107,10 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "firefox")
- '(org-agenda-files (quote ("~/Calendar/schedule.org")))
+ '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-agenda-files
+   (quote
+    ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/Documents/Uni/FS2018/ba/Presentation/Abschluss.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
