@@ -1,4 +1,0 @@
-sudo ifconfig wlan0 up
-sudo wpa_supplicant -Dwext -c/home/haetze/"$1".conf -iwlan0 -B
-sudo dhclient -r 
-sudo dhclient wlan0

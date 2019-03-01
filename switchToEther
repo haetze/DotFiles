@@ -1,3 +1,0 @@
-sudo service netif stop wlan0
-sudo service netif start re0
-sudo dhclient re0
