@@ -37,12 +37,13 @@
 (setq show-paren-style 'expression)
 
 (global-set-key (kbd "C-x C-g") #'git-command)
-(global-set-key (kbd "C-o") #'open-in-firefox)
+(global-set-key (kbd "C-o") #'open-in-firefox-direct)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "M-s C-l") #'cycle-languages)
 (global-set-key [(control ?h)] 'delete-backward-char)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
+
 
 
 (org-babel-do-load-languages
@@ -56,9 +57,23 @@
 (setq org-src-preserve-indentation nil 
       org-edit-src-content-indentation 0)
 
+(defun write-mode ()
+  (interactive)
+  (auto-complete-mode)
+  (column-enforce-mode)
+  (flyspell-mode))
+
 (defun open-in-firefox (url)
   (interactive "sURL: ")
   (delete-window (shell-command (concat "firefox \"" url "\" &"))))
+
+(defun open-in-firefox-direct ()
+  (interactive)
+  (w3m-print-this-url t)
+  (let ((url (car kill-ring)))
+    (setq kill-ring (cdr kill-ring))
+    (open-in-firefox url)))
+
 
 ;;For Spell Checking
 ;;Toogle Languages English-German, German-English
