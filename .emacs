@@ -57,11 +57,21 @@
 (setq org-src-preserve-indentation nil 
       org-edit-src-content-indentation 0)
 
-(defun write-mode ()
-  (interactive)
+(defun write-mode (lang)
+  (interactive "sLang:")
   (auto-complete-mode)
   (column-enforce-mode)
-  (flyspell-mode))
+  (flyspell-mode)
+  (ispell-change-dictionary lang))
+
+(defun de-write-mode ()
+  (interactive)
+  (write-mode "deutsch"))
+
+(defun en-write-mode ()
+  (interactive)
+  (write-mode "english"))
+
 
 (defun open-in-firefox (url)
   (interactive "sURL: ")
