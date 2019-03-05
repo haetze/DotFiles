@@ -1,10 +1,11 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")))
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (package-initialize)
 ;;requires
 (require 'org)
 (require 'org-ref)
 (require 'url-util)
-
+(setq org-contacts-files '("~/Contacts/Private.org" "~/Contacts/Uni.org"))
 
 
 
@@ -38,6 +39,8 @@
 
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-o") #'open-in-firefox-direct)
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c i") #'org-insert-link)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "M-s C-l") #'cycle-languages)
@@ -124,13 +127,11 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "firefox")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-agenda-files
-   (quote
-    ("~/Contacts/Uni.org" "~/Contacts/Private.org")))
+ '(org-agenda-files (quote ("~/Contacts/Uni.org" "~/Contacts/Private.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))))
+    (org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
