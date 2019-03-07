@@ -39,11 +39,17 @@
 (defvar my/org-contacts-template "* %(org-contacts-template-name)
 :PROPERTIES:
 :ADDRESS: %^{EMPTY}
-:BIRTHDAY: %^{yyyy-mm-dd}
+:BIRTHDAY: %^{BIRTHDAY}t
 :EMAIL: %(org-contacts-template-email)
 :NOTE: %^{NOTE}
 :END:" "Template for org-contacts.")
 
+
+
+(defvar code-template "* %^{NAME} 
+#+BEGIN_src %^{LANGUAGE} 
+%c
+#+END_src")
 
 
 (use-package org-capture
@@ -64,6 +70,8 @@
       "* TODO %? , Link: %a")
      ("r" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
       "* TODO Reply %a")
+     ("s" "SRCs in Code.org" entry (file+headline "~/TODOS/Code.org" "Code"),
+      code-template)
    )))
 
 
