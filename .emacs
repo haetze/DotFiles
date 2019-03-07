@@ -1,6 +1,26 @@
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(setq package-archives '(("melpa" . "http://melpa.org/packages/")
+			 ("org" . "https://orgmode.org/elpa/")))
+
 (package-initialize)
+;;install packages needed
+(defun install-package (pkg)
+  (unless (package-installed-p pkg)
+    (package-refresh-contents)
+    (package-install pkg)))
+
+(setq my-packages (list
+		   'use-package
+		   'rust-mode
+		    'git-command
+		    'haskell-mode
+		    'idris-mode 
+		    'org-plus-contrib 
+		    'org-ref 
+		    'w3m))
+
+(dolist (pkg my-packages)
+  (install-package pkg))
+      
 ;;requires
 (require 'org)
 (require 'org-ref)
@@ -131,7 +151,7 @@
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))))
+    (use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
