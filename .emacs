@@ -24,7 +24,8 @@
 ;;requires and configuration
 (require 'org)
 (require 'org-ref)
-(require 'url-util)
+(require 'ox-extra)
+(ox-extras-activate '(ignore-headlines))
 
 (use-package org
   :ensure org-plus-contrib)
@@ -186,7 +187,7 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "firefox")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-agenda-files (quote ("~/Contacts/Uni.org" "~/Contacts/Private.org")))
+ '(org-agenda-files (quote ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/TODOS/tasks.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
