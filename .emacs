@@ -65,7 +65,7 @@
       my/org-contacts-template
       :empty-lines 1)
      ("t" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %?")
+      "* TODO %^{NAME} \n SCHEDULED: %^{SCHEDULED?}T")
      ("m" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
       "* TODO %? , Link: %a")
      ("r" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
