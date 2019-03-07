@@ -21,11 +21,49 @@
 (dolist (pkg my-packages)
   (install-package pkg))
       
-;;requires
+;;requires and configuration
 (require 'org)
 (require 'org-ref)
 (require 'url-util)
-(setq org-contacts-files '("~/Contacts/Private.org" "~/Contacts/Uni.org"))
+
+(use-package org
+  :ensure org-plus-contrib)
+
+(use-package org-contacts
+  :ensure nil
+  :after org
+  :custom (org-contacts-files '("~/Contacts/Private.org"
+				"~/Contacts/Uni.org")))
+
+(defvar my/org-contacts-template "* %(org-contacts-template-name)
+:PROPERTIES:
+:ADDRESS: %^{EMPTY}
+:BIRTHDAY: %^{yyyy-mm-dd}
+:EMAIL: %(org-contacts-template-email)
+:NOTE: %^{NOTE}
+:END:" "Template for org-contacts.")
+
+
+
+(use-package org-capture
+  :ensure nil
+  :after org
+  :preface
+  :custom
+  (org-capture-templates
+   `(("c" "Contact" entry (file+headline "~/Contacts/Private.org" "Contacts"),
+      my/org-contacts-template
+      :empty-lines 1)
+     ("C" "Contact" entry (file+headline "~/Contacts/Uni.org" "Contacts"),
+      my/org-contacts-template
+      :empty-lines 1)
+     ("t" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %?")
+     ("m" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
+      "* TODO %? , Link: %a")
+     ("r" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
+      "* TODO Reply %a")
+   )))
 
 
 
@@ -61,6 +99,7 @@
 (global-set-key (kbd "C-o") #'open-in-firefox-direct)
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c i") #'org-insert-link)
+(global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "M-s C-l") #'cycle-languages)
