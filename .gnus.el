@@ -32,7 +32,7 @@
 		      (nnimap-server-port 993)
 		      (nnimap-stream ssl)
 		      (nnir-search-engine imap)
-		      (nnmail-expiry-target "nnimap+tu-dortmund:[Gmail]/Trash")
+		      (nnmail-expiry-target "nnimap+tu-dortmund:INBOX.Trash")
 		      (nnmail-expiry-wait 90)))
 
 
@@ -41,4 +41,15 @@
       smtpmail-default-smtp-server "postserver.tu-dortmund.de"
       smtpmail-smtp-service 587
       smtpmail-local-domain "homepc")
+
+
+
+(setq gnus-message-archive-group 'gnus-message-archive-group-function)
+(setq gnus-gcc-mark-as-read t)
+
+(defun gnus-message-archive-group-function (group-current)
+  (cond
+   ((string-match "tu-dortmund:INBOX" group-current)
+    (list "nnimap+tu-dortmund:INBOX.Sent"
+	  (concat "nnfolder+archive:sent." (format-time-string "%Y-%m"))))))
 
