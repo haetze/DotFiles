@@ -105,18 +105,6 @@
 
 (setq show-paren-style 'expression)
 
-(global-set-key (kbd "C-x C-g") #'git-command)
-(global-set-key (kbd "C-o") #'open-in-firefox-direct)
-(global-set-key (kbd "C-c l") #'org-store-link)
-(global-set-key (kbd "C-c i") #'org-insert-link)
-(global-set-key (kbd "C-c c") #'org-capture)
-(global-set-key (kbd "C-x C-a") #'auto-complete-mode)
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "M-s C-l") #'cycle-languages)
-(global-set-key [(control ?h)] 'delete-backward-char)
-(global-set-key (kbd "C-x c f") #'column-enforce-mode)
-
-
 
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
@@ -174,6 +162,28 @@
 (defun compile-lfe-module ()
   (interactive)
   (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
+
+
+(global-set-key (kbd "C-x C-g") #'git-command)
+(global-set-key (kbd "C-c l") #'org-store-link)
+(global-set-key (kbd "C-c i") #'org-insert-link)
+(global-set-key (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "C-x C-a") #'auto-complete-mode)
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key [(control ?h)] 'delete-backward-char)
+(global-set-key (kbd "C-x c f") #'column-enforce-mode)
+
+
+(add-hook 'gnus-article-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-o")
+			   #'open-in-firefox-direct)))
+
+(add-hook 'flyspell-mode-hook
+	  (lambda ()
+	    (local-set-key (kbd "C-x C-l")
+			   #'cycle-languages)))
+
 
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
