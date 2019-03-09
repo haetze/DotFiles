@@ -101,6 +101,7 @@
 
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 (setq org-log-done 'time)
+(setq org-archive-location "~/TODOS/archive.org::")
 
 (setq show-paren-style 'expression)
 
