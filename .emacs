@@ -65,7 +65,7 @@
       my/org-contacts-template
       :empty-lines 1)
      ("t" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME} \n SCHEDULED: %^{SCHEDULED?}T")
+      "* TODO %^{NAME} \n SCHEDULED: %^{SCHEDULED?}T \n DEADLINE: %^{DEADLINE?}T")
      ("m" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
       "* TODO %? , Link: %a")
      ("r" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
@@ -102,6 +102,7 @@
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
 (setq org-log-done 'time)
 (setq org-archive-location "~/TODOS/archive.org::")
+(setq org-agenda-start-day "+0d")
 
 (setq show-paren-style 'expression)
 
