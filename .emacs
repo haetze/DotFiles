@@ -145,7 +145,6 @@
     (setq kill-ring (cdr kill-ring))
     (open-in-firefox url)))
 
-
 ;;For Spell Checking
 ;;Toogle Languages English-German, German-English
 (let ((langs '("deutsch" "english")))
@@ -184,8 +183,6 @@
 	  (lambda ()
 	    (local-set-key (kbd "C-x C-l")
 			   #'cycle-languages)))
-
-
 
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'erlang-mode-hook
