@@ -58,17 +58,21 @@
   :preface
   :custom
   (org-capture-templates
-   `(("c" "Contact" entry (file+headline "~/Contacts/Private.org" "Contacts"),
+   `(("c" "Contact Private" entry (file+headline "~/Contacts/Private.org" "Contacts"),
       my/org-contacts-template
       :empty-lines 1)
-     ("C" "Contact" entry (file+headline "~/Contacts/Uni.org" "Contacts"),
+     ("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts"),
       my/org-contacts-template
       :empty-lines 1)
-     ("t" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Personal")
+     ("t" "TODOs in tasks.org (Scheduled/Deadline)" entry (file+headline "~/TODOS/tasks.org" "Personal")
       "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t\nDEADLINE: %^{DEADLINE?}t")
-     ("m" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
+     ("D" "TODOs in tasks.org (Deadline)" entry (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %^{NAME}\nDEADLINE: %^{DEADLINE?}t")
+     ("S" "TODOs in tasks.org (Scheduled)" entry (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
+     ("m" "TODOs in tasks.org from Mail" entry (file+headline "~/TODOS/tasks.org" "Mail")
       "* TODO %? , Link: %a")
-     ("r" "TODOs in tasks.org" entry (file+headline "~/TODOS/tasks.org" "Mail")
+     ("r" "TODOs in tasks.org Reply to" entry (file+headline "~/TODOS/tasks.org" "Mail")
       "* TODO Reply %a")
      ("s" "SRCs in Code.org" entry (file+headline "~/TODOS/Code.org" "Code"),
       code-template)
