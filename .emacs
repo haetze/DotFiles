@@ -23,6 +23,7 @@
       
 ;;requires and configuration
 (require 'org)
+(require 'org-tempo)
 (require 'org-ref)
 (require 'ox-extra)
 (ox-extras-activate '(ignore-headlines))
@@ -36,11 +37,12 @@
   :custom (org-contacts-files '("~/Contacts/Private.org"
 				"~/Contacts/Uni.org")))
 
-(defvar my/org-contacts-template "* %(org-contacts-template-name)
+(defvar my/org-contacts-template "* %^{NAME}
 :PROPERTIES:
 :ADDRESS: %^{EMPTY}
 :BIRTHDAY: %^{BIRTHDAY}t
-:EMAIL: %(org-contacts-template-email)
+:EMAIL: %^{EMAIL}
+:PHONE: %^{PHONE}
 :NOTE: %^{NOTE}
 :END:" "Template for org-contacts.")
 
@@ -71,9 +73,9 @@
      ("S" "TODOs in tasks.org (Scheduled)" entry (file+headline "~/TODOS/tasks.org" "Personal")
       "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
      ("m" "TODOs in tasks.org from Mail" entry (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO %? , Link: %a")
+      "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
      ("r" "TODOs in tasks.org Reply to" entry (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO Reply %a")
+      "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
      ("s" "SRCs in Code.org" entry (file+headline "~/TODOS/Code.org" "Code"),
       code-template)
    )))
@@ -176,7 +178,10 @@
 (global-set-key (kbd "C-c a") #'org-agenda)
 ;(global-set-key [(control ?h)] 'delete-backward-char)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
-
+(global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "S-C-<down>") 'shrink-window)
+(global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
 (add-hook 'gnus-article-mode-hook
 	  (lambda ()
@@ -208,7 +213,7 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "firefox")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-agenda-files (quote ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/TODOS/tasks.org")))
+ '(org-agenda-files (quote ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/TODOS/tasks.org" "~/TODOS/schedule.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
