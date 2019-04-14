@@ -11,14 +11,15 @@
 (setq my-packages (list
 		   'use-package
 		   'rust-mode
-		    'git-command
-		    'haskell-mode
-		    'idris-mode 
-		    'org-plus-contrib 
-		    'org-ref
-		    'ess
-		    'openwith
-		    'w3m))
+		   'git-command
+		   'haskell-mode
+		   'idris-mode 
+		   'org-plus-contrib 
+		   'org-ref
+		   'ess
+		   'openwith
+		   'racket-mode
+		   'w3m))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -282,7 +283,7 @@ SCHEDULED: %^{SCHEDULED?}t")
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (racket-mode openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
