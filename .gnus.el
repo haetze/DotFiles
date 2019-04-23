@@ -38,8 +38,8 @@
 
 ;; Setup to send email through SMTP
 (setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-default-smtp-server "postserver.tu-dortmund.de"
-      smtpmail-smtp-service 587
+      smtpmail-default-smtp-server "unimail.tu-dortmund.de"
+      smtpmail-smtp-service 25
       smtpmail-local-domain "homepc")
 
 
