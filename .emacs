@@ -152,7 +152,7 @@
       "TODOs in tasks.org Reply to"
       entry
       (file+headline "~/TODOS/tasks.org" "Mail"),
-      reply-taks)
+      reply-task)
      ;; Safe Code Snippet
      ("s"
       "SRCs in Code.org"
