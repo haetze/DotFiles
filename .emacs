@@ -45,8 +45,6 @@
 (add-to-list 'load-path
              (expand-file-name "~/.emacs.d/edwina"))
 (require 'edwina)
-(defun edwina-select-master-window ()
-  (select-window (frame-first-window)))
 
 (setq edwina-keymap-prefix (kbd "C-q C-q"))
 
@@ -59,7 +57,6 @@
     (define-key prefix-map (kbd "C-S-n") 'edwina-select-next-window)
     (define-key prefix-map (kbd "SPC") 'edwina-select-next-window)
     (define-key prefix-map (kbd "C-SPC") 'edwina-select-next-window)
-    (define-key prefix-map (kbd "C-m") 'edwina-select-master-window)
     (define-key prefix-map (kbd "P") 'edwina-select-previous-window)
     (define-key prefix-map (kbd "C-S-p") 'edwina-select-previous-window)
     (define-key prefix-map (kbd "n") 'edwina-swap-next-window)
