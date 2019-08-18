@@ -45,6 +45,53 @@
 (add-to-list 'load-path
              (expand-file-name "~/.emacs.d/edwina"))
 (require 'edwina)
+(defun edwina-select-master-window ()
+  (select-window (frame-first-window)))
+
+(setq edwina-keymap-prefix (kbd "C-q C-q"))
+
+(setq edwina-mode-map
+  (let ((map (make-sparse-keymap))
+        (prefix-map (make-sparse-keymap)))
+    (define-key prefix-map (kbd "r") 'edwina-arrange)
+    (define-key prefix-map (kbd "C-r") 'edwina-arrange)
+    (define-key prefix-map (kbd "N") 'edwina-select-next-window)
+    (define-key prefix-map (kbd "C-S-n") 'edwina-select-next-window)
+    (define-key prefix-map (kbd "SPC") 'edwina-select-next-window)
+    (define-key prefix-map (kbd "C-SPC") 'edwina-select-next-window)
+    (define-key prefix-map (kbd "C-m") 'edwina-select-master-window)
+    (define-key prefix-map (kbd "P") 'edwina-select-previous-window)
+    (define-key prefix-map (kbd "C-S-p") 'edwina-select-previous-window)
+    (define-key prefix-map (kbd "n") 'edwina-swap-next-window)
+    (define-key prefix-map (kbd "C-n") 'edwina-swap-next-window)
+    (define-key prefix-map (kbd "p") 'edwina-swap-previous-window)
+    (define-key prefix-map (kbd "C-p") 'edwina-swap-previous-window)
+    (define-key prefix-map (kbd "%") 'edwina-dec-mfact)
+    (define-key prefix-map (kbd "5") 'edwina-dec-mfact)
+    (define-key prefix-map (kbd "{") 'edwina-dec-mfact)
+    (define-key prefix-map (kbd "[") 'edwina-dec-mfact)
+    (define-key prefix-map (kbd "^") 'edwina-inc-mfact)
+    (define-key prefix-map (kbd "6") 'edwina-inc-mfact)
+    (define-key prefix-map (kbd "}") 'edwina-inc-mfact)
+    (define-key prefix-map (kbd "]") 'edwina-inc-mfact)
+    (define-key prefix-map (kbd "d") 'edwina-dec-nmaster)
+    (define-key prefix-map (kbd "C-d") 'edwina-dec-nmaster)
+    (define-key prefix-map (kbd "i") 'edwina-inc-nmaster)
+    (define-key prefix-map (kbd "k") 'edwina-delete-window)
+    (define-key prefix-map (kbd "C-k") 'edwina-delete-window)
+    (define-key prefix-map (kbd "RET") 'edwina-zoom)
+    (define-key prefix-map (kbd "<return>") 'edwina-zoom)
+    (define-key prefix-map (kbd "c") 'edwina-clone-window)
+    (define-key prefix-map (kbd "C-c") 'edwina-clone-window)
+    (define-key map edwina-keymap-prefix prefix-map)
+    map))
+
+
+(setq edwina-mode-map-alist
+  `((edwina-mode . ,edwina-mode-map)))
+
+
+(edwina-mode)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
