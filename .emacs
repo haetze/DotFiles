@@ -31,28 +31,41 @@
 
 (ox-extras-activate '(ignore-headlines))
 
-(add-to-list 'load-path "~/.emacs.d/template/")
-(setq org-latex-to-pdf-process (list "latexmk -pdf %f"))
-
-
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; template support
+;; https://www.emacswiki.org/emacs/TemplatesMode
+(add-to-list 'load-path "/home/haetze/.emacs.d/template/")
 (require 'template)
 (template-initialize)
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Open Files with dired
 (require 'openwith)
 (openwith-mode t)
 (setq openwith-associations '(("\\.pdf\\'" "xpdf" (file))))
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Configure org to use more packages for eg contacts
 (use-package org
   :ensure org-plus-contrib)
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Organize Contacts in Emacs
 (use-package org-contacts
   :ensure nil
   :after org
   :custom (org-contacts-files '("~/Contacts/Private.org"
 				"~/Contacts/Uni.org")))
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-(defvar my/org-contacts-template
-"* %^{NAME}
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Templates
+(defvar org-contacts-template "* %^{NAME}
+
 :PROPERTIES:
 :ADDRESS: %^{EMPTY}
 :BIRTHDAY: %^{BIRTHDAY}t
@@ -64,100 +77,116 @@
 
 
 (defvar code-template
-"* %^{NAME}                       
+"* %^{NAME} 
 #+BEGIN_src %^{LANGUAGE} 
 %c
 #+END_src")
 
+(defvar schedule/deadline-tasks
+  "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t\nDEADLINE: %^{DEADLINE?}t")
 
+(defvar deadline-tasks
+  "* TODO %^{NAME}\nDEADLINE: %^{DEADLINE?}t")
+
+(defvar schedule-tasks
+  "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
+
+(defvar mail-task
+  "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
+
+(defvar reply-task
+  "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
+
+
+;; Org-Caputre configs
 (use-package org-capture
   :ensure nil
   :after org
   :preface
   :custom
   (org-capture-templates
-   `(("c" "Contact Private" entry (file+headline "~/Contacts/Private.org" "Contacts"),
-      my/org-contacts-template
+   `(
+     ;; Contact Privat
+     ("c"
+      "Contact Private"
+      entry (file+headline "~/Contacts/Private.org" "Contacts"),
+      org-contacts-template
       :empty-lines 1)
+     ;; Contact Work
      ("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts"),
-      my/org-contacts-template
+      org-contacts-template
       :empty-lines 1)
-     ("t" "TODOs in tasks.org (Scheduled/Deadline)" entry (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t\nDEADLINE: %^{DEADLINE?}t")
-     ("D" "TODOs in tasks.org (Deadline)" entry (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}\nDEADLINE: %^{DEADLINE?}t")
-     ("S" "TODOs in tasks.org (Scheduled)" entry (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
-     ("m" "TODOs in tasks.org from Mail" entry (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
-     ("r" "TODOs in tasks.org Reply to" entry (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
-     ("s" "SRCs in Code.org" entry (file+headline "~/TODOS/Code.org" "Code"),
+     ;; Simple Task Scheduled and Deadline
+     ("t"
+      "TODOs in tasks.org (Scheduled/Deadline)"
+      entry
+      (file+headline "~/TODOS/tasks.org" "Personal"),
+      schedule/deadline-tasks)
+     ;; Simple Task only Deadline
+     ("D"
+      "TODOs in tasks.org (Deadline)"
+      entry
+      (file+headline "~/TODOS/tasks.org" "Personal"),
+      deadline-tasks)
+     ;; Simple Task only Scheduled
+     ("S"
+      "TODOs in tasks.org (Scheduled)"
+      entry
+      (file+headline "~/TODOS/tasks.org" "Personal"),
+      schedule-tasks)
+     ;; Mail Task
+     ("m"
+      "TODOs in tasks.org from Mail"
+      entry
+      (file+headline "~/TODOS/tasks.org" "Mail"),
+      mail-task)
+     ;; Reply Mail Task
+     ("r"
+      "TODOs in tasks.org Reply to"
+      entry
+      (file+headline "~/TODOS/tasks.org" "Mail"),
+      reply-task)
+     ;; Safe Code Snippet
+     ("s"
+      "SRCs in Code.org"
+      entry
+      (file+headline "~/TODOS/Code.org" "Code"),
       code-template)
    )))
-
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 (setq package-enable-at-startup nil)
 (package-initialize)
 
-(add-to-list 'org-latex-classes
-           '("book-noparts"
-              "\\documentclass{book}"
-              ("\\chapter{%s}" . "\\chapter*{%s}")
-              ("\\section{%s}" . "\\section*{%s}")
-              ("\\subsection{%s}" . "\\subsection*{%s}")
-              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-              ("\\paragraph{%s}" . "\\paragraph*{%s}")
-              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-(add-to-list 'org-latex-classes
-           '("a0poster"
-              "\\documentclass{a0poster}"
-              ("\\chapter{%s}" . "\\chapter*{%s}")
-              ("\\section{%s}" . "\\section*{%s}")
-              ("\\subsection{%s}" . "\\subsection*{%s}")
-              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-              ("\\paragraph{%s}" . "\\paragraph*{%s}")
-              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-
 ;; variable setting
-(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/Documents/Code/lfe/bin"))
-(setq exec-path (append exec-path '("/User/haetze/Documents/Code/lfe/bin")))
+;; Local LFE install
+(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/Documents/Code/lfe/bin"))
+(setq exec-path (append exec-path '("/home/haetze/Documents/Code/lfe/bin")))
 
-(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/.cabal/bin"))
-(setq exec-path (append exec-path '("/User/haetze/.cabal/bin")))
+;; Local cabal install
+(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cabal/bin"))
+(setq exec-path (append exec-path '("/home/haetze/.cabal/bin")))
 
-(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/.cargo/bin"))
-(setq exec-path (append exec-path '("/User/haetze/.cargo/bin")))
+;; Local Cargo install
+(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cargo/bin"))
+(setq exec-path (append exec-path '("/home/haetze/.cargo/bin")))
 
-(setenv "PATH" (concat (getenv "PATH") ":/Applications/Firefox.app/Contents/MacOS"))
-(setq exec-path (append exec-path '("/Applications/Firefox.app/Contents/MacOS")))
-
-(defun set-exec-path-from-shell-PATH ()
-  "Sets the exec-path to the same value used by the user shell"
-  (let ((path-from-shell
-         (replace-regexp-in-string
-          "[[:space:]\n]*$" ""
-          (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
-    (setenv "PATH" path-from-shell)
-    (setq exec-path (split-string path-from-shell path-separator))))
-
-;; call function now
-(set-exec-path-from-shell-PATH)
-
+;; Set command to build pdfs
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
-(setq latex-command "latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf  -f ")
-(setq org-log-done 'time)
-(setq org-archive-location "~/TODOS/archive.org::")
-(setq org-agenda-start-on-weekday nil)
 
+;; Set time to done switch
+(setq org-log-done 'time)
+;; Set Archive Locations
+(setq org-archive-location "~/TODOS/archive.org::")
+;; Set Schedule to start on any day 
+(setq org-agenda-start-on-weekday nil)
+;; Set how parens are displayed
 (setq show-paren-style 'expression)
 (setq mac-option-key-is-meta nil)
 
 
-
+;; Set languages for the intention
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
 			     (ditaa .t)
@@ -165,11 +194,16 @@
 			     (java . t)
 			     (haskell . t)))
 
+;; Set startup screen
 (setq inhibit-startup-screen t)
+;; Set Calendar style
 (setq european-calendar-style 't)
+;; Set org config
 (setq org-src-preserve-indentation nil 
       org-edit-src-content-indentation 0)
 
+
+;; Local Functions
 (defun write-mode (lang)
   (interactive "sLang:")
   (auto-complete-mode)
@@ -224,19 +258,20 @@
   (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
 
 
+;; Gloabl key bindings
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c i") #'org-insert-link)
 (global-set-key (kbd "C-c c") #'org-capture)
 (global-set-key (kbd "C-x C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
-;(global-set-key [(control ?h)] 'delete-backward-char)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+;; Local key bindings
 (add-hook 'gnus-article-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-o")
@@ -247,7 +282,7 @@
 	    (local-set-key (kbd "C-x C-l")
 			   #'cycle-languages)))
 
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
 (add-hook 'erlang-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-c C-c") #'erlang-compile)))    
@@ -270,6 +305,8 @@
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 (setq py-autopep8-options '("-l 118"))
 ;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+
 
 
 
