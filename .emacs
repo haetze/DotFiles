@@ -175,7 +175,11 @@
 (setq exec-path (append exec-path '("~/.cargo/bin")))
 
 ;; Set command to build pdfs
+;; From Org-Mode
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
+
+;; From Latex
+(setq latex-command "latexmk -cd -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -f ")
 
 ;; Set time to done switch
 (setq org-log-done 'time)
@@ -226,9 +230,27 @@
   (interactive "sURL: ")
   (delete-window (shell-command (concat "firefox \"" url "\" &"))))
 
+(defun get-string-from-file (filePath)
+  "Return filePath's file content."
+  (with-temp-buffer
+    (insert-file-contents filePath)
+    (buffer-string)))
+
+(defun get-tex-root (file)
+  (interactive "sfile: ")
+  (let* ((string (get-string-from-file file))
+	 (match (string-match "% *! *TeX * root *= *" string)))
+    (if match
+	(let* ((eq-pos (string-match "=" string match))
+	       (nl-pos (string-match "\n" string match)))
+	  (substring string (+ 1 eq-pos) nl-pos))
+      file)))
+
+
+
 (defun compile-latex (file)
   (interactive "sfile:")
-  (shell-command (concat latex-command file)))
+  (shell-command (concat latex-command (get-tex-root file))))
 
 (defun compile-latex-current-file ()
   (interactive)
