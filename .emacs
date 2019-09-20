@@ -11,15 +11,14 @@
 (setq my-packages (list
 		   'use-package
 		   'rust-mode
-		   'git-command
-		   'haskell-mode
-		   'idris-mode 
-		   'org-plus-contrib 
-		   'org-ref
-		   'ess
-		   'openwith
-		   'racket-mode
-		   'w3m))
+		    'git-command
+		    'haskell-mode
+		    'idris-mode 
+		    'org-plus-contrib 
+		    'org-ref
+		    'ess
+		    'openwith
+		    'w3m))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -29,9 +28,12 @@
 (require 'org-tempo)
 (require 'org-ref)
 (require 'ox-extra)
+
 (ox-extras-activate '(ignore-headlines))
 
-(add-to-list 'load-path "/home/haetze/.emacs.d/template/")
+(add-to-list 'load-path "~/.emacs.d/template/")
+(setq org-latex-to-pdf-process (list "latexmk -pdf %f"))
+
 
 (require 'template)
 (template-initialize)
@@ -49,7 +51,8 @@
   :custom (org-contacts-files '("~/Contacts/Private.org"
 				"~/Contacts/Uni.org")))
 
-(defvar my/org-contacts-template "* %^{NAME}
+(defvar my/org-contacts-template
+"* %^{NAME}
 :PROPERTIES:
 :ADDRESS: %^{EMPTY}
 :BIRTHDAY: %^{BIRTHDAY}t
@@ -60,7 +63,8 @@
 
 
 
-(defvar code-template "* %^{NAME} 
+(defvar code-template
+"* %^{NAME}                       
 #+BEGIN_src %^{LANGUAGE} 
 %c
 #+END_src")
@@ -107,28 +111,56 @@
               ("\\paragraph{%s}" . "\\paragraph*{%s}")
               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+(add-to-list 'org-latex-classes
+           '("a0poster"
+              "\\documentclass{a0poster}"
+              ("\\chapter{%s}" . "\\chapter*{%s}")
+              ("\\section{%s}" . "\\section*{%s}")
+              ("\\subsection{%s}" . "\\subsection*{%s}")
+              ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+              ("\\paragraph{%s}" . "\\paragraph*{%s}")
+              ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
 ;; variable setting
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/Documents/Code/lfe/bin"))
-(setq exec-path (append exec-path '("/home/haetze/Documents/Code/lfe/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/Documents/Code/lfe/bin"))
+(setq exec-path (append exec-path '("/User/haetze/Documents/Code/lfe/bin")))
 
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cabal/bin"))
-(setq exec-path (append exec-path '("/home/haetze/.cabal/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/.cabal/bin"))
+(setq exec-path (append exec-path '("/User/haetze/.cabal/bin")))
 
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cargo/bin"))
-(setq exec-path (append exec-path '("/home/haetze/.cargo/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/User/haetze/.cargo/bin"))
+(setq exec-path (append exec-path '("/User/haetze/.cargo/bin")))
+
+(setenv "PATH" (concat (getenv "PATH") ":/Applications/Firefox.app/Contents/MacOS"))
+(setq exec-path (append exec-path '("/Applications/Firefox.app/Contents/MacOS")))
+
+(defun set-exec-path-from-shell-PATH ()
+  "Sets the exec-path to the same value used by the user shell"
+  (let ((path-from-shell
+         (replace-regexp-in-string
+          "[[:space:]\n]*$" ""
+          (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
+;; call function now
+(set-exec-path-from-shell-PATH)
 
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
+(setq latex-command "latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf  -f ")
 (setq org-log-done 'time)
 (setq org-archive-location "~/TODOS/archive.org::")
 (setq org-agenda-start-on-weekday nil)
 
 (setq show-paren-style 'expression)
-
+(setq mac-option-key-is-meta nil)
 
 
 
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
+			     (ditaa .t)
 			     (ruby . t)
 			     (java . t)
 			     (haskell . t)))
@@ -157,6 +189,14 @@
 (defun open-in-firefox (url)
   (interactive "sURL: ")
   (delete-window (shell-command (concat "firefox \"" url "\" &"))))
+
+(defun compile-latex (file)
+  (interactive "sfile:")
+  (shell-command (concat latex-command file)))
+
+(defun compile-latex-current-file ()
+  (interactive)
+  (compile-latex (buffer-file-name)))
 
 (defun open-in-firefox-direct ()
   (interactive)
@@ -217,6 +257,21 @@
 			   (local-set-key (kbd "C-c C-c") #'compile-lfe-module)))
 
 
+(elpy-enable)
+;(elpy-use-ipython)
+
+;; use flycheck not flymake with elpy
+(when (require 'flycheck nil t)
+  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+
+;; enable autopep8 formatting on save
+(require 'py-autopep8)
+(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(setq py-autopep8-options '("-l 118"))
+;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+
 
 
 (custom-set-variables
@@ -225,7 +280,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote browse-url-firefox))
- '(browse-url-chromium-program "firefox")
+ '(browse-url-chromium-program "open")
  '(custom-enabled-themes (quote (manoj-dark)))
  '(org-agenda-files
    (quote
@@ -283,7 +338,7 @@ SCHEDULED: %^{SCHEDULED?}t")
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (racket-mode openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
