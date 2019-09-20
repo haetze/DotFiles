@@ -11,14 +11,16 @@
 (setq my-packages (list
 		   'use-package
 		   'rust-mode
-		    'git-command
-		    'haskell-mode
-		    'idris-mode 
-		    'org-plus-contrib 
-		    'org-ref
-		    'ess
-		    'openwith
-		    'w3m))
+		   'git-command
+		   'haskell-mode
+		   'idris-mode
+		   'lfe-mode
+		   'erlang
+		   'org-plus-contrib 
+		   'org-ref
+		   'ess
+		   'openwith
+		   'w3m))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -34,7 +36,7 @@
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; template support
 ;; https://www.emacswiki.org/emacs/TemplatesMode
-(add-to-list 'load-path "/home/haetze/.emacs.d/template/")
+(add-to-list 'load-path "~/.emacs.d/template/")
 (require 'template)
 (template-initialize)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -161,16 +163,16 @@
 
 ;; variable setting
 ;; Local LFE install
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/Documents/Code/lfe/bin"))
-(setq exec-path (append exec-path '("/home/haetze/Documents/Code/lfe/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
+(setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
 
 ;; Local cabal install
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cabal/bin"))
-(setq exec-path (append exec-path '("/home/haetze/.cabal/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":~/.cabal/bin"))
+(setq exec-path (append exec-path '("~/.cabal/bin")))
 
 ;; Local Cargo install
-(setenv "PATH" (concat (getenv "PATH") ":/home/haetze/.cargo/bin"))
-(setq exec-path (append exec-path '("/home/haetze/.cargo/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
+(setq exec-path (append exec-path '("~/.cargo/bin")))
 
 ;; Set command to build pdfs
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
@@ -271,6 +273,7 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+
 ;; Local key bindings
 (add-hook 'gnus-article-mode-hook
 	  (lambda ()
@@ -290,7 +293,8 @@
 (add-hook 'lfe-mode-hook (lambda ()
 			   (local-set-key (kbd "C-x C-l") #'inferior-lfe)
 			   (local-set-key (kbd "C-c C-c") #'compile-lfe-module)))
-
+(add-hook 'latex-mode-hook (lambda ()
+			     (local-set-key (kbd "C-c C-c") #'compile-latex-current-file)))
 
 (elpy-enable)
 ;(elpy-use-ipython)
