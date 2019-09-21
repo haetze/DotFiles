@@ -228,11 +228,6 @@
   (interactive)
   (write-mode "english"))
 
-
-(defun open-in-firefox (url)
-  (interactive "sURL: ")
-  (delete-window (shell-command (concat "firefox \"" url "\" &"))))
-
 (defun get-string-from-file (filePath)
   "Return filePath's file content."
   (with-temp-buffer
@@ -249,8 +244,6 @@
 	  (substring string (+ 1 eq-pos) nl-pos))
       file)))
 
-
-
 (defun compile-latex (file)
   (interactive "sfile:")
   (shell-command (concat latex-command (get-tex-root file))))
@@ -258,6 +251,11 @@
 (defun compile-latex-current-file ()
   (interactive)
   (compile-latex (buffer-file-name)))
+
+(defun open-in-firefox (url)
+  (interactive "sURL: ")
+  (delete-window (shell-command (concat "firefox \"" url "\" &"))))
+
 
 (defun open-in-firefox-direct ()
   (interactive)
