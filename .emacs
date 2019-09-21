@@ -256,13 +256,21 @@
   (interactive "sURL: ")
   (delete-window (shell-command (concat "firefox \"" url "\" &"))))
 
-
 (defun open-in-firefox-direct ()
   (interactive)
   (w3m-print-this-url t)
   (let ((url (car kill-ring)))
     (setq kill-ring (cdr kill-ring))
     (open-in-firefox url)))
+
+(defun commit ()
+  (interactive)
+  (shell-command "commit"))
+
+(defun pull ()
+  (interactive)
+  (shell-command "pull"))  
+
 
 ;;For Spell Checking
 ;;Toogle Languages English-German, German-English
