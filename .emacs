@@ -237,7 +237,7 @@
 (defun get-tex-root (file)
   (interactive "sfile: ")
   (let* ((string (get-string-from-file file))
-	 (match (string-match "% *! *TeX * root *= *" string)))
+	 (match (string-match "% *! *TeX * root *= *" string))) ;; RegExp for 'magic comments', not complete!
     (if match
 	(let* ((eq-pos (string-match "=" string match))
 	       (nl-pos (string-match "\n" string match)))
@@ -327,19 +327,18 @@
 (add-hook 'latex-mode-hook (lambda ()
 			     (local-set-key (kbd "C-c C-c") #'compile-latex-current-file)))
 
-(elpy-enable)
-;(elpy-use-ipython)
 
-;; use flycheck not flymake with elpy
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;; enable autopep8 formatting on save
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-(setq py-autopep8-options '("-l 118"))
-;(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+;; Set up for haskell-mode
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(setq haskell-process-type 'stack-ghci) ; Setup to use stack for repl
+;;=====DEBUG HELP FOR MACOS=====
+;; If it doesn't work, it might be because the XCode License is  not
+;; accepted.
+;; Run `sudo xcodebuild -license' to accept license.
+;; Requires root
+;;=====DEBUG HELP FOR MACOS=====
 
 
 
