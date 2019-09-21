@@ -1,3 +1,6 @@
+(setq author "Richard Stewing")
+(setq user-mail-address "<Richard Stewing <richard.stewing@udo.edu>>")
+
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")))
 
