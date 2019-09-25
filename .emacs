@@ -1,5 +1,6 @@
 (setq author "Richard Stewing")
-(setq user-mail-address "<Richard Stewing <richard.stewing@udo.edu>>")
+(setq email "richard.stewing@udo.edu")
+(setq user-mail-address (concat "<" author "<" email ">>"))
 
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")))
@@ -43,6 +44,13 @@
 (add-to-list 'load-path "~/.emacs.d/template/")
 (require 'template)
 (template-initialize)
+
+(add-to-list 
+ 'template-expansion-alist
+ '("NAME" (insert author)))
+(add-to-list 
+ 'template-expansion-alist
+ '("EMAIL" (insert email)))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
