@@ -25,7 +25,9 @@
 		   'ess
 		   'epresent
 		   'openwith
-		   'w3m))
+		   'w3m
+		   'dired-launch
+		   'proof-general))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -56,9 +58,12 @@
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Open Files with dired
-(require 'openwith)
-(openwith-mode t)
-(setq openwith-associations '(("\\.pdf\\'" "xpdf" (file))))
+(setq dired-launch-default-launcher '("open"))
+(setf dired-launch-extensions-map
+      '(("xlsx" ("libreofficedev5.3"))
+	("pdf"  ("open"))
+	))
+(dired-launch-enable)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -169,6 +174,22 @@
    )))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Coq setup
+;; brew install opam
+;; opam install coq
+;; ---- Install Proof General---- Not needed using MELPA
+;; git clone https://github.com/ProofGeneral/PG ~/.emacs.d/lisp/PG
+;; cd ~/.emacs.d/lisp/PG
+;; make
+;; ---- Find Path to coqtop
+;; which coqtop
+
+;; Let Proof General find coqtop
+(setq coq-prog-name "/Users/haetze/.opam/default/bin/coqtop")
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 
 (setq package-enable-at-startup nil)
 (package-initialize)
@@ -221,6 +242,7 @@
       org-edit-src-content-indentation 0)
 
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Local Functions
 (defun write-mode (lang)
   (interactive "sLang:")
@@ -279,7 +301,7 @@
 (defun pull ()
   (interactive)
   (shell-command "pull"))  
-
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;For Spell Checking
 ;;Toogle Languages English-German, German-English
