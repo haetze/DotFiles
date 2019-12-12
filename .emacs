@@ -5,6 +5,10 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")))
 
+
+
+
+
 (package-initialize)
 ;;install packages needed
 (defun install-package (pkg)
@@ -31,7 +35,11 @@
 
 (dolist (pkg my-packages)
   (install-package pkg))
-      
+
+(eval-when-compile
+  (require 'use-package))
+
+
 ;;requires and configuration
 (require 'org)
 (require 'org-tempo)
@@ -40,6 +48,11 @@
 
 (ox-extras-activate '(ignore-headlines))
 
+
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+(add-to-list 'load-path "~/.emacs.d/agda/")
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; template support
 ;; https://www.emacswiki.org/emacs/TemplatesMode
@@ -81,10 +94,14 @@
 				"~/Contacts/Uni.org")))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+
+
+
+
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Templates
 (defvar org-contacts-template "* %^{NAME}
-
 :PROPERTIES:
 :ADDRESS: %^{EMPTY}
 :BIRTHDAY: %^{BIRTHDAY}t
@@ -128,51 +145,63 @@
      ;; Contact Privat
      ("c"
       "Contact Private"
-      entry (file+headline "~/Contacts/Private.org" "Contacts"),
-      org-contacts-template
+      entry (file+headline "~/Contacts/Private.org" "Contacts")
+      ,org-contacts-template
       :empty-lines 1)
      ;; Contact Work
-     ("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts"),
-      org-contacts-template
+     ("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts")
+      ,org-contacts-template
       :empty-lines 1)
      ;; Simple Task Scheduled and Deadline
      ("t"
       "TODOs in tasks.org (Scheduled/Deadline)"
       entry
-      (file+headline "~/TODOS/tasks.org" "Personal"),
-      schedule/deadline-tasks)
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      ,schedule/deadline-tasks)
      ;; Simple Task only Deadline
      ("D"
       "TODOs in tasks.org (Deadline)"
       entry
-      (file+headline "~/TODOS/tasks.org" "Personal"),
-      deadline-tasks)
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      ,deadline-tasks)
      ;; Simple Task only Scheduled
      ("S"
       "TODOs in tasks.org (Scheduled)"
       entry
-      (file+headline "~/TODOS/tasks.org" "Personal"),
-      schedule-tasks)
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      ,schedule-tasks)
      ;; Mail Task
      ("m"
       "TODOs in tasks.org from Mail"
       entry
-      (file+headline "~/TODOS/tasks.org" "Mail"),
-      mail-task)
+      (file+headline "~/TODOS/tasks.org" "Mail")
+      ,mail-task)
      ;; Reply Mail Task
      ("r"
       "TODOs in tasks.org Reply to"
       entry
-      (file+headline "~/TODOS/tasks.org" "Mail"),
-      reply-task)
+      (file+headline "~/TODOS/tasks.org" "Mail")
+      ,reply-task)
      ;; Safe Code Snippet
      ("s"
       "SRCs in Code.org"
       entry
-      (file+headline "~/TODOS/Code.org" "Code"),
-      code-template)
-   )))
+      (file+headline "~/TODOS/Code.org" "Code")
+      ,code-template)
+     ))
+)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Allows accpetance of ical invites
+;; The org mode export is somewhere
+;; between buggy and unusable
+(require 'gnus-icalendar)
+(gnus-icalendar-setup)
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
+
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Coq setup
@@ -285,7 +314,7 @@
 
 (defun open-in-firefox (url)
   (interactive "sURL: ")
-  (delete-window (shell-command (concat "firefox \"" url "\" &"))))
+  (delete-window (shell-command (concat "open \"" url "\" &"))))
 
 (defun open-in-firefox-direct ()
   (interactive)
@@ -384,63 +413,10 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "open")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-agenda-files
-   (quote
-    ("~/Contacts/Uni.org" "~/Contacts/Private.org" "~/TODOS/tasks.org" "~/TODOS/schedule.org")))
- '(org-capture-templates
-   (quote
-    (("c" "Contact Private" entry
-      (file+headline "~/Contacts/Private.org" "Contacts")
-      "* %^{NAME}
-:PROPERTIES:
-:ADDRESS: %^{EMPTY}
-:BIRTHDAY: %^{BIRTHDAY}t
-:EMAIL: %^{EMAIL}
-:PHONE: %^{PHONE}
-:NOTE: %^{NOTE}
-:END:" :empty-lines 1)
-     ("C" "Contact Uni" entry
-      (file+headline "~/Contacts/Uni.org" "Contacts")
-      "* %^{NAME}
-:PROPERTIES:
-:ADDRESS: %^{EMPTY}
-:BIRTHDAY: %^{BIRTHDAY}t
-:EMAIL: %^{EMAIL}
-:PHONE: %^{PHONE}
-:NOTE: %^{NOTE}
-:END:" :empty-lines 1)
-     ("t" "TODOs in tasks.org (Scheduled/Deadline)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-SCHEDULED: %^{SCHEDULED?}t
-DEADLINE: %^{DEADLINE?}t")
-     ("D" "TODOs in tasks.org (Deadline)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-DEADLINE: %^{DEADLINE?}t")
-     ("S" "TODOs in tasks.org (Scheduled)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-SCHEDULED: %^{SCHEDULED?}t")
-     ("m" "TODOs in tasks.org from Mail" entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO %? , Link: %a
-SCHEDULED: %^{SCHEDULED?}t")
-     ("r" "TODOs in tasks.org Reply to" entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO Reply %a
-SCHEDULED: %^{SCHEDULED?}t")
-     ("s" "SRCs in Code.org" entry
-      (file+headline "~/TODOS/Code.org" "Code")
-      "* %^{NAME} 
-#+BEGIN_src %^{LANGUAGE} 
-%c
-#+END_src"))))
- '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Uni.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
