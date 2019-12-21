@@ -1,3 +1,4 @@
+; Emacs config
 (setq author "Richard Stewing")
 (setq email "richard.stewing@udo.edu")
 (setq user-mail-address (concat "<" author "<" email ">>"))
@@ -5,6 +6,28 @@
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")))
 
+
+;; Check existence of files and copy/clone if needed
+;; Dependencies:
+;;               - git
+;;               - curl
+;;               - tar
+(if (not (file-directory-p "~/TODOS"))
+    (shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
+
+(if (not (file-directory-p "~/.templates"))
+    (shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
+
+(if (not (file-directory-p "~/.emacs.d/template"))
+    (progn
+      (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
+      (shell-command "mkdir ~/.emacs.d/template")
+      (shell-command "tar -C ~/.emacs.d/template -xf template.tar.gz")
+      (shell-command "rm template.tar.gz")))
+
+;; copies .gnus.el in $HOME
+(if (not (file-exists-p "~/.gnus.el"))
+    (copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
 
 
 
@@ -49,10 +72,6 @@
 (ox-extras-activate '(ignore-headlines))
 
 
-
-;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-(add-to-list 'load-path "~/.emacs.d/agda/")
-;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; template support
 ;; https://www.emacswiki.org/emacs/TemplatesMode
@@ -247,6 +266,10 @@
 (setq org-log-done 'time)
 ;; Set Archive Locations
 (setq org-archive-location "~/TODOS/archive.org::")
+;; Set Agenda files
+(setq org-agenda-files (list "~/TODOS/schedule.org"
+                             "~/TODOS/Code.org"
+			     "~/TODOS/tasks.org"))
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
 ;; Set how parens are displayed
