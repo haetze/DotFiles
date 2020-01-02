@@ -4,8 +4,14 @@
 (setq user-mail-address (concat "<" author "<" email ">>"))
 
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
+			 ("elpa" . "https://elpa.gnu.org/packages/")
 			 ("org" . "https://orgmode.org/elpa/")))
 
+
+(setq package-archive-priorities
+      '(("melpa" . 10)
+	("org" . 5)
+	("elpa" . 0)))
 
 ;; Check existence of files and copy/clone if needed
 ;; Dependencies:
@@ -53,6 +59,8 @@
 		   'epresent
 		   'openwith
 		   'w3m
+		   'gnu-elpa-keyring-update
+		   'lsp-mode
 		   'dired-launch
 		   'proof-general))
 
@@ -436,10 +444,60 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "open")
  '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-capture-templates
+   (quote
+    (("c" "Contact Private" entry
+      (file+headline "~/Contacts/Private.org" "Contacts")
+      "* %^{NAME}
+:PROPERTIES:
+:ADDRESS: %^{EMPTY}
+:BIRTHDAY: %^{BIRTHDAY}t
+:EMAIL: %^{EMAIL}
+:PHONE: %^{PHONE}
+:NOTE: %^{NOTE}
+:END:" :empty-lines 1)
+     ("C" "Contact Uni" entry
+      (file+headline "~/Contacts/Uni.org" "Contacts")
+      "* %^{NAME}
+:PROPERTIES:
+:ADDRESS: %^{EMPTY}
+:BIRTHDAY: %^{BIRTHDAY}t
+:EMAIL: %^{EMAIL}
+:PHONE: %^{PHONE}
+:NOTE: %^{NOTE}
+:END:" :empty-lines 1)
+     ("t" "TODOs in tasks.org (Scheduled/Deadline)" entry
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %^{NAME}
+SCHEDULED: %^{SCHEDULED?}t
+DEADLINE: %^{DEADLINE?}t")
+     ("D" "TODOs in tasks.org (Deadline)" entry
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %^{NAME}
+DEADLINE: %^{DEADLINE?}t")
+     ("S" "TODOs in tasks.org (Scheduled)" entry
+      (file+headline "~/TODOS/tasks.org" "Personal")
+      "* TODO %^{NAME}
+SCHEDULED: %^{SCHEDULED?}t")
+     ("m" "TODOs in tasks.org from Mail" entry
+      (file+headline "~/TODOS/tasks.org" "Mail")
+      "* TODO %? , Link: %a
+SCHEDULED: %^{SCHEDULED?}t")
+     ("r" "TODOs in tasks.org Reply to" entry
+      (file+headline "~/TODOS/tasks.org" "Mail")
+      "* TODO Reply %a
+SCHEDULED: %^{SCHEDULED?}t")
+     ("s" "SRCs in Code.org" entry
+      (file+headline "~/TODOS/Code.org" "Code")
+      "* %^{NAME} 
+#+BEGIN_src %^{LANGUAGE} 
+%c
+#+END_src"))))
+ '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Uni.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
