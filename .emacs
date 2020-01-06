@@ -110,6 +110,8 @@
 ;; Configure org to use more packages for eg contacts
 (use-package org
   :ensure org-plus-contrib)
+
+
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -120,8 +122,6 @@
   :custom (org-contacts-files '("~/Contacts/Private.org"
 				"~/Contacts/Uni.org")))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
 
 
 
@@ -227,7 +227,21 @@
 (gnus-icalendar-setup)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;; Org archiving
+;; Marking done and archive
+(defun agenda-mark-done-and-archive ()
+   (interactive)
+   (org-agenda-todo 'done)
+   (org-agenda-archive))
+(define-key org-agenda-mode-map "\C-c\C-x\C-t" 'agenda-mark-done-and-archive)
 
+(defun mark-done-and-archive ()
+   (interactive)
+   (org-todo 'done)
+   (org-archive-subtree))
+ (define-key org-mode-map "\C-c\C-x\C-t" 'mark-done-and-archive)
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -269,6 +283,7 @@
 
 ;; From Latex
 (setq latex-command "latexmk -cd -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -f ")
+
 
 ;; Set time to done switch
 (setq org-log-done 'time)
