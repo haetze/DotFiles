@@ -164,61 +164,76 @@
 
 
 ;; Org-Caputre configs
-(use-package org-capture
-  :ensure nil
-  :after org
-  :preface
-  :custom
-  (org-capture-templates
-   `(
-     ;; Contact Privat
-     ("c"
+
+;; Contact Privat
+(add-to-list
+ 'org-capture-templates
+     '("c"
       "Contact Private"
       entry (file+headline "~/Contacts/Private.org" "Contacts")
       ,org-contacts-template
-      :empty-lines 1)
-     ;; Contact Work
-     ("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts")
+      :empty-lines 1))
+
+;; Contact Work
+(add-to-list
+ 'org-capture-templates
+     '("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts")
       ,org-contacts-template
-      :empty-lines 1)
-     ;; Simple Task Scheduled and Deadline
-     ("t"
-      "TODOs in tasks.org (Scheduled/Deadline)"
-      entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      ,schedule/deadline-tasks)
-     ;; Simple Task only Deadline
-     ("D"
-      "TODOs in tasks.org (Deadline)"
-      entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      ,deadline-tasks)
-     ;; Simple Task only Scheduled
-     ("S"
-      "TODOs in tasks.org (Scheduled)"
-      entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      ,schedule-tasks)
-     ;; Mail Task
-     ("m"
-      "TODOs in tasks.org from Mail"
-      entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      ,mail-task)
-     ;; Reply Mail Task
-     ("r"
-      "TODOs in tasks.org Reply to"
-      entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      ,reply-task)
-     ;; Safe Code Snippet
-     ("s"
-      "SRCs in Code.org"
-      entry
-      (file+headline "~/TODOS/Code.org" "Code")
-      ,code-template)
-     ))
-)
+      :empty-lines 1))
+
+;; Simple Task Scheduled and Deadline
+(add-to-list
+ 'org-capture-templates
+ '("t"
+   "TODOs in tasks.org (Scheduled/Deadline)"
+   entry
+   (file+headline "~/TODOS/tasks.org" "Personal")
+   ,schedule/deadline-tasks))
+
+;; Simple Task only Deadline
+(add-to-list
+ 'org-capture-templates
+ '("D"
+   "TODOs in tasks.org (Deadline)"
+   entry
+   (file+headline "~/TODOS/tasks.org" "Personal")
+   ,deadline-tasks))
+
+;; Simple Task only Scheduled
+(add-to-list
+ 'org-capture-templates
+ '("S"
+   "TODOs in tasks.org (Scheduled)"
+   entry
+   (file+headline "~/TODOS/tasks.org" "Personal")
+   ,schedule-tasks))
+
+;; Mail Task
+(add-to-list
+ 'org-capture-templates
+ '("m"
+   "TODOs in tasks.org from Mail"
+   entry
+   (file+headline "~/TODOS/tasks.org" "Mail")
+   ,mail-task))
+
+;; Reply Mail Task
+(add-to-list
+ 'org-capture-templates
+ '("r"
+   "TODOs in tasks.org Reply to"
+   entry
+   (file+headline "~/TODOS/tasks.org" "Mail")
+   ,reply-task))
+
+;; Safe Code Snippet
+(add-to-list
+ 'org-capture-templates
+ '("s"
+   "SRCs in Code.org"
+   entry
+   (file+headline "~/TODOS/Code.org" "Code")
+   ,code-template))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -227,6 +242,10 @@
 ;; between buggy and unusable
 (require 'gnus-icalendar)
 (gnus-icalendar-setup)
+
+(setq gnus-icalendar-org-capture-file "~/TODOS/tasks.org")
+(setq gnus-icalendar-org-capture-headline '("Calendar")) ;;make sure to create Calendar heading first
+(gnus-icalendar-org-setup)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
