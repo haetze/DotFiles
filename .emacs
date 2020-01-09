@@ -36,8 +36,6 @@
     (copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
 
 
-
-
 (package-initialize)
 ;;install packages needed
 (defun install-package (pkg)
@@ -62,7 +60,8 @@
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
 		   'dired-launch
-		   'proof-general))
+		   'proof-general
+		   'flyspell-popup))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -277,6 +276,10 @@
 (setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
 (setq exec-path (append exec-path '("~/.cargo/bin")))
 
+;; Mac Tex Path install
+(setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
+(setq exec-path (append exec-path '("/Library/TeX/texbin")))
+
 ;; Set command to build pdfs
 ;; From Org-Mode
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
@@ -420,7 +423,8 @@
 (add-hook 'flyspell-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-x C-l")
-			   #'cycle-languages)))
+			   #'cycle-languages)
+	    (flyspell-popup-auto-correct-mode)))
 
 
 (add-hook 'erlang-mode-hook
@@ -459,56 +463,6 @@
  '(browse-url-browser-function (quote browse-url-firefox))
  '(browse-url-chromium-program "open")
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-capture-templates
-   (quote
-    (("c" "Contact Private" entry
-      (file+headline "~/Contacts/Private.org" "Contacts")
-      "* %^{NAME}
-:PROPERTIES:
-:ADDRESS: %^{EMPTY}
-:BIRTHDAY: %^{BIRTHDAY}t
-:EMAIL: %^{EMAIL}
-:PHONE: %^{PHONE}
-:NOTE: %^{NOTE}
-:END:" :empty-lines 1)
-     ("C" "Contact Uni" entry
-      (file+headline "~/Contacts/Uni.org" "Contacts")
-      "* %^{NAME}
-:PROPERTIES:
-:ADDRESS: %^{EMPTY}
-:BIRTHDAY: %^{BIRTHDAY}t
-:EMAIL: %^{EMAIL}
-:PHONE: %^{PHONE}
-:NOTE: %^{NOTE}
-:END:" :empty-lines 1)
-     ("t" "TODOs in tasks.org (Scheduled/Deadline)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-SCHEDULED: %^{SCHEDULED?}t
-DEADLINE: %^{DEADLINE?}t")
-     ("D" "TODOs in tasks.org (Deadline)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-DEADLINE: %^{DEADLINE?}t")
-     ("S" "TODOs in tasks.org (Scheduled)" entry
-      (file+headline "~/TODOS/tasks.org" "Personal")
-      "* TODO %^{NAME}
-SCHEDULED: %^{SCHEDULED?}t")
-     ("m" "TODOs in tasks.org from Mail" entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO %? , Link: %a
-SCHEDULED: %^{SCHEDULED?}t")
-     ("r" "TODOs in tasks.org Reply to" entry
-      (file+headline "~/TODOS/tasks.org" "Mail")
-      "* TODO Reply %a
-SCHEDULED: %^{SCHEDULED?}t")
-     ("s" "SRCs in Code.org" entry
-      (file+headline "~/TODOS/Code.org" "Code")
-      "* %^{NAME} 
-#+BEGIN_src %^{LANGUAGE} 
-%c
-#+END_src"))))
- '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Uni.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
