@@ -69,6 +69,21 @@
 (eval-when-compile
   (require 'use-package))
 
+(defvar private-contacts
+  "~/Contacts/Private.org")
+
+(defvar work-contacts 
+  "~/Contacts/Uni.org")
+
+(defvar tasks
+  "~/TODOS/tasks.org")
+
+(defvar code-file
+  "~/TODOS/Code.org")
+
+(defvar schedule-file
+  "~/TODOS/schedule.org")
+
 
 ;;requires and configuration
 (require 'org)
@@ -121,8 +136,8 @@
 (use-package org-contacts
   :ensure nil
   :after org
-  :custom (org-contacts-files '("~/Contacts/Private.org"
-				"~/Contacts/Uni.org")))
+  :custom (org-contacts-files `(,private-contacts
+				,work-contacts)))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -162,78 +177,81 @@
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
 
-
 ;; Org-Caputre configs
 
 ;; Contact Privat
 (add-to-list
  'org-capture-templates
-     '("c"
-      "Contact Private"
-      entry (file+headline "~/Contacts/Private.org" "Contacts")
-      ,org-contacts-template
-      :empty-lines 1))
+     (list "c"
+	   "Contact Private"
+	   'entry
+	   '(file+headline private-contacts "Contacts")
+	   org-contacts-template
+	   :empty-lines 1))
 
 ;; Contact Work
 (add-to-list
  'org-capture-templates
-     '("C" "Contact Uni" entry (file+headline "~/Contacts/Uni.org" "Contacts")
-      ,org-contacts-template
-      :empty-lines 1))
+ (list "C"
+       "Contact Work"
+       'entry '
+       (file+headline work-contacts "Contacts")
+       org-contacts-template
+       :empty-lines 1))
 
 ;; Simple Task Scheduled and Deadline
 (add-to-list
  'org-capture-templates
- '("t"
-   "TODOs in tasks.org (Scheduled/Deadline)"
-   entry
-   (file+headline "~/TODOS/tasks.org" "Personal")
-   ,schedule/deadline-tasks))
+ (list "t"
+       "TODOs in tasks.org (Scheduled/Deadline)"
+       'entry
+       '(file+headline tasks "Personal")
+       schedule/deadline-tasks))
 
 ;; Simple Task only Deadline
 (add-to-list
  'org-capture-templates
- '("D"
-   "TODOs in tasks.org (Deadline)"
-   entry
-   (file+headline "~/TODOS/tasks.org" "Personal")
-   ,deadline-tasks))
+ (list "D"
+       "TODOs in tasks.org (Deadline)"
+       'entry
+       '(file+headline tasks "Personal")
+       deadline-tasks))
 
 ;; Simple Task only Scheduled
 (add-to-list
  'org-capture-templates
- '("S"
-   "TODOs in tasks.org (Scheduled)"
-   entry
-   (file+headline "~/TODOS/tasks.org" "Personal")
-   ,schedule-tasks))
+ (list "S"
+       "TODOs in tasks.org (Scheduled)"
+       'entry
+       '(file+headline tasks "Personal")
+       schedule-tasks))
 
 ;; Mail Task
 (add-to-list
  'org-capture-templates
- '("m"
-   "TODOs in tasks.org from Mail"
-   entry
-   (file+headline "~/TODOS/tasks.org" "Mail")
-   ,mail-task))
+ (list "m"
+       "TODOs in tasks.org from Mail"
+       'entry
+       '(file+headline tasks "Mail")
+       mail-task))
 
 ;; Reply Mail Task
 (add-to-list
  'org-capture-templates
- '("r"
-   "TODOs in tasks.org Reply to"
-   entry
-   (file+headline "~/TODOS/tasks.org" "Mail")
-   ,reply-task))
+ (list "r"
+       "TODOs in tasks.org Reply to"
+       'entry
+       '(file+headline tasks "Mail")
+       reply-task))
 
 ;; Safe Code Snippet
 (add-to-list
  'org-capture-templates
- '("s"
-   "SRCs in Code.org"
-   entry
-   (file+headline "~/TODOS/Code.org" "Code")
-   ,code-template))
+ (list "s"
+       "SRCs in Code.org"
+       'entry
+       '(file+headline code-file "Code")
+       code-template))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -315,9 +333,9 @@
 ;; Set Archive Locations
 (setq org-archive-location "~/TODOS/archive.org::")
 ;; Set Agenda files
-(setq org-agenda-files (list "~/TODOS/schedule.org"
-                             "~/TODOS/Code.org"
-			     "~/TODOS/tasks.org"))
+(setq org-agenda-files (list schedule-file
+                             code-file
+			     tasks))
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
 ;; Set how parens are displayed
