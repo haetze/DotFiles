@@ -84,6 +84,7 @@
 (defvar schedule-file
   "~/TODOS/schedule.org")
 
+(setq ispell-program-name "aspell")
 
 ;;requires and configuration
 (require 'org)
@@ -299,9 +300,6 @@
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-
-(setq package-enable-at-startup nil)
-(package-initialize)
 
 ;; variable setting
 ;; Local LFE install
