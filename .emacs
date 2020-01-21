@@ -1,4 +1,3 @@
-; Emacs config
 (setq author "Richard Stewing")
 (setq email "richard.stewing@udo.edu")
 (setq user-mail-address (concat "<" author "<" email ">>"))
@@ -59,6 +58,7 @@
 		   'w3m
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
+		   'lsp-ui
 		   'dired-launch
 		   'proof-general
 		   'flyspell-popup))
@@ -96,6 +96,29 @@
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; lsp configs
+(use-package lsp-mode
+  :config
+  ;; Prefer using lsp-ui (flycheck) over flymake.
+  (setq lsp-prefer-flymake nil))
+
+(use-package lsp-ui
+  :requires lsp-mode flycheck
+  :config
+
+  (setq lsp-ui-doc-enable t
+        lsp-ui-doc-use-childframe t
+        lsp-ui-doc-position 'top
+        lsp-ui-doc-include-signature t
+        lsp-ui-sideline-enable nil
+        lsp-ui-flycheck-enable t
+        lsp-ui-flycheck-list-position 'right
+        lsp-ui-flycheck-live-reporting t
+        lsp-ui-peek-enable t
+        lsp-ui-peek-list-width 60
+        lsp-ui-peek-peek-height 25)
+
+  (add-hook 'lsp-mode-hook 'lsp-ui-mode))
+
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -399,16 +422,16 @@
   (interactive)
   (compile-latex (buffer-file-name)))
 
-(defun open-in-firefox (url)
+(defun open(url &rest ignore)
   (interactive "sURL: ")
   (delete-window (shell-command (concat "open \"" url "\" &"))))
 
-(defun open-in-firefox-direct ()
+(defun open-direct ()
   (interactive)
   (w3m-print-this-url t)
   (let ((url (car kill-ring)))
     (setq kill-ring (cdr kill-ring))
-    (open-in-firefox url)))
+    (open url)))
 
 (defun commit ()
   (interactive)
@@ -456,7 +479,7 @@
 (add-hook 'gnus-article-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-o")
-			   #'open-in-firefox-direct)))
+			   #'browse-url)))
 
 (add-hook 'flyspell-mode-hook
 	  (lambda ()
@@ -498,13 +521,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(browse-url-browser-function (quote browse-url-firefox))
- '(browse-url-chromium-program "open")
+ '(browse-url-browser-function (quote open))
  '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Uni.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
