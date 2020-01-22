@@ -325,6 +325,9 @@
 
 
 ;; variable setting
+;; w3m-command for web browsing
+(setq w3m-command "/usr/local/bin/w3m")
+
 ;; Local LFE install
 (setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
