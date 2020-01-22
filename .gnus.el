@@ -1,7 +1,7 @@
-(setq gnus-select-method '(nntp "news.gmane.org")) ;; if you read news groups
+;;(setq gnus-select-method '(nntp "news.gmane.org")) ;; if you read news groups
+(setq gnus-always-read-dribble-file t)
 
-
-(add-to-list 'gnus-secondary-select-methods
+(setq gnus-select-method
 	     '(nnimap "gmail"
 		      (nnimap-address "imap.gmail.com")
 		      (nnimap-server-port 993)
