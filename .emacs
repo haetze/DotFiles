@@ -17,22 +17,43 @@
 ;;               - git
 ;;               - curl
 ;;               - tar
-(if (not (file-directory-p "~/TODOS"))
-    (shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
 
-(if (not (file-directory-p "~/.templates"))
-    (shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
+(let ((git (locate-file "git" exec-path))
+      (curl (locate-file "curl" exec-path))
+      (tar (locate-file "tar" exec-path)))
+  (if (and git curl tar)
+      (progn
+	    
+	(if (not (file-directory-p "~/TODOS"))
+	    (shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
+	
+	(if (not (file-directory-p "~/.templates"))
+	    (shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
 
-(if (not (file-directory-p "~/.emacs.d/template"))
-    (progn
-      (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
-      (shell-command "mkdir ~/.emacs.d/template")
-      (shell-command "tar -C ~/.emacs.d/template -xf template.tar.gz")
-      (shell-command "rm template.tar.gz")))
+	(if (not (file-directory-p "~/.emacs.d/template"))
+	    (progn
+	      (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
+	      (shell-command "mkdir ~/.emacs.d/template")
+	      (shell-command "tar -C ~/.emacs.d/template -xf template.tar.gz")
+	      (shell-command "rm template.tar.gz")))
 
-;; copies .gnus.el in $HOME
-(if (not (file-exists-p "~/.gnus.el"))
-    (copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
+	;; copies .gnus.el in $HOME
+	(if (not (file-exists-p "~/.gnus.el"))
+	    (copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
+	
+	;; create $HOME/.local/bin
+	(if (not (file-directory-p "~/.local"))
+	    (progn
+	      (shell-command "mkdir ~/.local")
+	      (shell-command "mkdir ~/.local/bin")))
+
+	;; copies commit in $HOME/.local/bin/
+	(if (not (file-exists-p "~/.local/bin/commit"))
+	    (copy-file "~/usefulCommands/commit" "~/.local/bin/commit" t))
+
+	;; copies commit in $HOME/.local/bin/
+	(if (not (file-exists-p "~/.local/bin/pull"))
+	    (copy-file "~/usefulCommands/commit" "~/.local/bin/pull" t)))))
 
 
 (package-initialize)
@@ -56,6 +77,7 @@
 		   'epresent
 		   'openwith
 		   'w3m
+		   'magit
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
 		   'lsp-ui
@@ -530,7 +552,7 @@
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
