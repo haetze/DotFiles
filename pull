@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /Users/haetze/TODOS
+git pull https://haetze:Dorsten108inDeutschland@github.com/haetze/TODOS.git
+cd /Users/haetze/Contacts
+git pull https://haetze:Dorsten108inDeutschland@github.com/haetze/Contacts.git
+cd /Users/haetze/Documents/FS2019
+git pull https://haetze:Dorsten108inDeutschland@github.com/haetze/FS2019.git
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+cd $HOME/TODOS
+git commit -m "$(date)" -a
+git push https://haetze:Dorsten108inDeutschland@github.com/haetze/TODOS.git
+git push
+cd $HOME/Contacts
+git commit -m "$(date)" -a
+git push https://haetze:Dorsten108inDeutschland@github.com/haetze/Contacts.git
+git push
+cd $HOME/Documents/FS2019
+git commit -m "$(date)" -a
+git push https://haetze:Dorsten108inDeutschland@github.com/haetze/FS2019.git
+git push
