@@ -523,6 +523,9 @@
 (add-hook 'latex-mode-hook (lambda ()
 			     (local-set-key (kbd "C-c C-c") #'compile-latex-current-file)))
 
+(add-hook 'artist-mode-hook (lambda ()
+			      (setq indent-tabs-mode nil)))
+
 
 ;; Set up for haskell-mode
 (require 'haskell-interactive-mode)
