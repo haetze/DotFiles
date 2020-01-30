@@ -95,7 +95,10 @@
   "~/Contacts/Private.org")
 
 (defvar work-contacts 
-  "~/Contacts/Uni.org")
+  "~/Contacts/Work.org")
+
+(setq org-contacts-files
+      (quote (private-contacts work-contacts)))
 
 (defvar tasks
   "~/TODOS/tasks.org")
@@ -504,7 +507,9 @@
 (add-hook 'gnus-article-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-o")
-			   #'browse-url)))
+			   #'browse-url)
+	    (local-set-key (kbd "C-c C-o")
+			   #'open-direct)))
 
 (add-hook 'flyspell-mode-hook
 	  (lambda ()
@@ -544,6 +549,7 @@
 
 
 
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -551,7 +557,6 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote open))
  '(custom-enabled-themes (quote (manoj-dark)))
- '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Uni.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
