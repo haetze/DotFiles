@@ -220,6 +220,13 @@
 (defvar schedule-tasks
   "* TODO %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
+(defvar meeting-tasks
+  "* MEETING %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
+
+(defvar appointment-tasks
+  "* APPOINTMENT %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
+
+
 (defvar mail-task
   "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
@@ -274,6 +281,33 @@
        'entry
        '(file+headline tasks "Personal")
        schedule-tasks))
+
+;; Meetings
+(add-to-list
+ 'org-capture-templates
+ (list "M"
+       "Meeting in tasks.org"
+       'entry
+       '(file+headline tasks "Meetings")
+       meeting-tasks))
+
+;; Appointments
+(add-to-list
+ 'org-capture-templates
+ (list "a"
+       "Appointments in tasks.org Personal"
+       'entry
+       '(file+headline tasks "Personal")
+       appointment-tasks))
+
+;; Appointments
+(add-to-list
+ 'org-capture-templates
+ (list "A"
+       "Appointments in tasks.org (Work)"
+       'entry
+       '(file+headline tasks "Work")
+       appointment-tasks))
 
 ;; Mail Task
 (add-to-list
@@ -385,6 +419,12 @@
 (setq org-agenda-files (list schedule-file
                              code-file
 			     tasks))
+;; Org Keywords
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE")
+	(sequence "MEETING" "|" "HELD")
+	(sequence "APPOINTMENT" "|" "COMPLETED")))
+
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
 ;; Set how parens are displayed
