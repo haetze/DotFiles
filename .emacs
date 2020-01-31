@@ -77,6 +77,7 @@
 		   'epresent
 		   'openwith
 		   'w3m
+		   'slime
 		   'magit
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
@@ -387,6 +388,9 @@
 ;; w3m-command for web browsing
 (setq w3m-command "/usr/local/bin/w3m")
 
+(setq inferior-lisp-program "sbcl" 
+      slime-contribs '(slime-fancy))
+
 ;; Local LFE install
 (setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
@@ -534,7 +538,7 @@
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c i") #'org-insert-link)
 (global-set-key (kbd "C-c c") #'org-capture)
-(global-set-key (kbd "C-x C-a") #'auto-complete-mode)
+(global-set-key (kbd "C-c C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
