@@ -165,12 +165,14 @@
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Open Files with dired
-(setq dired-launch-default-launcher '("open"))
-(setf dired-launch-extensions-map
-      '(("xlsx" ("libreofficedev5.3"))
-	("pdf"  ("open"))
-	))
-(dired-launch-enable)
+(setq vlc "/Applications/VLC.app/Contents/MacOS/VLC")
+(require 'openwith)
+(setq openwith-associations `(
+			      ("\\.pdf\\'" "open" (file))
+			      ("\\.mp4\\'" ,vlc (file))
+			      ("\\.flv\\'" ,vlc (file))
+			      ))
+(openwith-mode t)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
