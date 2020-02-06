@@ -229,6 +229,8 @@
 (defvar appointment-tasks
   "* APPOINTMENT %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
+(defvar appointment-na-tasks
+  "* APPOINTMENT-NO-ATTENDANCE %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
 (defvar mail-task
   "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
@@ -311,6 +313,24 @@
        'entry
        '(file+headline tasks "Work")
        appointment-tasks))
+
+;; Appointments - NO ATTENDANCE
+(add-to-list
+ 'org-capture-templates
+ (list "n"
+       "Appointments (no attendance) in tasks.org (Personal)"
+       'entry
+       '(file+headline tasks "Personal")
+       appointment-na-tasks))
+
+;; Appointments - NO ATTENDANCE
+(add-to-list
+ 'org-capture-templates
+ (list "N"
+       "Appointments (no attendance) in tasks.org (Work)"
+       'entry
+       '(file+headline tasks "Work")
+       appointment-na-tasks))
 
 ;; Mail Task
 (add-to-list
@@ -429,7 +449,8 @@
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE")
 	(sequence "MEETING" "|" "HELD")
-	(sequence "APPOINTMENT" "|" "COMPLETED")))
+	(sequence "APPOINTMENT" "|" "COMPLETED")
+	(sequence "APPOINTMENT-NO-ATTENDANCE" "|" "COMPLETED-NO-ATTENDANCE")))
 
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
