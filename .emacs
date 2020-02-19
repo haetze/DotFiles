@@ -171,6 +171,7 @@
 			      ("\\.pdf\\'" "open" (file))
 			      ("\\.mp4\\'" ,vlc (file))
 			      ("\\.flv\\'" ,vlc (file))
+			      ("\\.png\\'" "open" (file))
 			      ))
 (openwith-mode t)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
