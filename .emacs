@@ -449,7 +449,7 @@
 ;; Org Keywords
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE")
-	(sequence "MEETING" "|" "HELD")
+	(sequence "MEETING" "IN-SESSION" "|" "HELD")
 	(sequence "APPOINTMENT" "|" "COMPLETED")
 	(sequence "APPOINTMENT-NO-ATTENDANCE" "|" "COMPLETED-NO-ATTENDANCE")))
 
