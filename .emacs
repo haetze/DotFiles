@@ -174,6 +174,7 @@
 			      ("\\.png\\'" "open" (file))
 			      ))
 (openwith-mode t)
+(add-to-list  'mm-inhibit-file-name-handlers 'openwith-file-handler)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -625,10 +626,11 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote open))
  '(custom-enabled-themes (quote (manoj-dark)))
+ '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Work.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
