@@ -451,8 +451,8 @@
 (setq org-todo-keywords
       '((sequence "TODO" "|" "DONE")
 	(sequence "MEETING" "IN-SESSION" "|" "HELD")
-	(sequence "APPOINTMENT" "|" "COMPLETED")
-	(sequence "APPOINTMENT-NO-ATTENDANCE" "|" "COMPLETED-NO-ATTENDANCE")))
+	(sequence "APPOINTMENT" "APPOINTMENT-IN-SESSION" "|" "COMPLETED")
+	(sequence "APPOINTMENT-NO-ATTENDANCE" "APPOINTMENT-NO-ATTENDANCE-IN-SESSION" "|" "COMPLETED-NO-ATTENDANCE")))
 
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
@@ -594,6 +594,8 @@
 (add-hook 'lfe-mode-hook (lambda ()
 			   (local-set-key (kbd "C-x C-l") #'inferior-lfe)
 			   (local-set-key (kbd "C-c C-c") #'compile-lfe-module)))
+(add-hook 'plain-tex-mode-hook (lambda ()
+			   (latex-mode)))
 (add-hook 'latex-mode-hook (lambda ()
 			     (local-set-key (kbd "C-c C-c") #'compile-latex-current-file)))
 
@@ -626,6 +628,13 @@
  ;; If there is more than one, they won't work right.
  '(browse-url-browser-function (quote open))
  '(custom-enabled-themes (quote (manoj-dark)))
+ '(ledger-reports
+   (quote
+    (("test" "ledger balance")
+     ("bal" "%(binary) -f %(ledger-file) bal")
+     ("reg" "%(binary) -f %(ledger-file) reg")
+     ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
+     ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
  '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Work.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
