@@ -433,7 +433,7 @@
 
 ;; Set command to build pdfs
 ;; From Org-Mode
-(setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -output-directory=%o -f %f"))
+(setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
 
 ;; From Latex
 (setq latex-command "latexmk -cd -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -f ")
@@ -630,7 +630,8 @@
  '(custom-enabled-themes (quote (manoj-dark)))
  '(ledger-reports
    (quote
-    (("test" "ledger balance")
+    (("balance" "ledger -f global.dat balance")
+     ("test" "ledger balance")
      ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
