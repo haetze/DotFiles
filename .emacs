@@ -571,6 +571,11 @@
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
 
+;; Movement Rebind
+(global-set-key (kbd "C-h") #'backward-char)
+(global-set-key (kbd "C-l") #'forward-char)
+(global-set-key (kbd "M-h") #'backward-word)
+(global-set-key (kbd "M-l") #'forward-word)
 
 ;; Local key bindings
 (add-hook 'gnus-article-mode-hook
