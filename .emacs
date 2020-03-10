@@ -112,8 +112,8 @@
 (defvar work-contacts 
   "~/Contacts/Work.org")
 
-(setq org-contacts-files
-      (quote (private-contacts work-contacts)))
+;; (setq org-contacts-files
+;;       (quote (private-contacts work-contacts)))
 
 (defvar tasks
   "~/TODOS/tasks.org")
@@ -679,7 +679,6 @@
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)"))))
- '(org-contacts-files (quote ("~/Contacts/Private.org" "~/Contacts/Work.org")))
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
