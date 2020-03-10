@@ -18,42 +18,56 @@
 ;;               - curl
 ;;               - tar
 
+(defvar git-package "git")
+(defvar curl-package "curl")
+(defvar tar-package "tar")
+
+(defun install-os (pkg)
+  (shell-command (concat "brew install" pkg)))
+
 (let ((git (locate-file "git" exec-path))
       (curl (locate-file "curl" exec-path))
       (tar (locate-file "tar" exec-path)))
-  (if (and git curl tar)
-      (progn
+
+  (if (not git)
+      (install-os "git"))
+  (if (not git)
+      (install-os "git"))
+  (if (not git)
+      (install-os "git"))
+  
+  (progn
 	    
-	(if (not (file-directory-p "~/TODOS"))
-	    (shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
+    (if (not (file-directory-p "~/TODOS"))
+	(shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
 	
-	(if (not (file-directory-p "~/.templates"))
-	    (shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
+    (if (not (file-directory-p "~/.templates"))
+	(shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
 
-	(if (not (file-directory-p "~/.emacs.d/template"))
-	    (progn
-	      (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
-	      (shell-command "mkdir ~/.emacs.d/template")
-	      (shell-command "tar -C ~/.emacs.d/template -xf template.tar.gz")
-	      (shell-command "rm template.tar.gz")))
+    (if (not (file-directory-p "~/.emacs.d/template"))
+	(progn
+	  (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
+	  (shell-command "mkdir ~/.emacs.d/template")
+	  (shell-command "tar -C ~/.emacs.d/template -xf template.tar.gz")
+	  (shell-command "rm template.tar.gz")))
 
-	;; copies .gnus.el in $HOME
-	(if (not (file-exists-p "~/.gnus.el"))
-	    (copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
+    ;; copies .gnus.el in $HOME
+    (if (not (file-exists-p "~/.gnus.el"))
+	(copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
 	
-	;; create $HOME/.local/bin
-	(if (not (file-directory-p "~/.local"))
-	    (progn
-	      (shell-command "mkdir ~/.local")
-	      (shell-command "mkdir ~/.local/bin")))
+    ;; create $HOME/.local/bin
+    (if (not (file-directory-p "~/.local"))
+	(progn
+	  (shell-command "mkdir ~/.local")
+	  (shell-command "mkdir ~/.local/bin")))
+
+    ;; copies commit in $HOME/.local/bin/
+    (if (not (file-exists-p "~/.local/bin/commit"))
+	(copy-file "~/usefulCommands/commit" "~/.local/bin/commit" t))
 
 	;; copies commit in $HOME/.local/bin/
-	(if (not (file-exists-p "~/.local/bin/commit"))
-	    (copy-file "~/usefulCommands/commit" "~/.local/bin/commit" t))
-
-	;; copies commit in $HOME/.local/bin/
-	(if (not (file-exists-p "~/.local/bin/pull"))
-	    (copy-file "~/usefulCommands/commit" "~/.local/bin/pull" t)))))
+    (if (not (file-exists-p "~/.local/bin/pull"))
+	(copy-file "~/usefulCommands/commit" "~/.local/bin/pull" t))))
 
 
 (package-initialize)
