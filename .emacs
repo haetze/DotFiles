@@ -112,9 +112,6 @@
 (defvar work-contacts 
   "~/Contacts/Work.org")
 
-;; (setq org-contacts-files
-;;       (quote (private-contacts work-contacts)))
-
 (defvar tasks
   "~/TODOS/tasks.org")
 
