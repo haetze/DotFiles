@@ -352,7 +352,7 @@
 ;; Note
 (add-to-list
  'org-capture-templates
- (list "l"
+ (list "L"
        "Note (Work)"
        'entry
        '(file+headline tasks "Work")
