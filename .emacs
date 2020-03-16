@@ -493,10 +493,10 @@
 			     tasks))
 ;; Org Keywords
 (setq org-todo-keywords
-      '((sequence "TODO" "|" "DONE")
-	(sequence "MEETING" "IN-SESSION" "|" "HELD")
-	(sequence "APPOINTMENT" "APPOINTMENT-IN-SESSION" "|" "COMPLETED")
-	(sequence "APPOINTMENT-NO-ATTENDANCE" "APPOINTMENT-NO-ATTENDANCE-IN-SESSION" "|" "COMPLETED-NO-ATTENDANCE")
+      '((sequence "TODO(!)" "|" "DONE(!)")
+	(sequence "MEETING(!)" "IN-SESSION(!)" "|" "HELD(!)")
+	(sequence "APPOINTMENT(!)" "APPOINTMENT-IN-SESSION(!)" "|" "COMPLETED(!)")
+	(sequence "APPOINTMENT-NO-ATTENDANCE(!)" "APPOINTMENT-NO-ATTENDANCE-IN-SESSION(!)" "|" "COMPLETED-NO-ATTENDANCE(!)")
 	(sequence "|" "NOTE")))
 
 ;; Set Schedule to start on any day 
