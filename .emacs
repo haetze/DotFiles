@@ -328,7 +328,7 @@
 (add-to-list
  'org-capture-templates
  (list "a"
-       "Appointments in tasks.org Personal"
+       "Appointments in tasks.org (Personal)"
        'entry
        '(file+headline tasks "Personal")
        appointment-tasks))
@@ -422,17 +422,9 @@
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Org archiving
 ;; Marking done and archive
-(defun agenda-mark-done-and-archive ()
-   (interactive)
-   (org-agenda-todo 'done)
-   (org-agenda-archive))
-(define-key org-agenda-mode-map "\C-c\C-x\C-t" 'agenda-mark-done-and-archive)
+(define-key org-agenda-mode-map "\C-c\C-x\C-t" 'org-agenda-archive)
 
-(defun mark-done-and-archive ()
-   (interactive)
-   (org-todo 'done)
-   (org-archive-subtree))
- (define-key org-mode-map "\C-c\C-x\C-t" 'mark-done-and-archive)
+(define-key org-mode-map "\C-c\C-x\C-t" 'org-archive-subtree)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -485,7 +477,7 @@
 
 
 ;; Set time to done switch
-;;(setq org-log-done 'time)
+(setq org-log-done 'time)
 ;; The archiving function, does not work well with the logging 
 ;; Set Archive Locations
 (setq org-archive-location "~/TODOS/archive.org::")
