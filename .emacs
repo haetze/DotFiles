@@ -485,7 +485,8 @@
 
 
 ;; Set time to done switch
-(setq org-log-done 'time)
+;;(setq org-log-done 'time)
+;; The archiving function, does not work well with the logging 
 ;; Set Archive Locations
 (setq org-archive-location "~/TODOS/archive.org::")
 ;; Set Agenda files
