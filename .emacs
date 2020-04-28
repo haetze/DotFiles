@@ -163,7 +163,8 @@
         lsp-ui-peek-peek-height 25)
 
   (add-hook 'lsp-mode-hook 'lsp-ui-mode))
-
+;; Rust
+(setq lsp-rust-server 'rust-analyzer)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
