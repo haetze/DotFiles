@@ -610,6 +610,7 @@
 (global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "M-s s") 'shrink-window)
 (global-set-key (kbd "M-s e") 'enlarge-window)
+(global-set-key (kbd "C-c m") #'compile)
 
 ;; Movement Rebind
 (global-set-key (kbd "C-l") #'forward-char)
