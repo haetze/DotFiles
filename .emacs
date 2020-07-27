@@ -606,10 +606,10 @@
 (global-set-key (kbd "C-c C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
-(global-set-key (kbd "C-<left>") 'shrink-window-horizontally)
-(global-set-key (kbd "C-<right>") 'enlarge-window-horizontally)
-(global-set-key (kbd "M-s s") 'shrink-window)
-(global-set-key (kbd "M-s e") 'enlarge-window)
+(global-set-key (kbd "<left>") 'shrink-window-horizontally)
+(global-set-key (kbd "<right>") 'enlarge-window-horizontally)
+(global-set-key (kbd "<down>") 'shrink-window)
+(global-set-key (kbd "<up>") 'enlarge-window)
 (global-set-key (kbd "C-c m") #'compile)
 
 ;; Movement Rebind
