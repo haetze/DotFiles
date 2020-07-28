@@ -391,7 +391,7 @@
 (add-to-list
  'org-capture-templates
  (list "n"
-       "Appointments (Personal)"
+       "Appointments - No Attendance (Personal)"
        'entry
        '(file+headline tasks-private "Personal")
        appointment-na-tasks))
@@ -419,7 +419,7 @@
 (add-to-list
  'org-capture-templates
  (list "N"
-       "Appointments (Work)"
+       "Appointments - No Attendance (Work)"
        'entry
        '(file+headline tasks-work "Work")
        appointment-na-tasks))
