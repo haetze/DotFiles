@@ -114,8 +114,11 @@
 (defvar work-contacts 
   "~/Contacts/Work.org")
 
-(defvar tasks
-  "~/TODOS/tasks.org")
+(defvar tasks-private
+  "~/TODOS/private.org")
+
+(defvar tasks-work
+  "~/TODOS/work.org")
 
 (defvar code-file
   "~/TODOS/Code.org")
@@ -264,7 +267,7 @@
 
 
 (defvar mail-task
-  "* TODO %? , Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
+  "* TODO %^{Todo?}, Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
@@ -275,7 +278,7 @@
 (add-to-list
  'org-capture-templates
      (list "c"
-	   "Contact Private"
+	   "Contact (Private)"
 	   'entry
 	   '(file+headline private-contacts "Contacts")
 	   org-contacts-template
@@ -285,9 +288,9 @@
 (add-to-list
  'org-capture-templates
  (list "C"
-       "Contact Work"
-       'entry '
-       (file+headline work-contacts "Contacts")
+       "Contact (Work)"
+       'entry
+       '(file+headline work-contacts "Contacts")
        org-contacts-template
        :empty-lines 1))
 
@@ -295,63 +298,102 @@
 (add-to-list
  'org-capture-templates
  (list "t"
-       "TODOs in tasks.org (Scheduled/Deadline)"
+       "Personal TODOs (Scheduled/Deadline)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-private "Personal")
        schedule/deadline-tasks))
+
+;; Simple Task Scheduled and Deadline
+(add-to-list
+ 'org-capture-templates
+ (list "T"
+       "Work TODOs (Scheduled/Deadline)"
+       'entry
+       '(file+headline tasks-work "Work")
+       schedule/deadline-tasks))
+
 
 ;; Simple Task only Deadline
 (add-to-list
  'org-capture-templates
  (list "D"
-       "TODOs in tasks.org (Deadline)"
+       "Work TODOs (Deadline)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-work "Work")
        deadline-tasks))
+
+;; Simple Task only Deadline
+(add-to-list
+ 'org-capture-templates
+ (list "d"
+       "Personal TODOs (Deadline)"
+       'entry
+       '(file+headline tasks-private "Personal")
+       deadline-tasks))
+
 
 ;; Simple Task only Scheduled
 (add-to-list
  'org-capture-templates
  (list "S"
-       "TODOs in tasks.org (Scheduled)"
+       "Work TODOs (Scheduled)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-work "Work")
+       schedule-tasks))
+
+;; Simple Task only Scheduled
+(add-to-list
+ 'org-capture-templates
+ (list "s"
+       "Personal TODOs (Scheduled)"
+       'entry
+       '(file+headline tasks-private "Personal")
        schedule-tasks))
 
 ;; Meetings
 (add-to-list
  'org-capture-templates
- (list "M"
-       "Meeting in tasks.org"
+ (list "k"
+       "Meeting Personal)"
        'entry
-       '(file+headline tasks "Meetings")
+       '(file+headline tasks-private "Meetings")
        meeting-tasks))
+
+;; Meetings
+(add-to-list
+ 'org-capture-templates
+ (list "K"
+       "Meeting (Work)"
+       'entry
+       '(file+headline tasks-work "Meetings")
+       meeting-tasks))
+
 
 ;; Appointments
 (add-to-list
  'org-capture-templates
  (list "a"
-       "Appointments in tasks.org (Personal)"
+       "Appointments (Personal)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-private "Personal")
        appointment-tasks))
 
 ;; Appointments
 (add-to-list
  'org-capture-templates
  (list "A"
-       "Appointments in tasks.org (Work)"
+       "Appointments (Work)"
        'entry
-       '(file+headline tasks "Work")
+       '(file+headline tasks-work "Work")
        appointment-tasks))
 
 ;; Appointments - NO ATTENDANCE
 (add-to-list
  'org-capture-templates
  (list "n"
-       "Appointments (no attendance) in tasks.org (Personal)"
+       "Appointments (Personal)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-private "Personal")
        appointment-na-tasks))
 
 ;; Note
@@ -360,7 +402,7 @@
  (list "l"
        "Note (Personal)"
        'entry
-       '(file+headline tasks "Personal")
+       '(file+headline tasks-private "Personal")
        note))
 
 ;; Note
@@ -369,7 +411,7 @@
  (list "L"
        "Note (Work)"
        'entry
-       '(file+headline tasks "Work")
+       '(file+headline tasks-work "Work")
        note))
 
 
@@ -377,28 +419,48 @@
 (add-to-list
  'org-capture-templates
  (list "N"
-       "Appointments (no attendance) in tasks.org (Work)"
+       "Appointments (Work)"
        'entry
-       '(file+headline tasks "Work")
+       '(file+headline tasks-work "Work")
        appointment-na-tasks))
 
 ;; Mail Task
 (add-to-list
  'org-capture-templates
  (list "m"
-       "TODOs in tasks.org from Mail"
+       "TODOs from Mail (Personal)"
        'entry
-       '(file+headline tasks "Mail")
+       '(file+headline tasks-private "Mail")
        mail-task))
 
 ;; Reply Mail Task
 (add-to-list
  'org-capture-templates
  (list "r"
-       "TODOs in tasks.org Reply to"
+       "TODOs Reply (Personal)"
        'entry
-       '(file+headline tasks "Mail")
+       '(file+headline tasks-private "Mail")
        reply-task))
+
+;; Mail Task
+(add-to-list
+ 'org-capture-templates
+ (list "M"
+       "TODOs from Mail (Work)"
+       'entry
+       '(file+headline tasks-work "Mail")
+       mail-task))
+
+;; Reply Mail Task
+(add-to-list
+ 'org-capture-templates
+ (list "R"
+       "TODOs Reply (Work)"
+       'entry
+       '(file+headline tasks-work "Mail")
+       reply-task))
+
+
 
 ;; Safe Code Snippet
 (add-to-list
@@ -487,7 +549,8 @@
 ;; Set Agenda files
 (setq org-agenda-files (list schedule-file
                              code-file
-			     tasks))
+			     tasks-work
+			     tasks-private))
 ;; Org Keywords
 (setq org-todo-keywords
       '((sequence "TODO(!)" "|" "DONE(!)")
@@ -605,6 +668,7 @@
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c i") #'org-insert-link)
 (global-set-key (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "C-c d") #'cfw:open-org-calendar)
 (global-set-key (kbd "C-c C-a") #'auto-complete-mode)
 (global-set-key (kbd "C-c a") #'org-agenda)
 (global-set-key (kbd "C-x c f") #'column-enforce-mode)
