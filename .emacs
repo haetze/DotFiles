@@ -213,8 +213,10 @@
 (use-package org-contacts
   :ensure nil
   :after org
-  :custom (org-contacts-files `(,private-contacts
-				,work-contacts)))
+  :custom
+  (org-contacts-files `(,private-contacts
+			,work-contacts))
+  (org-contacts-icon-use-gravatar nil))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
