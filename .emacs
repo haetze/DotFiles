@@ -280,16 +280,15 @@
    (list key
 	 (concat text " (Personal)")
 	 'entry
-	 '(file+headline tasks-private headline-p)
+	 `(file+headline tasks-private ,headline-p)
 	 template))
 
-  ;; Simple Task Scheduled and Deadline
   (add-to-list
    'org-capture-templates
    (list (upcase key)
 	 (concat text " (Work)")
 	 'entry
-	 '(file+headline tasks-work headline-w)
+	 `(file+headline tasks-work ,headline-w)
 	 template)))
   
 
