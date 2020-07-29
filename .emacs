@@ -312,6 +312,15 @@
        '(file+headline tasks-work "Work")
        schedule/deadline-tasks))
 
+;; Simple Task only Deadline
+(add-to-list
+ 'org-capture-templates
+ (list "d"
+       "Personal TODOs (Deadline)"
+       'entry
+       '(file+headline tasks-private "Personal")
+       deadline-tasks))
+
 
 ;; Simple Task only Deadline
 (add-to-list
@@ -322,14 +331,15 @@
        '(file+headline tasks-work "Work")
        deadline-tasks))
 
-;; Simple Task only Deadline
+
+;; Simple Task only Scheduled
 (add-to-list
  'org-capture-templates
- (list "d"
-       "Personal TODOs (Deadline)"
+ (list "s"
+       "Personal TODOs (Scheduled)"
        'entry
        '(file+headline tasks-private "Personal")
-       deadline-tasks))
+       schedule-tasks))
 
 
 ;; Simple Task only Scheduled
@@ -341,14 +351,6 @@
        '(file+headline tasks-work "Work")
        schedule-tasks))
 
-;; Simple Task only Scheduled
-(add-to-list
- 'org-capture-templates
- (list "s"
-       "Personal TODOs (Scheduled)"
-       'entry
-       '(file+headline tasks-private "Personal")
-       schedule-tasks))
 
 ;; Meetings
 (add-to-list
@@ -396,6 +398,15 @@
        '(file+headline tasks-private "Personal")
        appointment-na-tasks))
 
+;; Appointments - NO ATTENDANCE
+(add-to-list
+ 'org-capture-templates
+ (list "N"
+       "Appointments - No Attendance (Work)"
+       'entry
+       '(file+headline tasks-work "Work")
+       appointment-na-tasks))
+
 ;; Note
 (add-to-list
  'org-capture-templates
@@ -415,14 +426,6 @@
        note))
 
 
-;; Appointments - NO ATTENDANCE
-(add-to-list
- 'org-capture-templates
- (list "N"
-       "Appointments - No Attendance (Work)"
-       'entry
-       '(file+headline tasks-work "Work")
-       appointment-na-tasks))
 
 ;; Mail Task
 (add-to-list
@@ -433,6 +436,16 @@
        '(file+headline tasks-private "Mail")
        mail-task))
 
+;; Mail Task
+(add-to-list
+ 'org-capture-templates
+ (list "M"
+       "TODOs from Mail (Work)"
+       'entry
+       '(file+headline tasks-work "Mail")
+       mail-task))
+
+
 ;; Reply Mail Task
 (add-to-list
  'org-capture-templates
@@ -442,14 +455,6 @@
        '(file+headline tasks-private "Mail")
        reply-task))
 
-;; Mail Task
-(add-to-list
- 'org-capture-templates
- (list "M"
-       "TODOs from Mail (Work)"
-       'entry
-       '(file+headline tasks-work "Mail")
-       mail-task))
 
 ;; Reply Mail Task
 (add-to-list
@@ -465,7 +470,7 @@
 ;; Safe Code Snippet
 (add-to-list
  'org-capture-templates
- (list "s"
+ (list "+"
        "SRCs in Code.org"
        'entry
        '(file+headline code-file "Code")
