@@ -31,10 +31,10 @@
 
   (if (not git)
       (install-os "git"))
-  (if (not git)
-      (install-os "git"))
-  (if (not git)
-      (install-os "git"))
+  (if (not curl)
+      (install-os "curl"))
+  (if (not tar)
+      (install-os "tar"))
   
   (progn
 	    
