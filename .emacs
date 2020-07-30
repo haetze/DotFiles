@@ -274,13 +274,13 @@
 
 ;; Org-Caputre configs
 
-(defun add-to-templates-personal-and-work (key text headline-p headline-w template)
+(defun add-to-templates-personal-and-work (key text file-p file-w headline-p headline-w template)
   (add-to-list
    'org-capture-templates
    (list key
 	 (concat text " (Personal)")
 	 'entry
-	 `(file+headline tasks-private ,headline-p)
+	 `(file+headline ,file-p ,headline-p)
 	 template))
 
   (add-to-list
@@ -288,48 +288,30 @@
    (list (upcase key)
 	 (concat text " (Work)")
 	 'entry
-	 `(file+headline tasks-work ,headline-w)
+	 `(file+headline ,file-w ,headline-w)
 	 template)))
   
 
-;; Contact Privat
-(add-to-list
- 'org-capture-templates
-     (list "c"
-	   "Contact (Private)"
-	   'entry
-	   '(file+headline private-contacts "Contacts")
-	   org-contacts-template
-	   :empty-lines 1))
-
-;; Contact Work
-(add-to-list
- 'org-capture-templates
- (list "C"
-       "Contact (Work)"
-       'entry
-       '(file+headline work-contacts "Contacts")
-       org-contacts-template
-       :empty-lines 1))
-
+;; Contacts
+(add-to-templates-personal-and-work "c" "New Contact" private-contacts work-contacts "Contacts" "Contacts" org-contacts-template)
 ;; Simple Task Scheduled and Deadline
-(add-to-templates-personal-and-work "t" "TODOs (Scheduled/Deadline)" "Personal" "Work" schedule/deadline-tasks)
+(add-to-templates-personal-and-work "t" "TODOs (Scheduled/Deadline)" tasks-private tasks-work "Personal" "Work" schedule/deadline-tasks)
 ;; Simple Task only Deadline
-(add-to-templates-personal-and-work "d" "TODOs (Deadline)" "Personal" "Work" deadline-tasks)
+(add-to-templates-personal-and-work "d" "TODOs (Deadline)" tasks-private tasks-work "Personal" "Work" deadline-tasks)
 ;; Simple Task only Scheduled
-(add-to-templates-personal-and-work "s" "TODOs (Scheduled)" "Personal" "Work" schedule-tasks)
+(add-to-templates-personal-and-work "s" "TODOs (Scheduled)" tasks-private tasks-work "Personal" "Work" schedule-tasks)
 ;; Meetings
-(add-to-templates-personal-and-work "k" "Meeting" "Meetings" "Meetings" meeting-tasks)
+(add-to-templates-personal-and-work "k" "Meeting" tasks-private tasks-work"Meetings" "Meetings" meeting-tasks)
 ;; Appointments
-(add-to-templates-personal-and-work "a" "Appointments" "Personal" "Work" appointment-tasks)
+(add-to-templates-personal-and-work "a" "Appointments" tasks-private tasks-work "Personal" "Work" appointment-tasks)
 ;; Appointments - NO ATTENDANCE
-(add-to-templates-personal-and-work "n" "Appointments - No Attendance" "Personal" "Work" appointment-na-tasks)
+(add-to-templates-personal-and-work "n" "Appointments - No Attendance" tasks-private tasks-work "Personal" "Work" appointment-na-tasks)
 ;; Note
-(add-to-templates-personal-and-work "l" "Note" "Personal" "Work" note)
+(add-to-templates-personal-and-work "l" "Note" tasks-private tasks-work "Personal" "Work" note)
 ;; Mail Task
-(add-to-templates-personal-and-work "m" "TODOs from Mail" "Mail" "Mail" mail-task)
+(add-to-templates-personal-and-work "m" "TODOs from Mail" tasks-private tasks-work "Mail" "Mail" mail-task)
 ;; Reply Mail Task
-(add-to-templates-personal-and-work "r" "Reply-To" "Mail" "Mail" reply-task)
+(add-to-templates-personal-and-work "r" "Reply-To" tasks-private tasks-work "Mail" "Mail" reply-task)
 
 ;; Safe Code Snippet
 (add-to-list
