@@ -16,8 +16,14 @@
 ;;Mode Line definition
 ;;Command to get the battery status
 ;;
-(defvar linux-bat "cat /sys/class/power_supply/BAT0/capacity")
-(defvar macos-bat "pmset -g batt | tail -1 | awk '{print substr($3,0,2)}'")
+(defvar bat-command "")
+(setq bat-command (let ((uname (substring (shell-command-to-string "uname") 0 -1)))
+		    (cond
+		     ((string= uname "Linux")
+		      "cat /sys/class/power_supply/BAT0/capacity")
+		     ((string= uname "Darwin")
+		      "pmset -g batt | tail -1 | awk '{print substr($3,0,2)}'")
+		     (t ""))))
 
 (setq-default mode-line-format
   (list " "
@@ -28,7 +34,7 @@
         'mode-line-position
         `(vc-mode vc-mode)
 	" "
-        '((:eval (substring (shell-command-to-string macos-bat) 0 -1)))
+        '((:eval (concat (substring (shell-command-to-string bat-command) 0 -1) "°/o")))
 	)
 )
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
