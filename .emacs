@@ -12,6 +12,27 @@
 	("org" . 5)
 	("elpa" . 0)))
 
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;;Mode Line definition
+;;Command to get the battery status
+;;
+(defvar linux-bat "cat /sys/class/power_supply/BAT0/capacity")
+(defvar macos-bat "pmset -g batt | tail -1 | awk '{print substr($3,0,2)}'")
+
+(setq-default mode-line-format
+  (list " "
+        'mode-line-modified
+        'mode-line-buffer-identification
+        'mode-line-modes
+        '(which-func-mode ("" which-func-format "--"))
+        'mode-line-position
+        `(vc-mode vc-mode)
+        '((:eval (substring (shell-command-to-string linux-bat) 0 -1)))
+	)
+)
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 ;; Check existence of files and copy/clone if needed
 ;; Dependencies:
 ;;               - git
@@ -140,6 +161,12 @@
 ;; Using ``cfw:open-org-calendar'' creates a calednar view for the agenda
 (require 'calfw-org)
 
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -601,7 +628,7 @@
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
