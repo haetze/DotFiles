@@ -27,7 +27,8 @@
         '(which-func-mode ("" which-func-format "--"))
         'mode-line-position
         `(vc-mode vc-mode)
-        '((:eval (substring (shell-command-to-string linux-bat) 0 -1)))
+	" "
+        '((:eval (substring (shell-command-to-string macos-bat) 0 -1)))
 	)
 )
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -164,9 +165,11 @@
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-default)
+;; (install-package 'exwm) ;; if not installed
+;; Uncomment if emacs is used as a wm
+;; (require 'exwm)
+;; (require 'exwm-config)
+;; (exwm-config-default)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
