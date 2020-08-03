@@ -26,17 +26,22 @@
 		     (t ""))))
 
 (setq-default mode-line-format
-  (list " "
-        'mode-line-modified
-        'mode-line-buffer-identification
-        'mode-line-modes
-        '(which-func-mode ("" which-func-format "--"))
-        'mode-line-position
-        `(vc-mode vc-mode)
-	" "
-        '((:eval (concat (substring (shell-command-to-string bat-command) 0 -1) "°/o")))
-	)
-)
+	      (list "%e"
+		    'mode-line-front-space
+		    'mode-line-mule-info
+		    'mode-line-client
+		    'mode-line-modified
+		    'mode-line-remote
+		    'mode-line-frame-identification 
+		    'mode-line-buffer-identification
+		    'mode-line-modes
+		    '(which-func-mode ("" which-func-format "--"))
+		    'mode-line-position
+		    `(vc-mode vc-mode)
+		    " "
+		    '((:eval (concat (substring (shell-command-to-string bat-command) 0 -1) "%%")))
+		    )
+	      )
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
