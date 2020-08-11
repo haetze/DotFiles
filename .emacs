@@ -527,6 +527,12 @@
     (setq kill-ring (cdr kill-ring))
     (open url)))
 
+(defun google (search &rest ignore)
+  (interactive "sSearch Term: ")
+  (let ((base "http://www.google.com/search?q=")
+	(search-space-replace (replace-regexp-in-string "[\s\t]+" "+" search)))
+    (open (concat base search-space-replace " &"))))
+
 (defun commit ()
   (interactive)
   (shell-command "commit"))
