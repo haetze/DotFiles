@@ -1,5 +1,6 @@
 #!/bin/bash
 cd $HOME/TODOS
+git add journals/*
 git commit -m "$(date)" -a
 git push https://github.com/haetze/TODOS.git
 git push
