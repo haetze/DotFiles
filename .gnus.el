@@ -16,6 +16,8 @@
 
 ;; Read HTML mail
 ;; You need install the command line brower 'w3m' and Emacs plugin 'w3m'
+;; shr doesn't require w3m to be installed.
+;; emacs needs to be build with libxml2 support
 (setq mm-text-html-renderer 'w3m)
 
 ;; Setup to send email through SMTP
@@ -53,3 +55,4 @@
     (list "nnimap+tu-dortmund:INBOX.Sent"
 	  (concat "nnfolder+archive:sent." (format-time-string "%Y-%m"))))))
 
+(setq gnus-use-cache t)
