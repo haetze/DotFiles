@@ -581,6 +581,8 @@
 (global-set-key (kbd "<down>") 'shrink-window)
 (global-set-key (kbd "<up>") 'enlarge-window)
 (global-set-key (kbd "C-c m") #'compile)
+(global-unset-key (kbd "C-o"))
+(global-unset-key (kbd "C-m"))
 
 ;; Movement Rebind
 (global-set-key (kbd "C-l") #'forward-char)
