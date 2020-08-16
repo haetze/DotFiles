@@ -131,7 +131,6 @@
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
 		   'lsp-ui
-		   'dired-launch
 		   'proof-general
 		   'flyspell-popup
 		   'calfw))
@@ -166,9 +165,10 @@
 (require 'org)
 (require 'org-tempo)
 (require 'org-ref)
-(require 'ox-extra)
+;; (require 'ox-extra)
 
-(ox-extras-activate '(ignore-headlines))
+
+;; (ox-extras-activate '(ignore-headlines))
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 (require 'org-journal)
@@ -582,7 +582,7 @@
 (global-set-key (kbd "<up>") 'enlarge-window)
 (global-set-key (kbd "C-c m") #'compile)
 (global-unset-key (kbd "C-o"))
-(global-unset-key (kbd "C-m"))
+
 
 ;; Movement Rebind
 (global-set-key (kbd "C-l") #'forward-char)
@@ -657,7 +657,7 @@
  '(org-export-backends (quote (ascii beamer html icalendar latex)))
  '(package-selected-packages
    (quote
-    (org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
+    (htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang)))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
