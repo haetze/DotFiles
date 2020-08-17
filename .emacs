@@ -174,6 +174,7 @@
 (require 'org-journal)
 (setq org-journal-dir "~/TODOS/journals")
 (setq org-journal-file-type 'daily)
+(setq org-journal-date-format "%A, %d.%m.%Y")
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -582,6 +583,7 @@
 (global-set-key (kbd "<up>") 'enlarge-window)
 (global-set-key (kbd "C-c m") #'compile)
 (global-unset-key (kbd "C-o"))
+(global-unset-key (kbd "C-f"))
 
 
 ;; Movement Rebind
