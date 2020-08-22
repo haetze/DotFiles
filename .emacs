@@ -154,7 +154,10 @@
   "~/TODOS/work.org")
 
 (defvar code-file
-  "~/TODOS/Code.org")
+  "~/TODOS/notes.org")
+
+(defvar note-file
+  "~/TODOS/notes.org")
 
 (defvar schedule-file
   "~/TODOS/schedule.org")
@@ -355,7 +358,7 @@
 ;; Appointments - NO ATTENDANCE
 (add-to-templates-personal-and-work "n" "Appointments - No Attendance" tasks-private tasks-work "Personal" "Work" appointment-na-tasks)
 ;; Note
-(add-to-templates-personal-and-work "l" "Note" tasks-private tasks-work "Personal" "Work" note)
+(add-to-templates-personal-and-work "l" "Note" note-file note-file "Personal" "Work" note)
 ;; Mail Task
 (add-to-templates-personal-and-work "m" "TODOs from Mail" tasks-private tasks-work "Mail" "Mail" mail-task)
 ;; Reply Mail Task
