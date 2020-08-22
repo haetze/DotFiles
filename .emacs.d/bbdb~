@@ -1,4 +1,0 @@
-;; -*- mode: Emacs-Lisp; coding: utf-8; -*-
-;;; file-format: 7
-["Richard" "Stewing" nil nil nil (["Mobile" 491 578 9382 114]) nil ("richy.sting@gmail.com richard.stewing@tu-dortmund.de") ((creation-date . "2016-09-04 21:43:12 +0000") (timestamp . "2016-10-22 00:44:38 +0000")) nil]
-[nil "UFC-Pizza" nil nil ("Uni") nil nil ("pizza@ufc.tu-dortmund.de") ((creation-date . "2016-11-23 11:02:18 +0000") (timestamp . "2016-11-23 15:08:58 +0000")) nil]
