@@ -321,6 +321,9 @@
 (defvar mail-task
   "* TODO %^{Todo?}, Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
+(defvar rss-read
+  "* TODO Read, Link: %a")
+
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
 
@@ -364,6 +367,8 @@
 (add-to-templates-personal-and-work "m" "TODOs from Mail" tasks-private tasks-work "Mail" "Mail" mail-task)
 ;; Reply Mail Task
 (add-to-templates-personal-and-work "r" "Reply-To" tasks-private tasks-work "Mail" "Mail" reply-task)
+;; Reading rss
+(add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" reply-task)
 
 ;; Safe Code Snippet
 (add-to-list
