@@ -464,6 +464,8 @@
 
 ;; Set Schedule to start on any day 
 (setq org-agenda-start-on-weekday nil)
+;; Only display todos in todo-view that are *not* scheduled
+(setq org-agenda-todo-ignore-scheduled 'all)
 ;; Set how parens are displayed
 (setq show-paren-style 'expression)
 (setq mac-option-key-is-meta nil)
