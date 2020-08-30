@@ -368,7 +368,7 @@
 ;; Reply Mail Task
 (add-to-templates-personal-and-work "r" "Reply-To" tasks-private tasks-work "Mail" "Mail" reply-task)
 ;; Reading rss
-(add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" reply-task)
+(add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" rss-read)
 
 ;; Safe Code Snippet
 (add-to-list
