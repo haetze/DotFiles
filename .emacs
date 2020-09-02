@@ -324,6 +324,9 @@
 (defvar rss-read
   "* TODO Read, Link: %a")
 
+(defvar hackernews-read
+  "* TODO Read, [[%(get-comments-from-string (buffer-string* (org-capture-get :original-buffer)))][Link]]")
+
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
 
@@ -369,6 +372,7 @@
 (add-to-templates-personal-and-work "r" "Reply-To" tasks-private tasks-work "Mail" "Mail" reply-task)
 ;; Reading rss
 (add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" rss-read)
+(add-to-templates-personal-and-work "h" "Read HN" tasks-private tasks-work "RSS" "RSS" hackernews-read)
 
 ;; Safe Code Snippet
 (add-to-list
@@ -533,6 +537,18 @@
 (defun compile-latex-current-file ()
   (interactive)
   (compile-latex (buffer-file-name)))
+
+;; Finds url to comments from Hackernews RSS feed
+(defun get-comments-from-string (string)
+  (interactive "sstring:")
+  (let* ((match-start (string-match "Comments URL:" string))
+	 (match-end (string-match "Points" string))) 
+    (substring string (+ match-start 14) (- match-end 2))))
+
+;;Gets string from buffer, even if not current buffer
+(defun buffer-string* (buffer)
+  (with-current-buffer buffer
+    (buffer-string)))
 
 (defun open(url &rest ignore)
   (interactive "sURL: ")
