@@ -325,7 +325,7 @@
   "* TODO Read, Link: %a")
 
 (defvar hackernews-read
-  "* TODO Read, [[%(get-comments-from-string (buffer-string* (org-capture-get :original-buffer)))][Link]]")
+  "* TODO Read, [[%(get-comments-from-string (buffer-string* (org-capture-get :original-buffer)))][%(get-subject-from-string (buffer-string* (org-capture-get :original-buffer)))]]")
 
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
@@ -544,6 +544,13 @@
   (let* ((match-start (string-match "Comments URL:" string))
 	 (match-end (string-match "Points" string))) 
     (substring string (+ match-start 14) (- match-end 2))))
+
+(defun get-subject-from-string (string)
+  (interactive "sstring:")
+  (let* ((match-start (string-match "Subject:" string))
+	 (match-end (string-match "News" string))) 
+    (substring string (+ match-start 9) (- match-end 2))))
+
 
 ;;Gets string from buffer, even if not current buffer
 (defun buffer-string* (buffer)
