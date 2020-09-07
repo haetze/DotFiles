@@ -541,15 +541,17 @@
 ;; Finds url to comments from Hackernews RSS feed
 (defun get-comments-from-string (string)
   (interactive "sstring:")
-  (let* ((match-start (string-match "Comments URL:" string))
-	 (match-end (string-match "Points" string))) 
-    (substring string (+ match-start 14) (- match-end 2))))
+  (get-text-inbetween string "Comments URL: " "Points"))
 
 (defun get-subject-from-string (string)
   (interactive "sstring:")
-  (let* ((match-start (string-match "Subject:" string))
-	 (match-end (string-match "News" string))) 
-    (substring string (+ match-start 9) (- match-end 2))))
+  (get-text-inbetween string "Subject: " "News"))
+
+(defun get-text-inbetween (string start finish)
+  (interactive "sstring:")
+  (let* ((match-start (string-match start string))
+	 (match-end (string-match finish string))) 
+    (substring string (+ match-start (length start)) (- match-end 2))))
 
 
 ;;Gets string from buffer, even if not current buffer
