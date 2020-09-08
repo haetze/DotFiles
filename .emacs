@@ -561,9 +561,9 @@
 
 (defun open(url &rest ignore)
   (interactive "sURL: ")
-  (window-configuration-to-register "t")
+  (window-configuration-to-register 101)
   (delete-window (shell-command (concat "open \"" url "\" &")))
-  (jump-to-register "t"))
+  (jump-to-register 101))
 
 (defun open-direct ()
   (interactive)
@@ -657,7 +657,6 @@
 
 (add-hook 'artist-mode-hook (lambda ()
 			      (setq indent-tabs-mode nil)))
-
 
 ;; Set up for haskell-mode
 (require 'haskell-interactive-mode)
