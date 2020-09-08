@@ -561,7 +561,9 @@
 
 (defun open(url &rest ignore)
   (interactive "sURL: ")
-  (delete-window (shell-command (concat "open \"" url "\" &"))))
+  (window-configuration-to-register "t")
+  (delete-window (shell-command (concat "open \"" url "\" &")))
+  (jump-to-register "t"))
 
 (defun open-direct ()
   (interactive)
