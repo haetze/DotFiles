@@ -551,7 +551,7 @@
   (interactive "sstring:")
   (let* ((match-start (string-match start string))
 	 (match-end (string-match finish string))) 
-    (substring string (+ match-start (length start)) (- match-end 2))))
+    (substring string (+ match-start (length start)) (- match-end 1))))
 
 
 ;;Gets string from buffer, even if not current buffer
