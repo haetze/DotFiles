@@ -111,6 +111,7 @@
     (package-install pkg)))
 
 (setq my-packages (list
+		   'ada-mode ;; requires separat compilation for parsing - which requires the GNAT compiler and gnatcoll packages
 		   'use-package
 		   'rust-mode
 		   'git-command
