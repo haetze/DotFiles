@@ -92,12 +92,7 @@
     (if (not (file-directory-p "~/.local"))
 	(progn
 	  (shell-command "mkdir ~/.local")
-	  (shell-command "mkdir ~/.local/bin")))
-
-	;; copies commit in $HOME/.local/bin/
-    (if (not (file-exists-p "~/.local/bin/pull"))
-	(copy-file "~/usefulCommands/commit" "~/.local/bin/pull" t))))
-
+	  (shell-command "mkdir ~/.local/bin")))))
 
 (package-initialize)
 ;;install packages needed
