@@ -94,10 +94,6 @@
 	  (shell-command "mkdir ~/.local")
 	  (shell-command "mkdir ~/.local/bin")))
 
-    ;; copies commit in $HOME/.local/bin/
-    (if (not (file-exists-p "~/.local/bin/commit"))
-	(copy-file "~/usefulCommands/commit" "~/.local/bin/commit" t))
-
 	;; copies commit in $HOME/.local/bin/
     (if (not (file-exists-p "~/.local/bin/pull"))
 	(copy-file "~/usefulCommands/commit" "~/.local/bin/pull" t))))
@@ -583,11 +579,34 @@
 
 (defun commit ()
   (interactive)
-  (shell-command "commit"))
+  (async-shell-command (mapconcat 'identity
+				  '("cd $HOME/TODOS"
+				    "git add journals/*"
+				    "git commit -m \"$(date)\" -a"
+				    "git push https://github.com/haetze/TODOS.git"
+				    "git push"
+				    "cd $HOME/Contacts"
+				    "git commit -m \"$(date)\" -a"
+				    "git push https://github.com/haetze/Contacts.git"
+				    "git push"
+				    ;;"cd $HOME/Documents/FS2019"
+				    ;;"git commit -m \"$(date)\" -a"
+				    ;;"git push https://github.com/haetze/FS2019.git"
+				    ;;"git push"
+				 ) " ; ")))
+
 
 (defun pull ()
   (interactive)
-  (shell-command "pull"))  
+  (async-shell-command (mapconcat 'identity
+				  '("cd /Users/haetze/TODOS"
+				    "git pull https://github.com/haetze/TODOS.git"
+				    "cd /Users/haetze/Contacts"
+				    "git pull https://github.com/haetze/Contacts.git"
+				    ;;"cd /Users/haetze/Documents/FS2019"
+				    ;;"git pull https://github.com/haetze/FS2019.git"
+				    )
+				  " ; ")))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;For Spell Checking
