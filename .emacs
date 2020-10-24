@@ -574,8 +574,7 @@
 
 (defun commit ()
   (interactive)
-  (async-shell-command (mapconcat 'identity
-				  '("cd $HOME/TODOS"
+  (async-shell-command (string-join '("cd $HOME/TODOS"
 				    "git add journals/*"
 				    "git commit -m \"$(date)\" -a"
 				    "git push https://github.com/haetze/TODOS.git"
@@ -593,8 +592,7 @@
 
 (defun pull ()
   (interactive)
-  (async-shell-command (mapconcat 'identity
-				  '("cd /Users/haetze/TODOS"
+  (async-shell-command (string-join '("cd /Users/haetze/TODOS"
 				    "git pull https://github.com/haetze/TODOS.git"
 				    "cd /Users/haetze/Contacts"
 				    "git pull https://github.com/haetze/Contacts.git"
