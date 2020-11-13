@@ -1,6 +1,6 @@
 (setq author "Richard Stewing")
 (setq email "richard.stewing@udo.edu")
-(setq user-mail-address (concat "<" author "<" email ">>"))
+(setq user-mail-address (concat author "<" email ">"))
 
 (setq package-archives '(("melpa" . "http://melpa.org/packages/")
 			 ("elpa" . "https://elpa.gnu.org/packages/")
@@ -574,6 +574,7 @@
 
 (defun commit ()
   (interactive)
+  (window-configuration-to-register 101)
   (async-shell-command (string-join '("cd $HOME/TODOS"
 				    "git add journals/*"
 				    "git commit -m \"$(date)\" -a"
@@ -587,7 +588,9 @@
 				    ;;"git commit -m \"$(date)\" -a"
 				    ;;"git push https://github.com/haetze/FS2019.git"
 				    ;;"git push"
-				 ) " ; ")))
+				    ) " ; "))
+  (if (y-or-n-p "Return to old layout?")
+      (jump-to-register 101)))
 
 
 (defun pull ()
