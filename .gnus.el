@@ -2,6 +2,7 @@
 (require 'smtpmail)
 
 (setq gnus-always-read-dribble-file t)
+(setq mml-secure-openpgp-sign-with-sender t) ;; Needed so gnus looks up the uid from the sender field
 ;; Read HTML mail
 ;; You need install the command line brower 'w3m' and Emacs plugin 'w3m'
 ;; shr doesn't require w3m to be installed.
