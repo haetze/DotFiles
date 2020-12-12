@@ -402,8 +402,8 @@
 (require 'gnus-icalendar)
 (gnus-icalendar-setup)
 
-(setq gnus-icalendar-org-capture-file "~/TODOS/tasks.org")
-(setq gnus-icalendar-org-capture-headline '("Calendar")) ;;make sure to create Calendar heading first
+(setq gnus-icalendar-org-capture-file "~/TODOS/work.org")
+(setq gnus-icalendar-org-capture-headline '("Work")) ;;make sure to create Calendar heading first
 (gnus-icalendar-org-setup)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
