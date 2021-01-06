@@ -72,10 +72,10 @@
   (progn
 	    
     (if (not (file-directory-p "~/TODOS"))
-	(shell-command "git clone https://github.com/haetze/TODOS ~/TODOS"))
+	(shell-command "git clone git@github.com:haetze/TODOS.git ~/TODOS"))
 	
     (if (not (file-directory-p "~/.templates"))
-	(shell-command "git clone https://github.com/haetze/.templates ~/.templates"))
+	(shell-command "git clone git@github.com:haetze/.templates.git ~/.templates"))
 
     (if (not (file-directory-p "~/.emacs.d/template"))
 	(progn
@@ -245,8 +245,8 @@
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Needs to be copied from agda install
-(add-to-list 'load-path "~/.emacs.d/elpa/agda")
-(require 'agda2)
+;(add-to-list 'load-path "~/.emacs.d/elpa/agda")
+;(require 'agda2)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -428,7 +428,7 @@
 ;; which coqtop
 
 ;; Let Proof General find coqtop
-(setq coq-prog-name "/Users/haetze/.opam/default/bin/coqtop")
+(setq coq-prog-name "~/.opam/default/bin/coqtop")
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
@@ -597,16 +597,10 @@
   (async-shell-command (string-join '("cd $HOME/TODOS"
 				    "git add journals/*"
 				    "git commit -m \"$(date)\" -a"
-				    "git push https://github.com/haetze/TODOS.git"
 				    "git push"
 				    "cd $HOME/Contacts"
 				    "git commit -m \"$(date)\" -a"
-				    "git push https://github.com/haetze/Contacts.git"
 				    "git push"
-				    ;;"cd $HOME/Documents/FS2019"
-				    ;;"git commit -m \"$(date)\" -a"
-				    ;;"git push https://github.com/haetze/FS2019.git"
-				    ;;"git push"
 				    ) " ; "))
   (if (y-or-n-p "Return to old layout?")
       (jump-to-register 101)))
@@ -614,12 +608,10 @@
 
 (defun pull ()
   (interactive)
-  (async-shell-command (string-join '("cd /Users/haetze/TODOS"
-				    "git pull https://github.com/haetze/TODOS.git"
-				    "cd /Users/haetze/Contacts"
-				    "git pull https://github.com/haetze/Contacts.git"
-				    ;;"cd /Users/haetze/Documents/FS2019"
-				    ;;"git pull https://github.com/haetze/FS2019.git"
+  (async-shell-command (string-join '("cd ~/TODOS"
+				    "git pull"
+				    "cd ~/Contacts"
+				    "git pull"
 				    )
 				  " ; ")))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
