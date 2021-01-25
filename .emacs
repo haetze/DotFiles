@@ -149,12 +149,6 @@
 (defvar tasks-work
   "~/TODOS/work.org")
 
-(defvar code-file
-  "~/TODOS/notes.org")
-
-(defvar note-file
-  "~/TODOS/notes.org")
-
 (defvar schedule-file
   "~/TODOS/schedule.org")
 
@@ -468,8 +462,7 @@
 (setq org-archive-location "~/TODOS/archive.org::")
 ;; Set Agenda files
 (setq org-agenda-files (list schedule-file
-                             code-file
-			     tasks-work
+              		     tasks-work
 			     tasks-private))
 ;; Org Keywords
 (setq org-todo-keywords
