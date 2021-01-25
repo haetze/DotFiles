@@ -585,11 +585,14 @@
 (defun commit ()
   (interactive)
   (window-configuration-to-register 101)
-  (async-shell-command (string-join '("cd $HOME/TODOS"
+  (async-shell-command (string-join '("cd ~/TODOS"
 				    "git add journals/*"
 				    "git commit -m \"$(date)\" -a"
 				    "git push"
-				    "cd $HOME/Contacts"
+				    "cd ~/Contacts"
+				    "git commit -m \"$(date)\" -a"
+				    "git push"
+				    "cd ~/NOTES"
 				    "git commit -m \"$(date)\" -a"
 				    "git push"
 				    ) " ; "))
@@ -602,6 +605,8 @@
   (async-shell-command (string-join '("cd ~/TODOS"
 				    "git pull"
 				    "cd ~/Contacts"
+				    "git pull"
+				    "cd ~/NOTES"
 				    "git pull"
 				    )
 				  " ; ")))
