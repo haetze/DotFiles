@@ -73,6 +73,9 @@
 	    
     (if (not (file-directory-p "~/TODOS"))
 	(shell-command "git clone git@github.com:haetze/TODOS.git ~/TODOS"))
+
+    (if (not (file-directory-p "~/NOTES"))
+	(shell-command "git clone git@github.com:haetze/NOTES.git ~/NOTES"))
 	
     (if (not (file-directory-p "~/.templates"))
 	(shell-command "git clone git@github.com:haetze/.templates.git ~/.templates"))
