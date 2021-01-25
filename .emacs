@@ -172,6 +172,7 @@
 (setq org-journal-file-type 'daily)
 (setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-date-format "%A, %d.%m.%Y")
+(setq org-journal-prefix-key "C-c j")
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -375,8 +376,6 @@
 (add-to-templates-personal-and-work "a" "Appointments" tasks-private tasks-work "Personal" "Work" appointment-tasks)
 ;; Appointments - NO ATTENDANCE
 (add-to-templates-personal-and-work "n" "Appointments - No Attendance" tasks-private tasks-work "Personal" "Work" appointment-na-tasks)
-;; Note
-(add-to-templates-personal-and-work "l" "Note" note-file note-file "Personal" "Work" note)
 ;; Mail Task
 (add-to-templates-personal-and-work "m" "TODOs from Mail" tasks-private tasks-work "Mail" "Mail" mail-task)
 ;; Reply Mail Task
@@ -385,14 +384,6 @@
 (add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" rss-read)
 (add-to-templates-personal-and-work "h" "Read HN" tasks-private tasks-work "RSS" "RSS" hackernews-read)
 
-;; Safe Code Snippet
-(add-to-list
- 'org-capture-templates
- (list "+"
-       "SRCs in Code.org"
-       'entry
-       '(file+headline code-file "Code")
-       code-template))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
