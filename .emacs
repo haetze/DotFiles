@@ -629,6 +629,7 @@
 
 ;; Gloabl key bindings
 (global-set-key (kbd "C-x C-g") #'git-command)
+(global-set-key (kbd "C-h C-g") #'goto-line)
 (global-set-key (kbd "C-c l") #'org-store-link)
 (global-set-key (kbd "C-c i") #'org-insert-link)
 (global-set-key (kbd "C-c c") #'org-capture)
