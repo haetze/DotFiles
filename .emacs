@@ -66,10 +66,10 @@
 	  (shell-command "mkdir ~/.local/bin")))))
 
 (package-initialize)
+(package-refresh-contents)
 ;;install packages needed
 (defun install-package (pkg)
   (unless (package-installed-p pkg)
-    (package-refresh-contents)
     (package-install pkg)))
 
 (setq my-packages (list
