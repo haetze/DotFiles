@@ -132,6 +132,11 @@
 ;; (ox-extras-activate '(ignore-headlines))
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 (require 'org-journal)
 (setq org-journal-dir "~/TODOS/journals")
 (setq org-journal-file-type 'daily)
