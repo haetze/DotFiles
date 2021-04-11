@@ -564,6 +564,7 @@
 				    "cd ~/NOTES"
 				    "git commit -m \"$(date)\" -a"
 				    "git push"
+				    "cp *.org /Users/haetze/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents"
 				    ) " ; "))
   (if (y-or-n-p "Return to old layout?")
       (jump-to-register 101)))

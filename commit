@@ -1,14 +1,19 @@
 #!/bin/bash
+# Agenda
 cd $HOME/TODOS
 git add journals/*
 git commit -m "$(date)" -a
 git push https://github.com/haetze/TODOS.git
 git push
+## Syncing to phone
+cp *.org /Users/haetze/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents/
+# Contacts
 cd $HOME/Contacts
 git commit -m "$(date)" -a
 git push https://github.com/haetze/Contacts.git
 git push
-cd $HOME/Documents/FS2019
-git commit -m "$(date)" -a
-git push https://github.com/haetze/FS2019.git
-git push
+# Work
+# cd $HOME/Documents/FS2019
+# git commit -m "$(date)" -a
+# git push https://github.com/haetze/FS2019.git
+# git push
