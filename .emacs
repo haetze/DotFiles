@@ -554,17 +554,24 @@
 (defun commit ()
   (interactive)
   (window-configuration-to-register 101)
-  (async-shell-command (string-join '("cd ~/TODOS"
-				    "git add journals/*"
-				    "git commit -m \"$(date)\" -a"
-				    "git push"
-				    "cd ~/Contacts"
-				    "git commit -m \"$(date)\" -a"
-				    "git push"
-				    "cd ~/NOTES"
-				    "git commit -m \"$(date)\" -a"
-				    "git push"
-				    "cp *.org /Users/haetze/Library/Mobile\ Documents/iCloud~com~appsonthemove~beorg/Documents"
+  (async-shell-command (string-join '(;; TODOS
+				      "cd ~/TODOS"
+				      "git add journals/*"
+				      "git commit -m \"$(date)\" -a"
+				      "git push"
+				      ;; Sync to iPhone
+				      "cp archive.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+				      "cp private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+				      "cp schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+				      "cp work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+				      ;; Contacts
+				      "cd ~/Contacts"
+				      "git commit -m \"$(date)\" -a"
+				      "git push"
+				      ;; Notes
+				      "cd ~/NOTES"
+				      "git commit -m \"$(date)\" -a"
+				      "git push"
 				    ) " ; "))
   (if (y-or-n-p "Return to old layout?")
       (jump-to-register 101)))
