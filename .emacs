@@ -560,7 +560,6 @@
 				      "git commit -m \"$(date)\" -a"
 				      "git push"
 				      ;; Sync to iPhone
-				      "cp archive.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 				      "cp private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 				      "cp schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 				      "cp work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
