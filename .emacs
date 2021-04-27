@@ -458,7 +458,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
 			     (ditaa .t)
-			     (r . t)
+			     (R . t)
 			     (ruby . t)
 			     (java . t)
 			     (haskell . t)))
