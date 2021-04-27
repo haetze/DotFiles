@@ -458,6 +458,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
 			     (ditaa .t)
+			     (r . t)
 			     (ruby . t)
 			     (java . t)
 			     (haskell . t)))
@@ -706,3 +707,4 @@
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 
+(put 'set-goal-column 'disabled nil)
