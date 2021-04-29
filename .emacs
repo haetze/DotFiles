@@ -341,7 +341,7 @@
 ;; Simple Task only Scheduled
 (add-to-templates-personal-and-work "s" "TODOs (Scheduled)" tasks-private tasks-work "Personal" "Work" schedule-tasks)
 ;; Meetings
-(add-to-templates-personal-and-work "k" "Meeting" tasks-private tasks-work"Meetings" "Meetings" meeting-tasks)
+(add-to-templates-personal-and-work "k" "Meeting" tasks-private tasks-work "Meetings" "Meetings" meeting-tasks)
 ;; Appointments
 (add-to-templates-personal-and-work "a" "Appointments" tasks-private tasks-work "Personal" "Work" appointment-tasks)
 ;; Appointments - NO ATTENDANCE
