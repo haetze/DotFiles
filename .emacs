@@ -457,7 +457,8 @@
 ;; Set languages for the intention
 (org-babel-do-load-languages
  'org-babel-load-languages '((C . t)
-			     (ditaa .t)
+			     (ditaa . t)
+			     (dot . t)
 			     (R . t)
 			     (ruby . t)
 			     (java . t)
