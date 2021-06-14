@@ -136,6 +136,7 @@
   (global-display-line-numbers-mode))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 (require 'org-journal)
 (setq org-journal-dir "~/TODOS/journals")
@@ -299,7 +300,6 @@
 (defvar note
   "* NOTE %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
-
 (defvar mail-task
   "* TODO %^{Todo?}, Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
@@ -311,6 +311,9 @@
 
 (defvar reply-task
   "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
+
+(defvar todo-link
+  "* TODO %^{Job?}, Origin: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
 ;; Org-Caputre configs
 
@@ -340,6 +343,8 @@
 (add-to-templates-personal-and-work "d" "TODOs (Deadline)" tasks-private tasks-work "Personal" "Work" deadline-tasks)
 ;; Simple Task only Scheduled
 (add-to-templates-personal-and-work "s" "TODOs (Scheduled)" tasks-private tasks-work "Personal" "Work" schedule-tasks)
+;; Job with origin
+(add-to-templates-personal-and-work "l" "TODOs (Linked)" tasks-private tasks-work "Personal" "Work" todo-link)
 ;; Meetings
 (add-to-templates-personal-and-work "k" "Meeting" tasks-private tasks-work "Meetings" "Meetings" meeting-tasks)
 ;; Appointments
@@ -390,6 +395,13 @@
 
 ;; Let Proof General find coqtop
 (setq coq-prog-name "~/.opam/default/bin/coqtop")
+;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+;;Cedille Mode
+(setq cedille-path "~/Documents/Code/cedille")
+(add-to-list 'load-path cedille-path)
+(require 'cedille-mode)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
