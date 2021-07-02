@@ -570,6 +570,7 @@
   (window-configuration-to-register 101)
   (async-shell-command (string-join '(;; TODOS
 				      "cd ~/TODOS"
+				      "rm -rf journals/*~"
 				      "git add journals/*"
 				      "git commit -m \"$(date)\" -a"
 				      "git push"
