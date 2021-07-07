@@ -399,9 +399,9 @@
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;;Cedille Mode
-(setq cedille-path "~/Documents/Code/cedille")
-(add-to-list 'load-path cedille-path)
-(require 'cedille-mode)
+;; (setq cedille-path "~/Documents/Code/cedille")
+;; (add-to-list 'load-path cedille-path)
+;; (require 'cedille-mode)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
