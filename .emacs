@@ -371,6 +371,11 @@
 (setq gnus-icalendar-org-capture-file tasks-work)
 (setq gnus-icalendar-org-capture-headline '("Work")) ;;make sure to create Calendar heading first
 (gnus-icalendar-org-setup)
+
+;; Calendar export
+(setq org-icalendar-include-todo t)
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+(setq org-icalendar-use-deadline '(event-if-not-todo todo-due event-if-todo))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
