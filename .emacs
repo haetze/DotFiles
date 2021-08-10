@@ -94,7 +94,6 @@
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
 		   'lsp-ui
-		   'org-roam
 		   'proof-general
 		   'flyspell-popup
 		   'ace-window
@@ -145,20 +144,6 @@
 (setq org-journal-file-format "%Y%m%d.org")
 (setq org-journal-date-format "%A, %d.%m.%Y")
 (setq org-journal-prefix-key "C-c j")
-;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-(use-package org-roam
-  :ensure t
-  :init
-  (setq org-roam-v2-ack t)
-  :custom
-  (org-roam-directory "~/NOTES")
-  :bind (("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n i" . org-roam-node-insert))
-  :config
-  (org-roam-setup))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
