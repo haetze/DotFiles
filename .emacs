@@ -300,17 +300,11 @@
 (defvar note
   "* NOTE %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
-(defvar mail-task
-  "* TODO %^{Todo?}, Link: %a\nSCHEDULED: %^{SCHEDULED?}t")
-
 (defvar rss-read
   "* TODO Read, Link: %a")
 
 (defvar hackernews-read
   "* TODO Read, [[%(get-comments-from-string (buffer-string* (org-capture-get :original-buffer)))][%(get-subject-from-string (buffer-string* (org-capture-get :original-buffer)))]]")
-
-(defvar reply-task
-  "* TODO Reply %a\nSCHEDULED: %^{SCHEDULED?}t")
 
 (defvar todo-link
   "* TODO %^{Job?}, Origin: %a\nSCHEDULED: %^{SCHEDULED?}t")
@@ -346,15 +340,11 @@
 ;; Job with origin
 (add-to-templates-personal-and-work "l" "TODOs (Linked)" tasks-private tasks-work "Personal" "Work" todo-link)
 ;; Meetings
-(add-to-templates-personal-and-work "k" "Meeting" tasks-private tasks-work "Meetings" "Meetings" meeting-tasks)
+(add-to-templates-personal-and-work "m" "Meeting" tasks-private tasks-work "Meetings" "Meetings" meeting-tasks)
 ;; Appointments
 (add-to-templates-personal-and-work "a" "Appointments" tasks-private tasks-work "Personal" "Work" appointment-tasks)
 ;; Appointments - NO ATTENDANCE
 (add-to-templates-personal-and-work "n" "Appointments - No Attendance" tasks-private tasks-work "Personal" "Work" appointment-na-tasks)
-;; Mail Task
-(add-to-templates-personal-and-work "m" "TODOs from Mail" tasks-private tasks-work "Mail" "Mail" mail-task)
-;; Reply Mail Task
-(add-to-templates-personal-and-work "r" "Reply-To" tasks-private tasks-work "Mail" "Mail" reply-task)
 ;; Reading rss
 (add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" rss-read)
 (add-to-templates-personal-and-work "h" "Read HN" tasks-private tasks-work "RSS" "RSS" hackernews-read)
@@ -718,7 +708,7 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update gherkin-mode dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
