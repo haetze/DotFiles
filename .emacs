@@ -433,6 +433,8 @@
 ;; Set command to build pdfs
 ;; From Org-Mode
 (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted")))
 
 ;; From Latex
 (setq latex-command "latexmk -cd -pdflatex='pdflatex -shell-escape -interaction nonstopmode' -pdf -bibtex -f ")
