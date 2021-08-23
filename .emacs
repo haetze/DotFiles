@@ -48,6 +48,9 @@
     (if (not (file-directory-p "~/.templates"))
 	(shell-command "git clone git@github.com:haetze/.templates.git ~/.templates"))
 
+    (if (not (file-directory-p "~/DotFiles"))
+	(shell-command "git clone git@github.com:haetze/.templates.git ~/DotFiles"))
+
     (if (not (file-directory-p "~/.emacs.d/template"))
 	(progn
 	  (shell-command "curl -L  https://sourceforge.net/projects/emacs-template/files/latest/download > template.tar.gz")
@@ -57,7 +60,7 @@
 
     ;; copies .gnus.el in $HOME
     (if (not (file-exists-p "~/.gnus.el"))
-	(copy-file "~/usefulCommands/.gnus.el" "~/.gnus.el" t))
+	(copy-file "~/DotFiles/.gnus.el" "~/.gnus.el" t))
 	
     ;; create $HOME/.local/bin
     (if (not (file-directory-p "~/.local"))
