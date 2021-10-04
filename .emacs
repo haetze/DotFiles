@@ -99,8 +99,7 @@
 		   'lsp-ui
 		   'proof-general
 		   'flyspell-popup
-		   'ace-window
-		   'calfw))
+		   'ace-window))
 
 (dolist (pkg my-packages)
   (install-package pkg))
@@ -406,7 +405,8 @@
 
 ;; variable setting
 ;; w3m-command for web browsing
-(setq w3m-command "/usr/local/bin/w3m")
+;;(setq w3m-command "/usr/local/bin/w3m")
+(setq w3m-command "/opt/homebrew/bin/w3m")
 
 (setq inferior-lisp-program "sbcl" 
       slime-contribs '(slime-fancy))
@@ -681,7 +681,8 @@
 (require 'haskell-interactive-mode)
 (require 'haskell-process)
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(setq haskell-process-type 'stack-ghci) ; Setup to use stack for repl
+(setq haskell-process-type 'cabal-repl) ; Setup to use stack for repl
+;(setq haskell-process-type 'stack-ghci) ; Setup to use stack for repl
 ;;=====DEBUG HELP FOR MACOS=====
 ;; If it doesn't work, it might be because the XCode License is  not
 ;; accepted.
