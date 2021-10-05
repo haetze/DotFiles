@@ -366,7 +366,7 @@
 
 ;; Calendar export
 (setq org-icalendar-include-todo 'nil)
-(setq org-icalendar-use-scheduled '(todo-start event-if-todo))
+(setq org-icalendar-use-scheduled '(todo-start event-if-todo event-if-not-todo))
 (setq org-icalendar-use-deadline '(event-if-not-todo todo-due event-if-todo))
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
