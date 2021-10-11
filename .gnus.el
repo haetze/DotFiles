@@ -32,6 +32,16 @@
 		      (nnmail-expiry-wait 90)))
 
 (add-to-list 'gnus-secondary-select-methods
+	     '(nnimap "cs-tu-dortmund"
+		      (nnimap-address "postamt.cs.tu-dortmund.de")
+		      (nnimap-server-port 993)
+		      (nnimap-stream ssl)
+		      (nnir-search-engine imap)
+		      (nnmail-expiry-target "nnimap+cs-tu-dortmund:INBOX.Trash")
+		      (nnmail-expiry-wait 90)))
+
+
+(add-to-list 'gnus-secondary-select-methods
 	     '(nnimap "stewing.dev"
 		      (nnimap-address "mx2e90.netcup.net")
 		      (nnimap-server-port 993)
@@ -51,6 +61,12 @@
     ("tu-dortmund.*"
      (address "Richard Stewing <richard.stewing@tu-dortmund.de>")
      ("X-Message-SMTP-Method" "smtp outlook.tu-dortmund.de 587 smristew")
+     ("GCC" "nnimap+tu-dortmund:INBOX.Sent")
+     (signature-file "~/DotFiles/mail-signature-tu-dortmund")
+     )
+    ("cs-tu-dortmund.*"
+     (address "Richard Stewing <richard.stewing@cs.tu-dortmund.de>")
+     ("X-Message-SMTP-Method" "smtp postamt.cs.tu-dortmund.de 587 richard.stewing")
      ("GCC" "nnimap+tu-dortmund:INBOX.Sent")
      (signature-file "~/DotFiles/mail-signature-tu-dortmund")
      )
