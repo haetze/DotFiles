@@ -24,7 +24,7 @@
 
 (add-to-list 'gnus-secondary-select-methods
 	     '(nnimap "tu-dortmund"
-		      (nnimap-address "unimail.tu-dortmund.de")
+		      (nnimap-address "outlook.tu-dortmund.de")
 		      (nnimap-server-port 993)
 		      (nnimap-stream ssl)
 		      (nnir-search-engine imap)
@@ -49,8 +49,8 @@
      (signature-file "~/DotFiles/mail-signature-gmail")
      )
     ("tu-dortmund.*"
-     (address "Richard Stewing <richard.stewing@udo.edu>")
-     ("X-Message-SMTP-Method" "smtp unimail.tu-dortmund.de 25 smristew")
+     (address "Richard Stewing <richard.stewing@tu-dortmund.de>")
+     ("X-Message-SMTP-Method" "smtp outlook.tu-dortmund.de 587 smristew")
      ("GCC" "nnimap+tu-dortmund:INBOX.Sent")
      (signature-file "~/DotFiles/mail-signature-tu-dortmund")
      )
