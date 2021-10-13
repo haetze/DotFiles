@@ -3,27 +3,21 @@
 <opml version="1.1">
   <head>
     <title>mySubscriptions</title>
-    <dateCreated>Fri, 01 Mar 2019 17:38:27 +0100</dateCreated>
+    <dateCreated>Wed, 13 Oct 2021 15:17:29 +0200</dateCreated>
     <ownerEmail>richard.stewing@udo.edu</ownerEmail>
     <ownerName>Richard Stewing</ownerName>
   </head>
   <body>
-    <outline text="Coding Horror" xmlUrl="http://feeds.feedburner.com/codinghorror?format=xml"/>
-    <outline text="Michael Warren Lucas" xmlUrl="https://mwl.io/feed"/>
-    <outline text="Berlin direkt" xmlUrl="http://www.zdf.de/rss/podcast/video/zdf/politik/berlin-direkt"/>
-    <outline text="Presseclub" xmlUrl="http://mediathek.daserste.de/Presseclub/Sendung?documentId=311790&topRessort&bcastId=311790&rss=true"/>
-    <outline text="Die Anstalt" xmlUrl="https://www.zdf.de/rss/podcast/video/zdf/comedy/die-anstalt"/>
-    <outline text="Hart aber Fair" xmlUrl="https://www1.wdr.de/mediathek/video/podcast/channel-hartaberfair-100.podcast"/>
-    <outline text="boerse.ARD.de" xmlUrl="https://boerse.ard.de/index~rss.xml"/>
-    <outline text="tagesschau.de - Die Nachrichten der ARD" xmlUrl="http://www.tagesschau.de/xml/rss2"/>
-    <outline text="FreeBSD Security Advisories" xmlUrl="https://www.freebsd.org/security/rss.xml"/>
-    <outline text="FreeBSD Errata Notices" xmlUrl="https://www.freebsd.org/security/errata.xml"/>
+    <outline text="Bits und so » Podcast" xmlUrl="http://www.bitsundso.de/category/podcast/feed/"/>
+    <outline text="Freak Show" xmlUrl="http://freakshow.fm/feed/mp3/"/>
     <outline text="FreeBSD News Flash" xmlUrl="https://www.freebsd.org/news/rss.xml"/>
-    <outline text="Fefes Blog" xmlUrl="https://blog.fefe.de/rss.xml"/>
-    <outline text="Freak Show" xmlUrl="http://freakshow.fm/feed/mp3/"/>
-    <outline text="Bits und so " xmlUrl="http://www.bitsundso.de/category/podcast/feed/"/>
-    <outline text="Bits und so" xmlUrl="http://www.bitsundso.de/category/podcast/feed/"/>
-    <outline text="Freak Show" xmlUrl="http://freakshow.fm/feed/mp3/"/>
+    <outline text="FreeBSD Security Advisories and Errata notices" xmlUrl="https://www.freebsd.org/security/rss.xml"/>
+    <outline text="tagesschau.de - Die Nachrichten der ARD" xmlUrl="http://www.tagesschau.de/xml/rss2"/>
+    <outline text="Hart aber fair" xmlUrl="https://www1.wdr.de/mediathek/video/podcast/channel-hartaberfair-100.podcast"/>
+    <outline text="Die Anstalt" xmlUrl="https://www.zdf.de/rss/podcast/video/zdf/comedy/die-anstalt"/>
+    <outline text="Berlin direkt" xmlUrl="http://www.zdf.de/rss/podcast/video/zdf/politik/berlin-direkt"/>
+    <outline text="Michael Warren Lucas" xmlUrl="https://mwl.io/feed"/>
+    <outline text="Coding Horror" xmlUrl="http://feeds.feedburner.com/codinghorror?format=xml"/>
     <outline text="Fefes Blog" xmlUrl="https://blog.fefe.de/rss.xml"/>
   </body>
 </opml>
