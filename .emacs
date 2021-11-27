@@ -2,15 +2,19 @@
 (setq email "richard.stewing@udo.edu")
 (setq user-mail-address (concat author "<" email ">"))
 
-(setq package-archives '(("melpa" . "http://melpa.org/packages/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")
-			 ("org" . "https://orgmode.org/elpa/")))
+(setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
+			 ("melpa" . "http://melpa.org/packages/")
+			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
+			 ;;("org" . "https://orgmode.org/elpa/")
+			 ))
 
 
 (setq package-archive-priorities
-      '(("melpa" . 10)
-	("org" . 5)
-	("elpa" . 0)))
+      '(("elpa" . 10)
+	("melpa" . 9)
+	("nongnu" . 8)
+	;;("org" . 7)
+	))
 
 
 ;; Check existence of files and copy/clone if needed
@@ -84,7 +88,7 @@
 		   'idris-mode
 		   'lfe-mode
 		   'erlang
-		   'org-plus-contrib 
+		   'org-contrib 
 		   'org-ref
 		   'org-kanban
 		   'org-journal
@@ -243,7 +247,7 @@
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 ;; Configure org to use more packages for eg contacts
 (use-package org
-  :ensure org-plus-contrib)
+  :ensure org-contrib)
 
 
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -704,9 +708,11 @@
  '(browse-url-browser-function 'open)
  '(custom-enabled-themes '(manoj-dark))
  '(ledger-reports
-   '(("balance" "ledger -f global.dat balance")
+   '(("bal-fb" "ledger balance  -f ~/Documents/Bank/FlessaBank/FB.dat")
+     ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
+     ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
+     ("balance" "ledger -f global.dat balance")
      ("test" "ledger balance")
-     ("bal" "%(binary) -f %(ledger-file) bal")
      ("reg" "%(binary) -f %(ledger-file) reg")
      ("payee" "%(binary) -f %(ledger-file) reg @%(payee)")
      ("account" "%(binary) -f %(ledger-file) reg %(account)")))
