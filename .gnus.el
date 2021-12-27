@@ -50,6 +50,10 @@
 		      (nnmail-expiry-target "nnimap+stewing.dev:INBOX.Trash")
 		      (nnmail-expiry-wait 90)))
 
+;; Hackernews 
+(add-to-list 'gnus-secondary-select-methods '(nnhackernews ""))
+
+
 
 (setq gnus-posting-styles
   '((".*"
