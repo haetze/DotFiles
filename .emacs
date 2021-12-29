@@ -420,6 +420,13 @@
 (setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
 
+(defun lfe-compile-buffer ()
+  (interactive)
+  (let ((file (buffer-file-name)))
+    (comint-send-string (inferior-lfe-proc) "(c \"")
+    (comint-send-string (inferior-lfe-proc) file)
+    (comint-send-string (inferior-lfe-proc) "\")\n")))
+
 ;; Local cabal install
 (setenv "PATH" (concat (getenv "PATH") ":~/.cabal/bin"))
 (setq exec-path (append exec-path '("~/.cabal/bin")))
@@ -628,11 +635,6 @@
 
 
 
-(defun compile-lfe-module ()
-  (interactive)
-  (comint-send-string (inferior-lfe-proc) (concat "(c '" (substring buffer-file-name 0 -4) ")\n")))
-
-
 ;; Gloabl key bindings
 (global-set-key (kbd "C-x C-g") #'git-command)
 (global-set-key (kbd "C-h C-g") #'goto-line)
@@ -674,14 +676,20 @@
 (add-hook 'erlang-mode-hook
 	  (lambda ()
 	    (local-set-key (kbd "C-c C-c") #'erlang-compile)))    
+
 (add-hook 'lfe-mode-hook 'highlight-parentheses-mode)
+
 (add-hook 'lfe-mode-hook (lambda ()
 			   (local-set-key (kbd "C-x C-l") #'inferior-lfe)
-			   (local-set-key (kbd "C-c C-c") #'compile-lfe-module)))
+			   (local-set-key (kbd "C-c C-c") #'lfe-compile-buffer)))
+
 (add-hook 'plain-tex-mode-hook (lambda ()
 			   (latex-mode)))
+
 (add-hook 'latex-mode-hook (lambda ()
-			     (local-set-key (kbd "C-c C-c") #'compile-latex-current-file)))
+			     (local-set-key
+			      (kbd "C-c C-c")
+			      #'compile-latex-current-file)))
 
 (add-hook 'artist-mode-hook (lambda ()
 			      (setq indent-tabs-mode nil)))
