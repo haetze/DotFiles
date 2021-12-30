@@ -109,6 +109,10 @@
 (dolist (pkg my-packages)
   (install-package pkg))
 
+(if (not (file-exists-p "~/.emacs.d/elpa/org-contrib-0.3/ob-lfe.el"))
+    (copy-file "~/DotFiles/ob-lfe.el" "~/.emacs.d/elpa/org-contrib-0.3/ob-lfe.el" t))
+
+
 (eval-when-compile
   (require 'use-package))
 
