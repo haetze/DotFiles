@@ -420,12 +420,13 @@
 (setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
 
-(defun lfe-compile-buffer ()
+(defun lfe-compile ()
   (interactive)
   (let ((file (buffer-file-name)))
     (comint-send-string (inferior-lfe-proc) "(c \"")
     (comint-send-string (inferior-lfe-proc) file)
     (comint-send-string (inferior-lfe-proc) "\")\n")))
+
 
 ;; Local cabal install
 (setenv "PATH" (concat (getenv "PATH") ":~/.cabal/bin"))
@@ -487,6 +488,7 @@
 			     (ditaa . t)
 			     (lisp .t)
 			     (dot . t)
+			     (lfe . t)
 			     (R . t)
 			     (ruby . t)
 			     (java . t)
@@ -673,15 +675,11 @@
 	    (flyspell-popup-auto-correct-mode)))
 
 
-(add-hook 'erlang-mode-hook
-	  (lambda ()
-	    (local-set-key (kbd "C-c C-c") #'erlang-compile)))    
-
 (add-hook 'lfe-mode-hook 'highlight-parentheses-mode)
 
 (add-hook 'lfe-mode-hook (lambda ()
 			   (local-set-key (kbd "C-x C-l") #'inferior-lfe)
-			   (local-set-key (kbd "C-c C-c") #'lfe-compile-buffer)))
+			   (local-set-key (kbd "C-c C-k") #'lfe-compile-buffer)))
 
 (add-hook 'plain-tex-mode-hook (lambda ()
 			   (latex-mode)))
@@ -733,7 +731,7 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(nnreddit nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
