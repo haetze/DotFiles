@@ -683,7 +683,7 @@
 
 (add-hook 'lfe-mode-hook (lambda ()
 			   (local-set-key (kbd "C-x C-l") #'inferior-lfe)
-			   (local-set-key (kbd "C-c C-k") #'lfe-compile-buffer)))
+			   (local-set-key (kbd "C-c C-k") #'lfe-compile)))
 
 (add-hook 'plain-tex-mode-hook (lambda ()
 			   (latex-mode)))
