@@ -37,7 +37,7 @@
   (let ((term (concat
 	       "(progn "
 	       body
-	       ")")))
+	       "\n)")))
     (org-babel:lfe-send-term term))
   '())
 
