@@ -491,6 +491,7 @@
  'org-babel-load-languages '((C . t)
 			     (ditaa . t)
 			     (lisp .t)
+			     (shell . t)
 			     (dot . t)
 			     (lfe . t)
 			     (R . t)
@@ -723,7 +724,8 @@
  '(browse-url-browser-function 'open)
  '(custom-enabled-themes '(manoj-dark))
  '(ledger-reports
-   '(("bal-fb" "ledger balance  -f ~/Documents/Bank/FlessaBank/FB.dat")
+   '(("bal-compl" "ledger balance  -f ~/Documents/Bank/global.dat")
+     ("bal-fb" "ledger balance  -f ~/Documents/Bank/FlessaBank/FB.dat")
      ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
      ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
      ("balance" "ledger -f global.dat balance")
