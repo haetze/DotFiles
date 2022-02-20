@@ -71,7 +71,7 @@
     ("cs-tu-dortmund.*"
      (address "Richard Stewing <richard.stewing@cs.tu-dortmund.de>")
      ("X-Message-SMTP-Method" "smtp postamt.cs.tu-dortmund.de 587 richard.stewing")
-     ("GCC" "nnimap+tu-dortmund:INBOX.Sent")
+     ("GCC" "nnimap+cs-tu-dortmund:INBOX/Sent")
      (signature-file "~/DotFiles/mail-signature-tu-dortmund")
      )
     ("stewing.dev.*"
