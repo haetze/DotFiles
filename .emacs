@@ -17,6 +17,11 @@
 	))
 
 
+;; Menu bars
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
 ;; Check existence of files and copy/clone if needed
 ;; Dependencies:
 ;;               - git
