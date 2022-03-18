@@ -477,8 +477,7 @@
 ;; Set Agenda files
 (setq org-agenda-files (list schedule-file
               		     tasks-work
-			     tasks-private
-			     "~/Documents/Teaching/SoPra22a/SoPra.org"))
+			     tasks-private))
 ;; Org Keywords
 (setq org-todo-keywords
       '((sequence "TODO(!)" "|" "DONE(!)" "CANCELED(!)")
@@ -507,6 +506,7 @@
 			     (R . t)
 			     (ruby . t)
 			     (java . t)
+			     (kotlin . t)
 			     (haskell . t)))
 
 ;; Set startup screen
@@ -747,7 +747,7 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
  '(template-use-package t nil (template)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
