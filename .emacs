@@ -106,11 +106,13 @@
 		   'org-ref
 		   'org-kanban
 		   'org-journal
+		   'ob-kotlin
 		   'ess
 		   'epresent
 		   'openwith
 		   'w3m
 		   'slime
+		   'kotlin-mode
 		   'magit
 		   'gnu-elpa-keyring-update
 		   'lsp-mode
@@ -428,8 +430,7 @@
 
 ;; variable setting
 ;; w3m-command for web browsing
-;;(setq w3m-command "/usr/local/bin/w3m")
-(setq w3m-command "/opt/homebrew/bin/w3m")
+(setq w3m-command "w3m")
 
 (setq inferior-lisp-program "sbcl" 
       slime-contribs '(slime-fancy))
@@ -612,10 +613,6 @@
 				      "git add journals/*"
 				      "git commit -m \"$(date)\" -a"
 				      "git push"
-				      ;; Sync to iPhone
-				      "cp private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
-				      "cp schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
-				      "cp work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 				      ;; Contacts
 				      "cd ~/Contacts"
 				      "git commit -m \"$(date)\" -a"
@@ -626,7 +623,15 @@
 				      "git add *.org"
 				      "git commit -m \"$(date)\" -a"
 				      "git push"
-				    ) " ; "))
+				      ) " ; "))
+  (if (eq system-type 'darwin)
+      (async-shell-command (string-join '(;; Sync to iPhone
+					  ;; Only applicable on macOS
+					  "cp private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  "cp schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  "cp work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  ) " ; ")))
+
   (if (y-or-n-p "Return to old layout?")
       (jump-to-register 101)))
 
