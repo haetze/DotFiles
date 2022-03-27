@@ -628,14 +628,16 @@
 				      "git add *.org"
 				      "git commit -m \"$(date)\" -a"
 				      "git push"
-				      ) " ; "))
+				      ) " ; ")
+		       (get-buffer-create "*commit*"))
   (if (eq system-type 'darwin)
       (async-shell-command (string-join '(;; Sync to iPhone
 					  ;; Only applicable on macOS
-					  "cp private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
-					  "cp schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
-					  "cp work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
-					  ) " ; ")))
+					  "cp ~/TODOS/private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  "cp ~/TODOS/schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  "cp ~/TODOS/work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  ) " ; ")
+			   (get-buffer-create "*cp-icloud*")))
 
   (if (y-or-n-p "Return to old layout?")
       (jump-to-register 101)))
@@ -643,6 +645,7 @@
 
 (defun pull ()
   (interactive)
+  (window-configuration-to-register 101)
   (async-shell-command (string-join '("cd ~/TODOS"
 				    "git pull"
 				    "cd ~/Contacts"
@@ -650,7 +653,11 @@
 				    "cd ~/NOTES"
 				    "git pull"
 				    )
-				  " ; ")))
+				    " ; ")
+		       (get-buffer-create "*pull*"))
+  (if (y-or-n-p "Return to old layout?")
+      (jump-to-register 101)))
+  
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;For Spell Checking
