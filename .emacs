@@ -152,6 +152,10 @@
 (defvar schedule-file
   "~/TODOS/schedule.org")
 
+(defvar feeds-file
+  "~/TODOS/feeds.org")
+
+
 (setq ispell-program-name "aspell")
 
 ;;requires and configuration
@@ -486,9 +490,57 @@
 ;; Set Archive Locations
 (setq org-archive-location "~/TODOS/archive.org::")
 ;; Set Agenda files
+(setq org-feed-alist
+      '(("Fefes Blog"
+         "http://blog.fefe.de/rss.xml"
+         "~/TODOS/feeds.org" "Fefes Blog"
+	 :template "* TODO %a %U\n%h")
+	("Michael Warren Lucas"
+	 "https://mvl.io/feed"
+	 "~/TODOS/feeds.org" "Michael Warren Lucas"
+	 :template " TODO %h &a")
+	("Coding Horror"
+	 "https://blog.codinghorror.com/rss/"
+	 "~/TODOS/feeds.org" "Coding Horror"
+	 :template " TODO %h &a")
+	("Tageschau"
+	 "https://www.tagesschau.de/xml/rss2/"
+	 "~/TODOS/feeds.org" "Tageschau"
+	 :template " TODO %h &a")
+	("Die Anstalt"
+	 "https://www.zdf.de/rss/podcast/video/zdf/comedy/die-anstalt"
+	 "~/TODOS/feeds.org" "Die Anstalt"
+	 :template "* TODO %h %a")
+	("Berlin direkt"
+	 "https://www.zdf.de/rss/podcast/video/zdf/politik/berlin-direkt"
+	 "~/TODOS/feeds.org" "Berlin Direkt"
+	  :template "* TODO %h %a")
+	("Hart aber fair"
+	 "https://www1.wdr.de/mediathek/video/podcast/channel-hartaberfair-100.podcast"
+	 "~/TODOS/feeds.org" "Hart aber fair"
+	 :template "* TODO %h %a")
+	("Bits und so"
+	 "http://www.bitsundso.de/category/podcast/feed/"
+	 "~/TODOS/feeds.org" "Bits und so"
+	 :template "* TODO %h %a")
+	("Freakshow"
+	 "http://freakshow.fm/feed/mp3/"
+	 "~/TODOS/feeds.org" "Freakshow"
+	 :template "* TODO %h %a")
+	("FreeBSD News Flash"
+	 "https://www.freebsd.org/news/rss.xml"
+	 "~/TODOS/feeds.org" "FreeBSD News Flash"
+	 :template "* TODO %h %a")
+	("FreeBSD Sec Advisory"
+	 "https://www.freebsd.org/security/rss.xml"
+	 "~/TODOS/feeds.org" "FreeBSD Sec Advisory"
+	 :template "* TODO %h %a")
+	))
+
 (setq org-agenda-files (list schedule-file
               		     tasks-work
-			     tasks-private))
+			     tasks-private
+			     feeds-file))
 ;; Org Keywords
 (setq org-todo-keywords
       '((sequence "TODO(!)" "|" "DONE(!)" "CANCELED(!)")
@@ -636,6 +688,7 @@
 					  "cp ~/TODOS/private.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 					  "cp ~/TODOS/schedule.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 					  "cp ~/TODOS/work.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
+					  "cp ~/TODOS/feeds.org /Users/haetze/Library/Mobile\\ Documents/iCloud~com~appsonthemove~beorg/Documents/"
 					  ) " ; ")
 			   (get-buffer-create "*cp-icloud*")))
 
@@ -769,8 +822,9 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
- '(template-use-package t nil (template)))
+   '(keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+ '(template-use-package t nil (template))
+ '(warning-suppress-log-types '((auto-save))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
