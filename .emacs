@@ -537,6 +537,19 @@
 	 :template "* TODO %h %a")
 	))
 
+(defun my/update-feeds ()
+  (interactive)
+  (window-configuration-to-register 101)
+  (save-excursion
+    (org-feed-update-all)
+    (find-file "~/TODOS/feeds.org")
+    (mark-whole-buffer)
+    (call-interactively 'fill-paragraph)
+    (deactivate-mark))
+  (if (y-or-n-p "Return to old layout?")
+      (jump-to-register 101)
+    (org-set-startup-visibility)))
+
 (setq org-agenda-files (list schedule-file
               		     tasks-work
 			     tasks-private
