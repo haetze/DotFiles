@@ -336,12 +336,6 @@
 (defvar note
   "* NOTE %^{NAME}\nSCHEDULED: %^{SCHEDULED?}t")
 
-(defvar rss-read
-  "* TODO Read, Link: %a")
-
-(defvar hackernews-read
-  "* TODO Read, [[%(get-comments-from-string (buffer-string* (org-capture-get :original-buffer)))][%(get-subject-from-string (buffer-string* (org-capture-get :original-buffer)))]]")
-
 (defvar todo-link
   "* TODO %^{Job?}, Origin: %a\nSCHEDULED: %^{SCHEDULED?}t")
 
@@ -381,10 +375,6 @@
 (add-to-templates-personal-and-work "a" "Appointments" tasks-private tasks-work "Personal" "Work" appointment-tasks)
 ;; Appointments - NO ATTENDANCE
 (add-to-templates-personal-and-work "n" "Appointments - No Attendance" tasks-private tasks-work "Personal" "Work" appointment-na-tasks)
-;; Reading rss
-(add-to-templates-personal-and-work "f" "Read RSS" tasks-private tasks-work "RSS" "RSS" rss-read)
-(add-to-templates-personal-and-work "h" "Read HN" tasks-private tasks-work "RSS" "RSS" hackernews-read)
-
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -494,19 +484,27 @@
       '(("Fefes Blog"
          "http://blog.fefe.de/rss.xml"
          "~/TODOS/feeds.org" "Fefes Blog"
-	 :template "* TODO %a %U\n%h")
+	 :template "* TODO %a\n%h")
 	("Michael Warren Lucas"
 	 "https://mvl.io/feed"
 	 "~/TODOS/feeds.org" "Michael Warren Lucas"
-	 :template " TODO %h &a")
+	 :template "* TODO %h %a")
 	("Coding Horror"
 	 "https://blog.codinghorror.com/rss/"
 	 "~/TODOS/feeds.org" "Coding Horror"
-	 :template " TODO %h &a")
+	 :template "* TODO %h %a")
 	("Tageschau"
-	 "https://www.tagesschau.de/xml/rss2/"
+	 "http://www.tagesschau.de/xml/rss2"
 	 "~/TODOS/feeds.org" "Tageschau"
-	 :template " TODO %h &a")
+	 :template "* TODO %h %a")
+	("Richard's Blog"
+	 "http://stewing.dev/html/feed.xml"
+	 "~/TODOS/feeds.org" "Richard's Blog"
+	 :template "* TODO %h\n%description")
+	("Hacker News"
+	 "https://hnrss.org/frontpage"
+	 "~/TODOS/feeds.org" "Hacker News - Frontpage"
+	 :template "* TODO %h %a\n%description")
 	("Die Anstalt"
 	 "https://www.zdf.de/rss/podcast/video/zdf/comedy/die-anstalt"
 	 "~/TODOS/feeds.org" "Die Anstalt"
