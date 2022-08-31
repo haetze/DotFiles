@@ -11,6 +11,11 @@
 (setq email "richard.stewing@udo.edu")
 (setq user-mail-address (concat author "<" email ">"))
 
+(setq ns-alternate-modifier     'none
+      ns-command-modifier       'meta
+      ns-function-modifier      'hyper
+      ns-right-command-modifier 'super)
+
 (setq package-archives '(("elpa" . "https://elpa.gnu.org/packages/")
 			 ("melpa" . "http://melpa.org/packages/")
 			 ("nongnu" . "https://elpa.nongnu.org/nongnu/")
@@ -436,6 +441,7 @@
 (setq inferior-lisp-program "sbcl" 
       slime-contribs '(slime-fancy))
 
+
 ;; Local LFE install
 (setenv "PATH" (concat (getenv "PATH") ":~/Documents/Code/lfe/bin"))
 (setq exec-path (append exec-path '("~/Documents/Code/lfe/bin")))
@@ -448,23 +454,26 @@
     (comint-send-string (inferior-lfe-proc) "\")\n")))
 
 
-;; Local cabal install
-(setenv "PATH" (concat (getenv "PATH") ":~/.cabal/bin"))
-(setq exec-path (append exec-path '("~/.cabal/bin")))
+;; Local ghcup/ghc/cabal install 
+(setq exec-path (append '("/Users/haetze/.ghcup/bin/") exec-path))
+(setenv "PATH" (concat "/Users/haetze/.ghcup/bin:" (getenv "PATH")))
+
+(setenv "PATH" (concat (getenv "PATH") ":/Users/haetze/.cabal/bin"))
+(setq exec-path (append exec-path '("/Users/haetze/.cabal/bin")))
 
 ;; Local Cargo install
-(setenv "PATH" (concat (getenv "PATH") ":~/.cargo/bin"))
-(setq exec-path (append exec-path '("~/.cargo/bin")))
+(setenv "PATH" (concat (getenv "PATH") ":/Users/haetze/.cargo/bin"))
+(setq exec-path (append exec-path '("/Users/haetze/.cargo/bin")))
 
 ;; Mac Tex Path install
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
 (setq exec-path (append exec-path '("/Library/TeX/texbin")))
 
 ;; For ada-mode 
-(setq exec-path (append exec-path '("~/.emacs.d/elpa/ada-mode-7.1.4/")))
+(setq exec-path (append exec-path '("/Users/haetze/.emacs.d/elpa/ada-mode-7.1.4/")))
 
 ;; Homebrew path
-(setq exec-path (append exec-path '("~/Library/Python/3.9/bin/")))
+(setq exec-path (append exec-path '("/Users/haetze/Library/Python/3.9/bin/")))
 
 ;; Set command to build pdfs
 ;; From Org-Mode
@@ -678,6 +687,8 @@
   (interactive)
   (window-configuration-to-register 101)
   (async-shell-command (string-join '(;; TODOS
+				      "GPG_TTY=$(tty)"
+				      "export GPG_TTY"
 				      "cd ~/TODOS"
 				      "emulate sh -c 'rm -f -- journals/*~'"
 				      "git add journals/*"
