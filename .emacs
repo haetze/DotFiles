@@ -137,8 +137,8 @@
 (dolist (pkg my-packages)
   (install-package pkg))
 
-(if (not (file-exists-p "~/.emacs.d/elpa/org-contrib-0.3/ob-lfe.el"))
-    (copy-file "~/DotFiles/ob-lfe.el" "~/.emacs.d/elpa/org-contrib-0.3/ob-lfe.el" t))
+(if (not (file-exists-p "~/.emacs.d/elpa/org-contrib-0.4.1/ob-lfe.el"))
+    (copy-file "~/DotFiles/ob-lfe.el" "~/.emacs.d/elpa/org-contrib-0.4.1/ob-lfe.el" t))
 
 
 (eval-when-compile
@@ -422,7 +422,7 @@
 ;; which coqtop
 
 ;; Let Proof General find coqtop
-(setq coq-prog-name "~/.opam/default/bin/coqtop")
+(setq coq-prog-name "~/.opam/4.14.0/bin/coqtop")
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 ;;>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -468,6 +468,9 @@
 ;; Mac Tex Path install
 (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin"))
 (setq exec-path (append exec-path '("/Library/TeX/texbin")))
+
+;; Lean
+(setq load-path (cons ".emacs.d/lean4-mode/" load-path))
 
 ;; For ada-mode 
 (setq exec-path (append exec-path '("/Users/haetze/.emacs.d/elpa/ada-mode-7.1.4/")))
@@ -847,7 +850,7 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(org-noter pdf-tools dockerfile-mode docker ob-go keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(org-contacts zig-mode org-noter pdf-tools dockerfile-mode docker ob-go keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
  '(template-use-package t nil (template))
  '(warning-suppress-log-types '((auto-save))))
 (custom-set-faces
