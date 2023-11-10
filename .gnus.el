@@ -51,7 +51,7 @@
 		      (nnmail-expiry-wait 90)))
 
 ;; Hackernews 
-(add-to-list 'gnus-secondary-select-methods '(nnhackernews ""))
+;(add-to-list 'gnus-secondary-select-methods '(nnhackernews ""))
 
 
 

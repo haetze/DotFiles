@@ -137,8 +137,8 @@
 (dolist (pkg my-packages)
   (install-package pkg))
 
-(if (not (file-exists-p "~/.emacs.d/elpa/org-contrib-0.4.1/ob-lfe.el"))
-    (copy-file "~/DotFiles/ob-lfe.el" "~/.emacs.d/elpa/org-contrib-0.4.1/ob-lfe.el" t))
+(if (not (file-exists-p "~/.emacs.d/elpa/org-contrib-0.4.2/ob-lfe.el"))
+    (copy-file "~/DotFiles/ob-lfe.el" "~/.emacs.d/elpa/org-contrib-0.4.2/ob-lfe.el" t))
 
 
 (eval-when-compile
@@ -499,18 +499,6 @@
          "http://blog.fefe.de/rss.xml"
          "~/TODOS/feeds.org" "Fefes Blog"
 	 :template "* TODO %a\n%h")
-	("Michael Warren Lucas"
-	 "https://mvl.io/feed"
-	 "~/TODOS/feeds.org" "Michael Warren Lucas"
-	 :template "* TODO %h %a")
-	("Coding Horror"
-	 "https://blog.codinghorror.com/rss/"
-	 "~/TODOS/feeds.org" "Coding Horror"
-	 :template "* TODO %h %a")
-	("Tageschau"
-	 "http://www.tagesschau.de/xml/rss2"
-	 "~/TODOS/feeds.org" "Tageschau"
-	 :template "* TODO %h %a")
 	("Richard's Blog"
 	 "http://stewing.dev/html/feed.xml"
 	 "~/TODOS/feeds.org" "Richard's Blog"
@@ -527,18 +515,6 @@
 	 "https://www.zdf.de/rss/podcast/video/zdf/politik/berlin-direkt"
 	 "~/TODOS/feeds.org" "Berlin Direkt"
 	  :template "* TODO %h %a")
-	("Hart aber fair"
-	 "https://www1.wdr.de/mediathek/video/podcast/channel-hartaberfair-100.podcast"
-	 "~/TODOS/feeds.org" "Hart aber fair"
-	 :template "* TODO %h %a")
-	("Bits und so"
-	 "http://www.bitsundso.de/category/podcast/feed/"
-	 "~/TODOS/feeds.org" "Bits und so"
-	 :template "* TODO %h %a")
-	("Freakshow"
-	 "http://freakshow.fm/feed/mp3/"
-	 "~/TODOS/feeds.org" "Freakshow"
-	 :template "* TODO %h %a")
 	("FreeBSD News Flash"
 	 "https://www.freebsd.org/news/rss.xml"
 	 "~/TODOS/feeds.org" "FreeBSD News Flash"
@@ -551,16 +527,20 @@
 
 (defun my/update-feeds ()
   (interactive)
-  (window-configuration-to-register 101)
-  (save-excursion
-    (org-feed-update-all)
-    (find-file "~/TODOS/feeds.org")
-    (mark-whole-buffer)
-    (call-interactively 'fill-paragraph)
-    (deactivate-mark))
-  (if (y-or-n-p "Return to old layout?")
-      (jump-to-register 101)
-    (org-set-startup-visibility)))
+  (org-feed-update-all))
+
+  ;; (defun my/update-feeds ()
+  ;;   (interactive)
+  ;; (window-configuration-to-register 101)
+  ;; (save-excursion
+  ;;   (org-feed-update-all)
+  ;;   (find-file "~/TODOS/feeds.org")
+  ;;   (mark-whole-buffer)
+  ;;   (call-interactively 'fill-paragraph)
+  ;;   (deactivate-mark))
+  ;; (if (y-or-n-p "Return to old layout?")
+  ;;     (jump-to-register 101)
+  ;;   (org-set-startup-visibility)))
 
 (setq org-agenda-files (list schedule-file
               		     tasks-work
@@ -850,7 +830,8 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(org-contacts zig-mode org-noter pdf-tools dockerfile-mode docker ob-go keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(templatel notmuch org-contacts zig-mode org-noter pdf-tools dockerfile-mode docker ob-go keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+ '(send-mail-function 'smtpmail-send-it)
  '(template-use-package t nil (template))
  '(warning-suppress-log-types '((auto-save))))
 (custom-set-faces
