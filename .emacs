@@ -407,6 +407,10 @@
 (define-key org-agenda-mode-map "\C-c\C-x\C-t" 'org-agenda-archive)
 
 (define-key org-mode-map "\C-c\C-x\C-t" 'org-archive-subtree)
+
+;; override defaults in agenda
+(define-key org-agenda-mode-map "a" 'org-agenda-archive)
+(define-key org-agenda-mode-map "o" 'org-agenda-open-link)
 ;;<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
