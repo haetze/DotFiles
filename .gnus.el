@@ -76,7 +76,7 @@
      )
     ("stewing.dev.*"
      (address "Richard Stewing <richard@stewing.dev>")
-     ("X-Message-SMTP-Method" "smtp mx2e90.netcup.net 25 richard@stewing.dev")
+     ("X-Message-SMTP-Method" "smtp mx2e90.netcup.net 587 richard@stewing.dev")
      ("GCC" "nnimap+stewing.dev:Sent")
      (signature-file "~/DotFiles/mail-signature-stewing")
      )
