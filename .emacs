@@ -38,7 +38,8 @@
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
 
-
+;; Stop creating Backups
+(setq make-backup-files nil)
 
 
 ;; Check existence of files and copy/clone if needed
@@ -823,8 +824,10 @@
  '(ledger-reports
    '(("bal-compl" "ledger balance  -f ~/Documents/Bank/global.dat")
      ("bal-fb" "ledger balance  -f ~/Documents/Bank/FlessaBank/FB.dat")
-     ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
-     ("bal" "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
+     ("bal"
+      "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
+     ("bal"
+      "ledger [[ledger-mode-flags]] -f /Users/haetze/Documents/Bank/DeutscheBank/DB.dat bal")
      ("balance" "ledger -f global.dat balance")
      ("test" "ledger balance")
      ("reg" "%(binary) -f %(ledger-file) reg")
@@ -834,7 +837,32 @@
  '(org-contacts-icon-use-gravatar nil)
  '(org-export-backends '(ascii beamer html icalendar latex))
  '(package-selected-packages
-   '(templatel notmuch org-contacts zig-mode org-noter pdf-tools dockerfile-mode docker ob-go keytar lsp-grammarly lsp-haskell ob-kotlin org-present kotlin-mode nnhackernews yaml-mode org dot-mode agda2-mode org-msg ace-window ada-mode go-mode htmlize org-journal exwm org-mime org-kanban calfw calfw-org ledger-mode magit lsp-ui company-lsp gnu-elpa-keyring-update dart-mode proof-general epresent pyenv-mode elpy py-autopep8 scala-mode lsp-mode flycheck column-enforce-mode auto-complete openwith ess-R-data-view ess use-package org-plus-contrib orgtbl-ascii-plot gnuplot gnuplot-mode ac-haskell-process flymake-haskell-multi org-gcal haskell-mode hasky-stack eww-lnum idris-mode flyspell-correct flyspell-correct-helm flyspell-correct-ivy flyspell-correct-popup flyspell-lazy flyspell-popup org-ref bibtex-utils highlight-parentheses w3m git-command twittering-mode swift-mode slime rustfmt rust-mode lfe-mode haskell-emacs go-complete go-autocomplete go git-commit git ghc erlang))
+   '(ac-haskell-process ace-window ada-mode agda-editor-tactics
+			agda2-mode auto-complete bibtex-utils calfw
+			calfw-org column-enforce-mode company-lsp
+			dart-mode dash docker dockerfile-mode dot-mode
+			elpy epresent erlang ess ess-R-data-view
+			eww-lnum exwm fancy-compilation flycheck
+			flymake-haskell-multi flyspell-correct
+			flyspell-correct-helm flyspell-correct-ivy
+			flyspell-correct-popup flyspell-lazy
+			flyspell-popup ghc git git-command git-commit
+			gnu-elpa-keyring-update gnuplot gnuplot-mode
+			go go-autocomplete go-complete go-mode
+			haskell-emacs haskell-mode hasky-stack
+			highlight-parentheses htmlize idris-mode
+			keytar kotlin-mode lean-mode ledger-mode
+			lfe-mode lsp-grammarly lsp-haskell lsp-mode
+			lsp-ui magit magit-section neut-mode
+			nnhackernews notmuch ob-go ob-kotlin openwith
+			org org-contacts org-gcal org-journal
+			org-kanban org-mime org-msg org-noter
+			org-plus-contrib org-present org-ref
+			orgtbl-ascii-plot pdf-tools proof-general
+			py-autopep8 pyenv-mode roc-ts-mode rust-mode
+			rustfmt scala-mode slime swift-mode templatel
+			twittering-mode use-package w3m yaml-mode
+			z3-mode zig-mode))
  '(send-mail-function 'smtpmail-send-it)
  '(template-use-package t nil (template))
  '(warning-suppress-log-types '((auto-save))))
@@ -847,3 +875,4 @@
 
 
 (put 'set-goal-column 'disabled nil)
+(setq auto-save-default nil)
